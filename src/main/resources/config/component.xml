@@ -17,25 +17,15 @@
   ~ under the License.
 -->
 
-<assembly>
-    <formats>
-        <format>zip</format>
-    </formats>
-
-    <includeBaseDirectory>false</includeBaseDirectory>
-
-    <fileSets>
-        <fileSet>
-            <directory>target/connector/dependencies</directory>
-            <outputDirectory>lib</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>target/classes</directory>
-            <outputDirectory></outputDirectory>
-            <excludes>
-                <exclude>**/metrics_module.xml</exclude>
-                <exclude>**/META-INF/*</exclude>
-            </excludes>
-        </fileSet>
-    </fileSets>
-</assembly>
+<component name="config" type="synapse/template">
+    <subComponents>
+        <component name="init">
+            <file>init.xml</file>
+            <description>Get the basic details of API</description>
+        </component>
+        <component name="getAccessTokenFromRefreshToken">
+            <file>getAccessTokenFromRefreshToken.xml</file>
+            <description>Get the access token from refresh token</description>
+        </component>
+    </subComponents>
+</component>

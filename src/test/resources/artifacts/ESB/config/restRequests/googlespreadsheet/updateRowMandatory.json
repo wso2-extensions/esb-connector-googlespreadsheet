@@ -1,0 +1,12 @@
+{
+  "accessToken":"%s(accessToken)",
+  "key":"%s(key)",
+  "worksheetId":"%s(worksheetId)",
+  "rowId":"%s(rowId)",
+  "fieldValues":{"orderDate":"7/12/2015","region":"North","rep":"Eraser","item":"70","units":"98","cost":"8","total":"100"},
+  "rowVersion":"%s(rowVersion)",
+  "refreshToken":"%s(refreshToken)",
+  "clientId":"%s(clientId)",
+  "clientSecret":"%s(clientSecret)",
+  "apiUrl":"%s(apiUrl)"
+}
