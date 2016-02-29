@@ -1,10 +1,10 @@
 {
-  "accessToken":"%s(accessToken)",
-  "key":"%s(key)",
-  "worksheetId":"%s(worksheetId)",
-  "deleteRowId":"%s(deleteRowId)",
-  "refreshToken":"%s(refreshToken)",
-  "clientId":"%s(clientId)",
-  "clientSecret":"%s(clientSecret)",
-  "apiUrl":"%s(apiUrl)"
+  "accessToken": "%s(accessToken)",
+  "key": "%s(key)",
+  "worksheetId": "%s(worksheetId)",
+  "deleteRowId": "%s(deleteRowId)",
+  "refreshToken": "%s(refreshToken)",
+  "clientId": "%s(clientId)",
+  "clientSecret": "%s(clientSecret)",
+  "apiUrl": "%s(apiUrl)"
 }

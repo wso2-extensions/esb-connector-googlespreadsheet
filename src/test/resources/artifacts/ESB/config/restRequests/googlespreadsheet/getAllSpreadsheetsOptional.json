@@ -1,8 +1,8 @@
 {
-  "accessToken":"%s(accessToken)",
-  "apiVersion":"%s(apiVersion)",
-  "refreshToken":"%s(refreshToken)",
-  "clientId":"%s(clientId)",
-  "clientSecret":"%s(clientSecret)",
-  "apiUrl":"%s(apiUrl)"
+  "accessToken": "%s(accessToken)",
+  "apiVersion": "%s(apiVersion)",
+  "refreshToken": "%s(refreshToken)",
+  "clientId": "%s(clientId)",
+  "clientSecret": "%s(clientSecret)",
+  "apiUrl": "%s(apiUrl)"
 }

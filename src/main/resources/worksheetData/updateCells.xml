@@ -36,8 +36,8 @@
         <property name="REQUEST_HOST_HEADER" scope="axis2" value="spreadsheets.google.com"/>
         <payloadFactory media-type="xml">
             <format>
-                <entry xmlns="http://www.w3.org/2005/Atom"
-                       xmlns:gs="http://schemas.google.com/spreadsheets/2006">
+                <entry xmlns:gs="http://schemas.google.com/spreadsheets/2006"
+                       xmlns="http://www.w3.org/2005/Atom">
                     <gs:cell row="$1" col="$2" inputValue="$3"/>
                 </entry>
             </format>

@@ -39,7 +39,7 @@
         <payloadFactory media-type="xml">
             <format>
                 <feed xmlns="http://www.w3.org/2005/Atom"
-                        >
+                >
                     <id>https://spreadsheets.google.com/feeds/cells/$1/$2/private/full</id>
                 </feed>
             </format>
