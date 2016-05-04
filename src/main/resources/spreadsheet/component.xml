@@ -23,8 +23,8 @@
             <file>getAllSpreadsheets.xml</file>
             <description>Return all of user's spreadsheets</description>
         </component>
-        <component name="getSpreadsheetByTilte">
-            <file>getSpreadsheetByTilte.xml</file>
+        <component name="getSpreadsheetByTitle">
+            <file>getSpreadsheetByTitle.xml</file>
             <description>Return the spreadsheet by title</description>
         </component>
         <component name="exportCSVFile">
