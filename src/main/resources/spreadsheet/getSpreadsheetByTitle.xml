@@ -17,7 +17,7 @@
   ~ under the License.
 -->
 
-<template name="getSpreadsheetByTilte" xmlns="http://ws.apache.org/ns/synapse">
+<template name="getSpreadsheetByTitle" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="spreadsheetTitle" description="The title of the spreadsheet"/>
     <sequence>
         <property name="uri.var.spreadsheetTitle" expression="$func:spreadsheetTitle"/>

@@ -35,6 +35,8 @@ Steps to follow in setting integration test.
                                 class="org.apache.axis2.builder.ApplicationXMLBuilder"/>
         <messagebuilder contenttype="text/csv"
         			 			class="org.apache.axis2.format.PlainTextBuilder"/>
+        <messageBuilder contentType="application/binary"
+                                class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
 
 
  4. Compress modified ESB as wso2esb-4.9.0.zip and copy that zip file in to location "<ESB_CONNECTORS_HOME>/repository/".
