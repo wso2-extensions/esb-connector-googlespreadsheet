@@ -52,7 +52,7 @@
             <property name="deleteWorksheetKey" expression="//deleteWorksheetKey/text()"/>
             <property name="deleteRowId" expression="//deleteRowId/text()"/>
             <property name="rowId" expression="//rowId/text()"/>
-            <property name="fieldValues" expression="//fieldValues/text()"/>
+            <property name="fieldValues" expression="json-eval($.fieldValues)"/>
             <property name="rowVersion" expression="//rowVersion/text()"/>
             <property name="worksheetVersion" expression="//worksheetVersion/text()"/>
             <property name="queryParam" expression="//queryParam/text()"/>
