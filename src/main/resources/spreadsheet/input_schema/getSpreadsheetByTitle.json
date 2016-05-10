@@ -1,0 +1,1 @@
+{"id":"http:\/\/wso2jsonschema.org","title":"root","$schema":"http:\/\/json-schema.org\/draft-04\/schema#","properties":{"apiUrl":{"id":"http:\/\/wso2jsonschema.org\/apiUrl","type":"string"}},"type":"object"}
