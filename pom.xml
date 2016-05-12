@@ -17,7 +17,8 @@
  ~  under the License.
 -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.carbon.connector</groupId>
@@ -134,9 +135,12 @@
         </dependency>
     </dependencies>
     <scm>
-        <connection>scm:git:https://github.com/wso2-extensions/esb-connector-googlespreadsheet.git</connection>
+        <connection>
+            scm:git:https://github.com/wso2-extensions/esb-connector-googlespreadsheet.git
+        </connection>
         <url>https://github.com/wso2-extensions/esb-connector-googlespreadsheet.git</url>
-        <developerConnection>scm:git:https://github.com/wso2-extensions/esb-connector-googlespreadsheet
+        <developerConnection>
+            scm:git:https://github.com/wso2-extensions/esb-connector-googlespreadsheet
         </developerConnection>
         <tag>HEAD</tag>
     </scm>

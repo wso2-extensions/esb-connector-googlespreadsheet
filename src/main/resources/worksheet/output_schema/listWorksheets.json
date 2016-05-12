@@ -1,0 +1,148 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "feed",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "id": {
+      "id": "http:\/\/wso2jsonschema.org\/id",
+      "type": "string"
+    },
+    "author": {
+      "id": "http:\/\/wso2jsonschema.org\/author",
+      "properties": {
+        "email": {
+          "id": "http:\/\/wso2jsonschema.org\/author\/email",
+          "type": "string"
+        },
+        "name": {
+          "id": "http:\/\/wso2jsonschema.org\/author\/name",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "category": {
+      "id": "http:\/\/wso2jsonschema.org\/category",
+      "attributes": {},
+      "type": "null"
+    },
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "updated": {
+      "id": "http:\/\/wso2jsonschema.org\/updated",
+      "type": "string"
+    },
+    "link": {
+      "id": "http:\/\/wso2jsonschema.org\/link",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/link\/link",
+          "attributes": {},
+          "type": "null"
+        }
+      ],
+      "type": "array"
+    },
+    "entry": {
+      "id": "http:\/\/wso2jsonschema.org\/entry",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/entry\/0",
+          "properties": {
+            "id": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/id",
+              "type": "string"
+            },
+            "content": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/content",
+              "attributes": {},
+              "properties": {
+                "@type": {
+                  "id": "http:\/\/wso2jsonschema.org\/entry\/0\/type",
+                  "properties": {},
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "category": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/category",
+              "attributes": {},
+              "type": "null"
+            },
+            "title": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/title",
+              "attributes": {},
+              "properties": {
+                "@type": {
+                  "id": "http:\/\/wso2jsonschema.org\/entry\/0\/type",
+                  "properties": {},
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "updated": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/updated",
+              "type": "string"
+            },
+            "link": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/link",
+              "items": [
+                {
+                  "id": "http:\/\/wso2jsonschema.org\/entry\/0\/link\/link",
+                  "attributes": {},
+                  "type": "null"
+                }
+              ],
+              "type": "array"
+            },
+            "gs:colCount": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/gs:colCount",
+              "type": "number"
+            },
+            "gs:rowCount": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/gs:rowCount",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "xmlns": {
+      "id": "http:\/\/wso2jsonschema.org\/xmlns",
+      "type": "string"
+    },
+    "openSearch:totalResults": {
+      "id": "http:\/\/wso2jsonschema.org\/openSearch:totalResults",
+      "type": "number"
+    },
+    "openSearch:startIndex": {
+      "id": "http:\/\/wso2jsonschema.org\/openSearch:startIndex",
+      "type": "number"
+    }
+  },
+  "type": "object",
+  "namespaces": [
+    {
+      "prefix": "gs",
+      "url": "http:\/\/schemas.google.com\/spreadsheets\/2006"
+    },
+    {
+      "prefix": "openSearch",
+      "url": "http:\/\/a9.com\/-\/spec\/opensearchrss\/1.0\/"
+    }
+  ]
+}

@@ -29,7 +29,8 @@
         </component>
         <component name="exportCSVFile">
             <file>exportCSVFile.xml</file>
-            <description>Return the spreadsheet data to csv(Comma-separated value) or tsv(Tab-separated value) format
+            <description>Return the spreadsheet data to csv(Comma-separated value) or
+                tsv(Tab-separated value) format
             </description>
         </component>
     </subComponents>

@@ -1,0 +1,126 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "atom:feed",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "atom:entry": {
+      "id": "http:\/\/wso2jsonschema.org\/atom:entry",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0",
+          "properties": {
+            "atom:content": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/atom:content",
+              "attributes": {
+                "type": {
+                  "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/type",
+                  "type": "string"
+                }
+              },
+              "type": "string"
+            },
+            "batch:status": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/batch:status",
+              "attributes": {
+                "reason": {
+                  "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/reason",
+                  "type": "string"
+                },
+                "code": {
+                  "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/code",
+                  "type": "number"
+                }
+              },
+              "type": "null"
+            },
+            "batch:operation": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/batch:operation",
+              "attributes": {
+                "type": {
+                  "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/type",
+                  "type": "string"
+                }
+              },
+              "type": "null"
+            },
+            "batch:id": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/batch:id",
+              "type": "string"
+            },
+            "atom:id": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/atom:id",
+              "type": "string"
+            },
+            "atom:updated": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/atom:updated",
+              "type": "string"
+            },
+            "atom:title": {
+              "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/atom:title",
+              "attributes": {
+                "type": {
+                  "id": "http:\/\/wso2jsonschema.org\/atom:entry\/0\/type",
+                  "type": "string"
+                }
+              },
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "atom:id": {
+      "id": "http:\/\/wso2jsonschema.org\/atom:id",
+      "type": "string"
+    },
+    "atom:updated": {
+      "id": "http:\/\/wso2jsonschema.org\/atom:updated",
+      "type": "string"
+    },
+    "atom:title": {
+      "id": "http:\/\/wso2jsonschema.org\/atom:title",
+      "attributes": {
+        "type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "type": "string"
+        }
+      },
+      "type": "string"
+    },
+    "atom:category": {
+      "id": "http:\/\/wso2jsonschema.org\/atom:category",
+      "attributes": {
+        "scheme": {
+          "id": "http:\/\/wso2jsonschema.org\/scheme",
+          "type": "string"
+        },
+        "term": {
+          "id": "http:\/\/wso2jsonschema.org\/term",
+          "type": "string"
+        }
+      },
+      "type": "null"
+    }
+  },
+  "type": "object",
+  "namespaces": [
+    {
+      "prefix": "gs",
+      "url": "http:\/\/schemas.google.com\/spreadsheets\/2006"
+    },
+    {
+      "prefix": "batch",
+      "url": "http:\/\/schemas.google.com\/gdata\/batch"
+    },
+    {
+      "prefix": "atom",
+      "url": "http:\/\/www.w3.org\/2005\/Atom"
+    },
+    {
+      "prefix": "openSearch",
+      "url": "http:\/\/a9.com\/-\/spec\/opensearchrss\/1.0\/"
+    }
+  ]
+}

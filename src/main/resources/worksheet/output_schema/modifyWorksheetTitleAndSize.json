@@ -1,0 +1,74 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "entry",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "id": {
+      "id": "http:\/\/wso2jsonschema.org\/id",
+      "type": "string"
+    },
+    "content": {
+      "id": "http:\/\/wso2jsonschema.org\/content",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "category": {
+      "id": "http:\/\/wso2jsonschema.org\/category",
+      "attributes": {},
+      "type": "null"
+    },
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "updated": {
+      "id": "http:\/\/wso2jsonschema.org\/updated",
+      "type": "string"
+    },
+    "link": {
+      "id": "http:\/\/wso2jsonschema.org\/link",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/link\/link",
+          "attributes": {},
+          "type": "null"
+        }
+      ],
+      "type": "array"
+    },
+    "gs:colCount": {
+      "id": "http:\/\/wso2jsonschema.org\/gs:colCount",
+      "type": "number"
+    },
+    "xmlns": {
+      "id": "http:\/\/wso2jsonschema.org\/xmlns",
+      "type": "string"
+    },
+    "gs:rowCount": {
+      "id": "http:\/\/wso2jsonschema.org\/gs:rowCount",
+      "type": "number"
+    }
+  },
+  "type": "object",
+  "namespaces": [
+    {
+      "prefix": "gs",
+      "url": "http:\/\/schemas.google.com\/spreadsheets\/2006"
+    }
+  ]
+}

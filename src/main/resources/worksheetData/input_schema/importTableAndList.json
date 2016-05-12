@@ -1,0 +1,44 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "position": {
+      "id": "http:\/\/wso2jsonschema.org\/position",
+      "type": "string"
+    },
+    "col": {
+      "id": "http:\/\/wso2jsonschema.org\/col",
+      "type": "string"
+    },
+    "cellId": {
+      "id": "http:\/\/wso2jsonschema.org\/cellId",
+      "type": "string"
+    },
+    "inputTableURL": {
+      "id": "http:\/\/wso2jsonschema.org\/inputTableURL",
+      "type": "string"
+    },
+    "importTableworksheetId": {
+      "id": "http:\/\/wso2jsonschema.org\/importTableworksheetId",
+      "type": "string"
+    },
+    "inputFormat": {
+      "id": "http:\/\/wso2jsonschema.org\/inputFormat",
+      "type": "string"
+    },
+    "importTableCellVersion": {
+      "id": "http:\/\/wso2jsonschema.org\/importTableCellVersion",
+      "type": "string"
+    },
+    "row": {
+      "id": "http:\/\/wso2jsonschema.org\/row",
+      "type": "string"
+    },
+    "key": {
+      "id": "http:\/\/wso2jsonschema.org\/key",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

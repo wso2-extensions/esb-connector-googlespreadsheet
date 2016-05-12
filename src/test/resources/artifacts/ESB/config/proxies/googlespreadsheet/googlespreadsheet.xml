@@ -25,54 +25,57 @@
        startOnLoad="true">
     <target>
         <inSequence onError="faultHandlerSeq">
-            <property name="apiUrl" expression="//apiUrl/text()"/>
-            <property name="apiVersion" expression="//apiVersion/text()"/>
-            <property name="spreadsheetTitle" expression="//spreadsheetTitle/text()"/>
-            <property name="title" expression="//title/text()"/>
-            <property name="key" expression="//key/text()"/>
-            <property name="exportFormat" expression="//exportFormat/text()"/>
-            <property name="worksheetTitle" expression="//worksheetTitle/text()"/>
-            <property name="rowCount" expression="//rowCount/text()"/>
-            <property name="accessToken" expression="//accessToken/text()"/>
-            <property name="colCount" expression="//colCount/text()"/>
-            <property name="worksheetId" expression="//worksheetId/text()"/>
-            <property name="cellId" expression="//cellId/text()"/>
-            <property name="minRow" expression="//minRow/text()"/>
-            <property name="minCol" expression="//minCol/text()"/>
-            <property name="maxRow" expression="//maxRow/text()"/>
-            <property name="maxCol" expression="//maxCol/text()"/>
-            <property name="row" expression="//row/text()"/>
-            <property name="col" expression="//col/text()"/>
-            <property name="inputValue" expression="//inputValue/text()"/>
-            <property name="cellVersion" expression="//cellVersion/text()"/>
-            <property name="refreshToken" expression="//refreshToken/text()"/>
-            <property name="clientId" expression="//clientId/text()"/>
-            <property name="clientSecret" expression="//clientSecret/text()"/>
-            <property name="deleteWorksheetId" expression="//deleteWorksheetId/text()"/>
-            <property name="deleteWorksheetKey" expression="//deleteWorksheetKey/text()"/>
-            <property name="deleteRowId" expression="//deleteRowId/text()"/>
-            <property name="rowId" expression="//rowId/text()"/>
+            <property name="apiUrl" expression="json-eval($.apiUrl)"/>
+            <property name="apiVersion" expression="json-eval($.apiVersion)"/>
+            <property name="spreadsheetTitle" expression="json-eval($.spreadsheetTitle)"/>
+            <property name="title" expression="json-eval($.title)"/>
+            <property name="key" expression="json-eval($.key)"/>
+            <property name="exportFormat" expression="json-eval($.exportFormat)"/>
+            <property name="worksheetTitle" expression="json-eval($.worksheetTitle)"/>
+            <property name="rowCount" expression="json-eval($.rowCount)"/>
+            <property name="accessToken" expression="json-eval($.accessToken)"/>
+            <property name="colCount" expression="json-eval($.colCount)"/>
+            <property name="worksheetId" expression="json-eval($.worksheetId)"/>
+            <property name="cellId" expression="json-eval($.cellId)"/>
+            <property name="minRow" expression="json-eval($.minRow)"/>
+            <property name="minCol" expression="json-eval($.minCol)"/>
+            <property name="maxRow" expression="json-eval($.maxRow)"/>
+            <property name="maxCol" expression="json-eval($.maxCol)"/>
+            <property name="row" expression="json-eval($.row)"/>
+            <property name="col" expression="json-eval($.col)"/>
+            <property name="inputValue" expression="json-eval($.inputValue)"/>
+            <property name="cellVersion" expression="json-eval($.cellVersion)"/>
+            <property name="refreshToken" expression="json-eval($.refreshToken)"/>
+            <property name="clientId" expression="json-eval($.clientId)"/>
+            <property name="clientSecret" expression="json-eval($.clientSecret)"/>
+            <property name="deleteWorksheetId" expression="json-eval($.deleteWorksheetId)"/>
+            <property name="deleteWorksheetKey" expression="json-eval($.deleteWorksheetKey)"/>
+            <property name="deleteRowId" expression="json-eval($.deleteRowId)"/>
+            <property name="rowId" expression="json-eval($.rowId)"/>
             <property name="fieldValues" expression="json-eval($.fieldValues)"/>
-            <property name="rowVersion" expression="//rowVersion/text()"/>
-            <property name="worksheetVersion" expression="//worksheetVersion/text()"/>
-            <property name="queryParam" expression="//queryParam/text()"/>
-            <property name="orderby" expression="//orderby/text()"/>
-            <property name="reverse" expression="//reverse/text()"/>
-            <property name="batchIds" expression="//batchIds/text()"/>
-            <property name="cellIds" expression="//cellIds/text()"/>
-            <property name="cellVersions" expression="//cellVersions/text()"/>
-            <property name="rowArray" expression="//rowArray/text()"/>
-            <property name="colArray" expression="//colArray/text()"/>
-            <property name="inputValues" expression="//inputValues/text()"/>
-            <property name="inputURL" expression="//inputURL/text()"/>
-            <property name="imporDatatWorksheetId" expression="//imporDatatWorksheetId/text()"/>
-            <property name="importDataCellVersion" expression="//importDataCellVersion/text()"/>
-            <property name="importTableworksheetId" expression="//importTableworksheetId/text()"/>
-            <property name="importTableCellVersion" expression="//importTableCellVersion/text()"/>
-            <property name="inputTableURL" expression="//inputTableURL/text()"/>
-            <property name="inputFormat" expression="//inputFormat/text()"/>
-            <property name="position" expression="//position/text()"/>
-            <property name="accessTokenRegistryPath" expression="//accessTokenRegistryPath/text()"/>
+            <property name="rowVersion" expression="json-eval($.rowVersion)"/>
+            <property name="worksheetVersion" expression="json-eval($.worksheetVersion)"/>
+            <property name="queryParam" expression="json-eval($.queryParam)"/>
+            <property name="orderby" expression="json-eval($.orderby)"/>
+            <property name="reverse" expression="json-eval($.reverse)"/>
+            <property name="batchIds" expression="json-eval($.batchIds)"/>
+            <property name="cellIds" expression="json-eval($.cellIds)"/>
+            <property name="cellVersions" expression="json-eval($.cellVersions)"/>
+            <property name="rowArray" expression="json-eval($.rowArray)"/>
+            <property name="colArray" expression="json-eval($.colArray)"/>
+            <property name="inputValues" expression="json-eval($.inputValues)"/>
+            <property name="inputURL" expression="json-eval($.inputURL)"/>
+            <property name="imporDatatWorksheetId" expression="json-eval($.imporDatatWorksheetId)"/>
+            <property name="importDataCellVersion" expression="json-eval($.importDataCellVersion)"/>
+            <property name="importTableworksheetId"
+                      expression="json-eval($.importTableworksheetId)"/>
+            <property name="importTableCellVersion"
+                      expression="json-eval($.importTableCellVersion)"/>
+            <property name="inputTableURL" expression="json-eval($.inputTableURL)"/>
+            <property name="inputFormat" expression="json-eval($.inputFormat)"/>
+            <property name="position" expression="json-eval($.position)"/>
+            <property name="accessTokenRegistryPath"
+                      expression="json-eval($.accessTokenRegistryPath)"/>
             <googlespreadsheet.init>
                 <apiUrl>{$ctx:apiUrl}</apiUrl>
                 <accessToken>{$ctx:accessToken}</accessToken>
@@ -221,14 +224,16 @@
                 <case regex="urn:importTableAndList">
                     <googlespreadsheet.importTableAndList>
                         <key>{$ctx:key}</key>
-                        <importTableworksheetId>{$ctx:importTableworksheetId}</importTableworksheetId>
+                        <importTableworksheetId>{$ctx:importTableworksheetId}
+                        </importTableworksheetId>
                         <cellId>{$ctx:cellId}</cellId>
                         <inputTableURL>{$ctx:inputTableURL}</inputTableURL>
                         <row>{$ctx:row}</row>
                         <col>{$ctx:col}</col>
                         <inputFormat>{$ctx:inputFormat}</inputFormat>
                         <position>{$ctx:position}</position>
-                        <importTableCellVersion>{$ctx:importTableCellVersion}</importTableCellVersion>
+                        <importTableCellVersion>{$ctx:importTableCellVersion}
+                        </importTableCellVersion>
                     </googlespreadsheet.importTableAndList>
                 </case>
                 <case regex="urn:insertRows">

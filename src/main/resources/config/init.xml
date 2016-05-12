@@ -65,7 +65,8 @@
                         </script>
                     </then>
                     <else>
-                        <property name="uri.var.accessToken" expression="$ctx:uri.var.accessToken.reg"/>
+                        <property name="uri.var.accessToken"
+                                  expression="$ctx:uri.var.accessToken.reg"/>
                     </else>
                 </filter>
                 <header name="Transfer-Encoding" action="remove" scope="transport"/>

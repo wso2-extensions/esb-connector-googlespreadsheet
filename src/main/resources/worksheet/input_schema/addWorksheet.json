@@ -1,0 +1,24 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "type": "string"
+    },
+    "rowCount": {
+      "id": "http:\/\/wso2jsonschema.org\/rowCount",
+      "type": "string"
+    },
+    "colCount": {
+      "id": "http:\/\/wso2jsonschema.org\/colCount",
+      "type": "string"
+    },
+    "key": {
+      "id": "http:\/\/wso2jsonschema.org\/key",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}
