@@ -224,16 +224,14 @@
                 <case regex="urn:importTableAndList">
                     <googlespreadsheet.importTableAndList>
                         <key>{$ctx:key}</key>
-                        <importTableworksheetId>{$ctx:importTableworksheetId}
-                        </importTableworksheetId>
+                        <importTableworksheetId>{$ctx:importTableworksheetId}</importTableworksheetId>
                         <cellId>{$ctx:cellId}</cellId>
                         <inputTableURL>{$ctx:inputTableURL}</inputTableURL>
                         <row>{$ctx:row}</row>
                         <col>{$ctx:col}</col>
                         <inputFormat>{$ctx:inputFormat}</inputFormat>
                         <position>{$ctx:position}</position>
-                        <importTableCellVersion>{$ctx:importTableCellVersion}
-                        </importTableCellVersion>
+                        <importTableCellVersion>{$ctx:importTableCellVersion}</importTableCellVersion>
                     </googlespreadsheet.importTableAndList>
                 </case>
                 <case regex="urn:insertRows">

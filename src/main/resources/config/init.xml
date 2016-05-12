@@ -65,8 +65,7 @@
                         </script>
                     </then>
                     <else>
-                        <property name="uri.var.accessToken"
-                                  expression="$ctx:uri.var.accessToken.reg"/>
+                        <property name="uri.var.accessToken" expression="$ctx:uri.var.accessToken.reg"/>
                     </else>
                 </filter>
                 <header name="Transfer-Encoding" action="remove" scope="transport"/>
@@ -80,8 +79,7 @@
                 <filter source="$ctx:error='invalid_token'"
                         regex="true">
                     <googlespreadsheet.getAccessTokenFromRefreshToken/>
-                    <property name="uri.var.accessToken"
-                              expression="json-eval($.access_token)"/>
+                    <property name="uri.var.accessToken" expression="json-eval($.access_token)"/>
                 </filter>
             </then>
         </filter>
