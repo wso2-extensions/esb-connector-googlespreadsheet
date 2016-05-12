@@ -1,0 +1,40 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "cellVersions": {
+      "id": "http:\/\/wso2jsonschema.org\/cellVersions",
+      "type": "string"
+    },
+    "worksheetId": {
+      "id": "http:\/\/wso2jsonschema.org\/worksheetId",
+      "type": "string"
+    },
+    "inputValues": {
+      "id": "http:\/\/wso2jsonschema.org\/inputValues",
+      "type": "string"
+    },
+    "rowArray": {
+      "id": "http:\/\/wso2jsonschema.org\/rowArray",
+      "type": "string"
+    },
+    "batchIds": {
+      "id": "http:\/\/wso2jsonschema.org\/batchIds",
+      "type": "string"
+    },
+    "colArray": {
+      "id": "http:\/\/wso2jsonschema.org\/colArray",
+      "type": "string"
+    },
+    "key": {
+      "id": "http:\/\/wso2jsonschema.org\/key",
+      "type": "string"
+    },
+    "cellIds": {
+      "id": "http:\/\/wso2jsonschema.org\/cellIds",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

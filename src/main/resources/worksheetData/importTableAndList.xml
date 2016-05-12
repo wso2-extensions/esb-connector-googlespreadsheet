@@ -42,7 +42,8 @@
             <format>
                 <entry xmlns:gs="http://schemas.google.com/spreadsheets/2006"
                        xmlns="http://www.w3.org/2005/Atom">
-                    <gs:cell row="$1" col="$2" inputValue="=IMPORTHTML(&quot;$3&quot;,&quot;$4&quot;,&quot;$5&quot;)"/>
+                    <gs:cell row="$1" col="$2"
+                             inputValue="=IMPORTHTML(&quot;$3&quot;,&quot;$4&quot;,&quot;$5&quot;)"/>
                 </entry>
             </format>
             <args>
