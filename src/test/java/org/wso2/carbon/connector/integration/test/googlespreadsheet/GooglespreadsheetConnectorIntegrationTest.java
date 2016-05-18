@@ -44,7 +44,7 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
      */
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
-        init("googlespreadsheet-connector-2.0.2-SNAPSHOT");
+        init("googlespreadsheet-connector-2.0.3-SNAPSHOT");
         esbRequestHeadersMap.put("Content-Type", "application/json");
         apiRequestHeadersMap.put("Content-Type", "application/json");
         apiEndpointUrl = "https://www.googleapis.com/oauth2/v3/token?grant_type=refresh_token&client_id=" + connectorProperties.getProperty("clientId") +
