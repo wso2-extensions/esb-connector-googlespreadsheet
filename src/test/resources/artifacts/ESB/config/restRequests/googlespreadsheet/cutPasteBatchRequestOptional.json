@@ -1,0 +1,7 @@
+{
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId)",
+  "requests": %s(requestsCutPasteBatchRequest),
+  "fields": "%s(fieldSpreadsheetId)"
+}

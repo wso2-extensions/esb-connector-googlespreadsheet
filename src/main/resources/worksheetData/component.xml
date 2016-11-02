@@ -19,65 +19,106 @@
 
 <component name="worksheetData" type="synapse/template">
     <subComponents>
-        <component name="listRows">
-            <file>listRows.xml</file>
-            <description>List feed contains all rows after the first row up to the first blank row
+        <component name="addRowsColumnsData">
+            <file>addRowsColumnsData.xml</file>
+            <description>Append row/rows/column/columns of data.</description>
+        </component>
+        <component name="deleteDimensionBatchRequest">
+            <file>deleteDimensionBatchRequest.xml</file>
+            <description>removing rows, columns and remove part of a row or column.</description>
+        </component>
+        <component name="getCellData">
+            <file>getCellData.xml</file>
+            <description>Retrieve any set of cell data from a sheet and cell contents as input
+                values
+                (as would be entered by a user at a keyboard) and/or the outputs of formula (if
+                numeric)
             </description>
         </component>
-        <component name="getRow">
-            <file>getRow.xml</file>
-            <description>Get a single row</description>
-        </component>
-        <component name="insertRows">
-            <file>insertRows.xml</file>
-            <description>Insert row</description>
-        </component>
-        <component name="deleteRows">
-            <file>deleteRows.xml</file>
-            <description>Delete a single row</description>
-        </component>
-        <component name="listCells">
-            <file>listCells.xml</file>
-            <description>List cells</description>
-        </component>
-        <component name="getCell">
-            <file>getCell.xml</file>
-            <description>Get a single cell</description>
-        </component>
-        <component name="fetchSpecificRowsOrColumns">
-            <file>fetchSpecificRowsOrColumns.xml</file>
-            <description>Fetch specific rows or columns from a worksheet</description>
-        </component>
-        <component name="updateRow">
-            <file>updateRow.xml</file>
-            <description>Update the contents of an existing row</description>
-        </component>
-        <component name="updateCells">
-            <file>updateCells.xml</file>
-            <description>Change contents of a cell</description>
-        </component>
-        <component name="updateMultipleCells">
-            <file>updateMultipleCells.xml</file>
-            <description>Update multiple cells with a batch request</description>
-        </component>
-        <component name="sortRows">
-            <file>sortRows.xml</file>
-            <description>Get rows in reverse order or sort the values in ascending order or both
+        <component name="getMultipleCellData">
+            <file>getMultipleCellData.xml</file>
+            <description>Retrieve any set of cell data including multiple ranges from a sheet and
+                cell contents as input values (as would be entered by a user at a keyboard)
+                and/or the outputs of formula (if numeric)
             </description>
         </component>
-        <component name="queryForRows">
-            <file>queryForRows.xml</file>
-            <description>Get structured query to feed with entries that meet the specified
-                criteria
+        <component name="editCell">
+            <file>editCell.xml</file>
+            <description>Edit the content of the cell with new values.</description>
+        </component>
+        <component name="editMultipleCell">
+            <file>editMultipleCell.xml</file>
+            <description>Edit the content of multiple cell with new values.</description>
+        </component>
+        <component name="updateCellsBatchRequest">
+            <file>updateCellsBatchRequest.xml</file>
+            <description>Updates all cells in a range with new data that can be cell value,
+                formatting.
             </description>
         </component>
-        <component name="importData">
-            <file>importData.xml</file>
-            <description>Imports data at a given url in .csv</description>
+        <component name="appendDimensionBatchRequest">
+            <file>appendDimensionBatchRequest.xml</file>
+            <description>Append empty rows or columns at the end of the sheet.</description>
         </component>
-        <component name="importTableAndList">
-            <file>importTableAndList.xml</file>
-            <description>Imports data from a table or list within an HTML page</description>
+        <component name="updateBordersBatchRequest">
+            <file>updateBordersBatchRequest.xml</file>
+            <description>Edit cell borders</description>
+        </component>
+        <component name="repeatCellsBatchRequest">
+            <file>repeatCellsBatchRequest.xml</file>
+            <description>Repeat formatting of the cell into over a range of cells.</description>
+        </component>
+        <component name="mergeCellsBatchRequest">
+            <file>mergeCellsBatchRequest.xml</file>
+            <description>Merge range of cells into a one cell.</description>
+        </component>
+        <component name="setDataValidationBatchRequest">
+            <file>setDataValidationBatchRequest.xml</file>
+            <description>Apply data validation rule to a range.</description>
+        </component>
+        <component name="copyPasteBatchRequest">
+            <file>copyPasteBatchRequest.xml</file>
+            <description>Copy cell formatting in one range and paste it into another range on the
+                same sheet.
+            </description>
+        </component>
+        <component name="cutPasteBatchRequest">
+            <file>cutPasteBatchRequest.xml</file>
+            <description>cuts the one range and pastes its data, formats, formulas,
+                and merges to the another range on the same sheet.
+            </description>
+        </component>
+        <component name="updateConditionalFormatRuleBatchRequest">
+            <file>updateConditionalFormatRuleBatchRequest.xml</file>
+            <description>Update a conditional formatting rule or its priority.</description>
+        </component>
+        <component name="addConditionalFormatRuleBatchRequest">
+            <file>addConditionalFormatRuleBatchRequest.xml</file>
+            <description>Establishes a new conditional formatting rule.</description>
+        </component>
+        <component name="deleteConditionalFormatRuleBatchRequest">
+            <file>deleteConditionalFormatRuleBatchRequest.xml</file>
+            <description>Delete a conditional formatting rule.</description>
+        </component>
+        <component name="updateDimensionPropertiesBatchRequest">
+            <file>updateDimensionPropertiesBatchRequest.xml</file>
+            <description>Adjust column width or row height.</description>
+        </component>
+        <component name="autoResizeDimensionsBatchRequest">
+            <file>autoResizeDimensionsBatchRequest.xml</file>
+            <description>Automatically resize a column.</description>
+        </component>
+        <component name="insertDimensionBatchRequest">
+            <file>insertDimensionBatchRequest.xml</file>
+            <description>Insert an empty row or column at the end or in the middle.</description>
+        </component>
+        <component name="moveDimensionBatchRequest">
+            <file>moveDimensionBatchRequest.xml</file>
+            <description>Move a row or column / range of rows or columns.</description>
+        </component>
+        <component name="sortRangeBatchRequest">
+            <file>sortRangeBatchRequest.xml</file>
+            <description>Sort a range with multiple sorting specifications.</description>
         </component>
     </subComponents>
 </component>

@@ -1,0 +1,33 @@
+{
+  "requests": [
+    {
+      "repeatCell": {
+        "range": {
+          "sheetId": 1295648145,
+          "startRowIndex": 0,
+          "endRowIndex": 1
+        },
+        "cell": {
+          "userEnteredFormat": {
+            "backgroundColor": {
+              "red": 0.0,
+              "green": 0.0,
+              "blue": 0.0
+            },
+            "horizontalAlignment" : "CENTER",
+            "textFormat": {
+              "foregroundColor": {
+                "red": 1.0,
+                "green": 1.0,
+                "blue": 1.0
+              },
+              "fontSize": 12,
+              "bold": true
+            }
+          }
+        },
+        "fields": "userEnteredFormat(backgroundColor,textFormat,horizontalAlignment)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "requests": [
+    {
+      "updateConditionalFormatRule": {
+        "sheetId": 1295648145,
+        "index": 0,
+        "rule": {
+          "ranges": [
+            {
+              "sheetId": 1295648145,
+              "startRowIndex": 0,
+              "endRowIndex": 5,
+              "startColumnIndex": 0,
+              "endColumnIndex": 4
+            }
+          ],
+          "booleanRule": {
+            "condition": {
+              "type": "TEXT_EQ",
+              "values": [
+                {
+                  "userEnteredValue": "Total Cost"
+                }
+              ]
+            },
+            "format": {
+              "textFormat": {
+                "bold": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

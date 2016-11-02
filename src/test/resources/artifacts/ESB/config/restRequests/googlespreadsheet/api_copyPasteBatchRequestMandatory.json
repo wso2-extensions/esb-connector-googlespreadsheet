@@ -1,0 +1,24 @@
+{
+  "requests": [
+    {
+      "copyPaste": {
+        "source": {
+          "sheetId": 1295648145,
+          "startRowIndex": 0,
+          "endRowIndex": 10,
+          "startColumnIndex": 0,
+          "endColumnIndex": 4
+        },
+        "destination": {
+          "sheetId": 1425234694,
+          "startRowIndex": 0,
+          "endRowIndex": 10,
+          "startColumnIndex": 5,
+          "endColumnIndex": 9
+        },
+        "pasteType": "PASTE_FORMAT",
+        "pasteOrientation": "NORMAL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId)",
+  "range": "%s(rangeGetCellData)",
+  "dateTimeRenderOption":"%s(dateTimeRenderOption)",
+  "majorDimension":"%s(majorDimension)",
+  "valueRenderOption":"%s(valueRenderOption)",
+  "fields":"%s(fieldRange)"
+}

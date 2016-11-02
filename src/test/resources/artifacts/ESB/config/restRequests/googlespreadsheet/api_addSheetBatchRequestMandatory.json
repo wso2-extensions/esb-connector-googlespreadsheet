@@ -1,0 +1,3 @@
+{
+  "requests": [{"addSheet": {"properties": {"title": "Expenses312","sheetType": "GRID","gridProperties": {"rowCount": 50,"columnCount": 10}}}}]
+}

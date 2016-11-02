@@ -1,0 +1,22 @@
+{
+  "requests": [
+    {
+      "updateBorders": {
+        "range": {
+          "sheetId": 1295648145,
+          "startRowIndex": 0,
+          "endRowIndex": 10,
+          "startColumnIndex": 0,
+          "endColumnIndex": 6
+        },
+        "top": {
+          "style": "DASHED",
+          "width": 1,
+          "color": {
+            "blue": 1.0
+          }
+        }
+      }
+    }
+  ]
+}

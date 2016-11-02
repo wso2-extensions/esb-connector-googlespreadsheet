@@ -1,0 +1,29 @@
+{
+  "requests": [
+    {
+      "sortRange": {
+        "range": {
+          "sheetId": 1295648145,
+          "startRowIndex": 0,
+          "endRowIndex": 10,
+          "startColumnIndex": 0,
+          "endColumnIndex": 6
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 1,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 3,
+            "sortOrder": "DESCENDING"
+          },
+          {
+            "dimensionIndex": 4,
+            "sortOrder": "DESCENDING"
+          }
+        ]
+      }
+    }
+  ]
+}

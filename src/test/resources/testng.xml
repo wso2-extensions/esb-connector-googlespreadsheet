@@ -25,14 +25,10 @@
         <listener class-name="org.wso2.carbon.automation.core.PlatformTestManager"/>
         <listener class-name="org.wso2.carbon.automation.core.PlatformReportManager"/>
     </listeners>
-
-
     <test name="googlespreadsheet-Connector-Test" preserve-order="true" verbose="2">
         <packages>
             <package name="org.wso2.carbon.connector.integration.test.googlespreadsheet"/>
         </packages>
     </test>
-
 </suite>
-
 

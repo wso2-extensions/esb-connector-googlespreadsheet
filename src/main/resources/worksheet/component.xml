@@ -19,25 +19,28 @@
 
 <component name="worksheet" type="synapse/template">
     <subComponents>
-        <component name="listWorksheets">
-            <file>listWorksheets.xml</file>
-            <description>Retrieve information about worksheets.</description>
+        <component name="getSheetMetaData">
+            <file>getSheetMetaData.xml</file>
+            <description>provides a feed to access the sheet metadata contained within a given
+                spreadsheet.
+            </description>
         </component>
-        <component name="addWorksheet">
-            <file>addWorksheet.xml</file>
-            <description>Creates a new worksheet in google spreadsheet.</description>
+        <component name="addSheetBatchRequest">
+            <file>addSheetBatchRequest.xml</file>
+            <description>Add a sheet or multiple sheets to a spreadsheet.</description>
         </component>
-        <component name="deleteWorksheet">
-            <file>deleteWorksheet.xml</file>
-            <description>Delete a worksheet.</description>
+        <component name="updateSheetPropertiesBatchRequest">
+            <file>updateSheetPropertiesBatchRequest.xml</file>
+            <description>Update all sheet properties.</description>
         </component>
-        <component name="modifyWorksheetTitleAndSize">
-            <file>modifyWorksheetTitleAndSize.xml</file>
-            <description>Modify the title and size of a worksheet.</description>
+        <component name="deleteSheetBatchRequest">
+            <file>deleteSheetBatchRequest.xml</file>
+            <description>Remove a sheet or multiple sheets from a given spreadsheet.</description>
         </component>
-        <component name="getWorksheetByTitle">
-            <file>getWorksheetByTitle.xml</file>
-            <description>Get worksheet by using worksheet title.</description>
+        <component name="copyTo">
+            <file>copyTo.xml</file>
+            <description>Copies a single sheet from a spreadsheet to another spreadsheet.
+            </description>
         </component>
     </subComponents>
 </component>

@@ -53,26 +53,26 @@
         <property name="uri.var.accessToken" expression="json-eval($.access_token)"/>
         <script language="js">
             <![CDATA[
-            importPackage(Packages.org.apache.synapse.config);
-            var newAccessToken = mc.getProperty('uri.var.accessToken');
-            var newAccessRegistryPath = mc.getProperty('uri.var.accessTokenRegistryPath');
-            if(newAccessToken != null && newAccessToken != ''){
-            var existingAccessToken =mc.getConfiguration().getRegistry().getResource(newAccessRegistryPath);
-            if(existingAccessToken == null){
-            // Create the registry entry if no such entry exists.
-            mc.getConfiguration().getRegistry().newResource(newAccessRegistryPath,false);
-            mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath,newAccessToken);
-            } else {
-            // Update the registry entry if it already exists.
-            mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath,newAccessToken);
-        }
+                importPackage(Packages.org.apache.synapse.config);
+                var newAccessToken = mc.getProperty('uri.var.accessToken');
+                var newAccessRegistryPath = mc.getProperty('uri.var.accessTokenRegistryPath');
+                if(newAccessToken != null && newAccessToken != ''){
+                var existingAccessToken =mc.getConfiguration().getRegistry().getResource(newAccessRegistryPath);
+                if(existingAccessToken == null){
+                // Create the registry entry if no such entry exists.
+                mc.getConfiguration().getRegistry().newResource(newAccessRegistryPath,false);
+                mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath,newAccessToken);
+                } else {
+                // Update the registry entry if it already exists.
+                mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath,newAccessToken);
+                }
         }
         ]]>
         </script>
-        <!-- store the new accessToken into registry. -->
+        <!-- store the new accessToken into header. -->
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:uri.var.accessToken)"
                 scope="transport"/>
-        <header name="Cache-Control" action="remove" scope="transport"/>
+        <header name="Cache-control" action="remove" scope="transport"/>
         <header name="Pragma" action="remove" scope="transport"/>
     </sequence>
 </template>

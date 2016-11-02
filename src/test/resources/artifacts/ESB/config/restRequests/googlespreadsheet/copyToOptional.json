@@ -1,0 +1,8 @@
+{
+  "accessToken":"%s(accessToken)",
+  "apiUrl":"%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId)",
+  "sheetId":"%s(sheetId)",
+  "destinationSpreadsheetId":"%s(destinationSpreadsheetId)",
+  "fields": "%s(fieldsSheetType)"
+}

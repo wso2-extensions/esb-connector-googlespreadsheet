@@ -1,0 +1,9 @@
+{
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId1)",
+  "properties":%s(properties),
+  "sheets":%s(sheets),
+  "namedRanges": %s(namedRanges),
+  "fields": "%s(fieldSpreadsheetId)"
+}

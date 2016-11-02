@@ -1,0 +1,17 @@
+{
+  "requests": [
+    {
+      "updateSheetProperties": {
+        "properties": {
+          "sheetId": 39839016,
+          "title": "sheet33",
+          "gridProperties": {
+            "rowCount": 40,
+            "columnCount": 15
+          }
+        },
+        "fields": "title,gridProperties(rowCount,columnCount)"
+      }
+    }
+  ]
+}
