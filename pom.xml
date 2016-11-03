@@ -24,7 +24,7 @@
     <groupId>org.wso2.carbon.connector</groupId>
     <artifactId>org.wso2.carbon.connector.googlespreadsheet</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
     <name>WSO2 Carbon - Mediation Library Connector For Googlespreadsheet</name>
     <url>http://wso2.org</url>
     <properties>
@@ -134,7 +134,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <!--<scm>
+    <scm>
         <connection>
             scm:git:https://github.com/wso2-extensions/esb-connector-googlespreadsheet.git
         </connection>
@@ -143,7 +143,7 @@
             scm:git:https://github.com/wso2-extensions/esb-connector-googlespreadsheet
         </developerConnection>
         <tag>HEAD</tag>
-    </scm>-->
+    </scm>
     <build>
         <plugins>
             <plugin>
