@@ -1,0 +1,27 @@
+{
+  "requests": [
+    {
+      "setDataValidation": {
+        "range": {
+          "sheetId": 1295648145,
+          "startRowIndex": 0,
+          "endRowIndex": 10,
+          "startColumnIndex": 0,
+          "endColumnIndex": 6
+        },
+        "rule": {
+          "condition": {
+            "type": "NUMBER_GREATER",
+            "values": [
+              {
+                "userEnteredValue": "5"
+              }
+            ]
+          },
+          "inputMessage": "Value must be > 5",
+          "strict": true
+        }
+      }
+    }
+  ]
+}

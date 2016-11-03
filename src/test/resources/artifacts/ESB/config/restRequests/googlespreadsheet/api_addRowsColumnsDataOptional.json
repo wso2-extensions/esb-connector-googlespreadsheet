@@ -1,0 +1,14 @@
+{
+  "range":"Expenses!A1:E3",
+  "majorDimension":"ROWS",
+  "values":[
+    [
+      "20",
+      "21"
+    ],
+    [
+      "22",
+      "23"
+    ]
+  ]
+}

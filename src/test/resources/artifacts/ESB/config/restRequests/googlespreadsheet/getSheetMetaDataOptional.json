@@ -1,0 +1,8 @@
+{
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId)",
+  "includeGridData":"%s(includeGridData)",
+  "ranges": "%s(ranges)",
+  "fields": "%s(fieldSpreadsheetId)"
+}

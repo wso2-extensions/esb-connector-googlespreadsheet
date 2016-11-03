@@ -19,19 +19,9 @@
 
 <component name="spreadsheet" type="synapse/template">
     <subComponents>
-        <component name="getAllSpreadsheets">
-            <file>getAllSpreadsheets.xml</file>
-            <description>Return all of user's spreadsheets</description>
-        </component>
-        <component name="getSpreadsheetByTitle">
-            <file>getSpreadsheetByTitle.xml</file>
-            <description>Return the spreadsheet by title</description>
-        </component>
-        <component name="exportCSVFile">
-            <file>exportCSVFile.xml</file>
-            <description>Return the spreadsheet data to csv(Comma-separated value) or
-                tsv(Tab-separated value) format
-            </description>
+        <component name="createSpreadsheet">
+            <file>createSpreadsheet.xml</file>
+            <description>creates a new spreadsheet.</description>
         </component>
     </subComponents>
 </component>

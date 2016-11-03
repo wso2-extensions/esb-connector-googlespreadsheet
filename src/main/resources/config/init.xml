@@ -25,7 +25,10 @@
     <parameter name="clientSecret"
                description="clientSecret of your App, given by google console when you registered your application"/>
     <parameter name="refreshToken" description="Refresh token to exchange with an access token."/>
-    <parameter name="accessTokenRegistryPath" description="API Url to access the endpoint."/>
+    <parameter name="accessTokenRegistryPath"
+               description="Registry path to store the access token."/>
+    <parameter name="blocking"
+               description="Set to true to perform the blocking invocations to Google Spreadsheet."/>
     <sequence>
         <property name="uri.var.accessToken" expression="$func:accessToken"/>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
@@ -34,13 +37,18 @@
         <property name="uri.var.clientSecret" expression="$func:clientSecret"/>
         <property name="uri.var.accessTokenRegistryPath"
                   expression="$func:accessTokenRegistryPath"/>
+        <property name="spreadsheetBlocking" expression="$func:blocking"/>
+        <enrich>
+            <source clone="true" type="body"/>
+            <target property="ORIGINAL_MSG_PAYLOAD" type="property"/>
+        </enrich>
         <filter source="boolean($ctx:uri.var.refreshToken) and boolean($ctx:uri.var.clientSecret) and boolean($ctx:uri.var.clientId) and boolean($ctx:uri.var.accessToken)"
                 regex="true">
             <then>
                 <filter source="boolean($ctx:uri.var.accessTokenRegistryPath)" regex="false">
                     <then>
                         <property name="uri.var.accessTokenRegistryPath"
-                                  value="connectors/Google/accessToken"/>
+                                  value="connectors/GoogleSpreadSheet/accessToken"/>
                     </then>
                     <else>
                         <property name="uri.var.accessTokenRegistryPath"
@@ -53,10 +61,10 @@
                     <then>
                         <script language="js">
                             <![CDATA[
-                           importPackage(Packages.org.apache.synapse.config);
-                           var newAccess = mc.getProperty('uri.var.accessToken');
-                           var newAccessRegistryPath = mc.getProperty('uri.var.accessTokenRegistryPath');
-                           if(newAccess != null && newAccess != ''){
+                               importPackage(Packages.org.apache.synapse.config);
+                               var newAccess = mc.getProperty('uri.var.accessToken');
+                               var newAccessRegistryPath = mc.getProperty('uri.var.accessTokenRegistryPath');
+                               if(newAccess != null && newAccess != ''){
                                //Create the registry entry if no such entry exists.
                                mc.getConfiguration().getRegistry().newResource(newAccessRegistryPath,false);
                                mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath,newAccess);
@@ -65,25 +73,44 @@
                         </script>
                     </then>
                     <else>
-                        <property name="uri.var.accessToken" expression="$ctx:uri.var.accessToken.reg"/>
+                        <property name="uri.var.accessToken"
+                                  expression="$ctx:uri.var.accessToken.reg"/>
                     </else>
                 </filter>
                 <header name="Transfer-Encoding" action="remove" scope="transport"/>
-                <call>
-                    <endpoint>
-                        <http method="get"
-                              uri-template="https://www.googleapis.com/oauth2/v1/tokeninfo?access_token={+uri.var.accessToken}"/>
-                    </endpoint>
-                </call>
-                <property name="error" expression="json-eval($.error)"/>
-                <filter source="$ctx:error='invalid_token'"
-                        regex="true">
-                    <googlespreadsheet.getAccessTokenFromRefreshToken/>
-                    <property name="uri.var.accessToken" expression="json-eval($.access_token)"/>
+                <filter source="$ctx:spreadsheetBlocking" regex="true">
+                    <then>
+                        <call blocking="true">
+                            <endpoint>
+                                <http method="get"
+                                      uri-template="https://www.googleapis.com/oauth2/v1/tokeninfo?access_token={+uri.var.accessToken}"/>
+                            </endpoint>
+                        </call>
+                    </then>
+                    <else>
+                        <call>
+                            <endpoint>
+                                <http method="get"
+                                      uri-template="https://www.googleapis.com/oauth2/v1/tokeninfo?access_token={+uri.var.accessToken}"/>
+                            </endpoint>
+                        </call>
+                    </else>
+                </filter>
+                <filter source="$axis2:HTTP_SC" regex="400">
+                    <property name="error" expression="json-eval($.error)"/>
+                    <filter source="$ctx:error='invalid_token'" regex="true">
+                        <googlespreadsheet.getAccessTokenFromRefreshToken/>
+                        <property name="uri.var.accessToken"
+                                  expression="json-eval($.access_token)"/>
+                    </filter>
                 </filter>
             </then>
         </filter>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:uri.var.accessToken)"
                 scope="transport"/>
+        <enrich>
+            <source clone="true" property="ORIGINAL_MSG_PAYLOAD" type="property"/>
+            <target type="body"/>
+        </enrich>
     </sequence>
 </template>

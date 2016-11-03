@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~ WSO2 Inc. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+-->
+
+<template name="getMultipleCellData" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
+    <parameter name="ranges" description="The ranges to retrieve from the spreadsheet"/>
+    <parameter name="dateTimeRenderOption" description="THow dates, times, and durations should
+                                                                    be represented in the output"/>
+    <parameter name="majorDimension" description="The major dimension that results should use"/>
+    <parameter name="valueRenderOption"
+               description="How values should be represented in the output"/>
+    <parameter name="fields"
+               description="Specifying which fields to include in a partial response"/>
+    <sequence>
+        <property name="uri.var.spreadsheetId" expression="$func:spreadsheetId"/>
+        <property name="ranges" expression="$func:ranges"/>
+        <property name="dateTimeRenderOption" expression="$func:dateTimeRenderOption"/>
+        <property name="majorDimension" expression="$func:majorDimension"/>
+        <property name="valueRenderOption" expression="$func:valueRenderOption"/>
+        <property name="fields" expression="$func:fields"/>
+        <script language="js">
+            <![CDATA[
+                //url param variables
+                var ranges = mc.getProperty("ranges");
+                var dateTimeRenderOption = mc.getProperty("dateTimeRenderOption");
+                var majorDimension = mc.getProperty("majorDimension");
+                var valueRenderOption = mc.getProperty("valueRenderOption");
+                var fields = mc.getProperty("fields");
+                //url param processing start
+                var urlParamString = '';
+                if (dateTimeRenderOption != "" && dateTimeRenderOption != null) {
+                    urlParamString += '&dateTimeRenderOption=' + dateTimeRenderOption;
+                }
+                if(ranges != "" && ranges != null){
+                    var rangesArray = ranges.split(",");
+                    for (var i = 0; i < rangesArray.length; ++i) {
+                        if (rangesArray[i] != "" && rangesArray[i] != null) {
+                            urlParamString += '&ranges=' + rangesArray[i];
+                        }
+                    }
+                }
+                if (majorDimension != "" && majorDimension != null) {
+                    urlParamString += '&majorDimension=' + majorDimension;
+                }
+                if (valueRenderOption != "" && valueRenderOption != null) {
+                    urlParamString += '&valueRenderOption=' + valueRenderOption;
+                }
+                if (fields != "" && fields != null) {
+                    urlParamString += '&fields=' + fields;
+                }
+                if(urlParamString != '') {
+                    urlParamString = '?' + urlParamString.toString().substring(1);
+                }
+                mc.setProperty('uri.var.urlParamString', urlParamString);
+                //url param processing end
+            ]]>
+        </script>
+        <filter source="$ctx:spreadsheetBlocking" regex="true">
+            <then>
+                <call blocking="true">
+                    <endpoint>
+                        <http method="get"
+                              uri-template="{+uri.var.apiUrl}/{+uri.var.spreadsheetId}/values:batchGet{+uri.var.urlParamString}"/>
+                    </endpoint>
+                </call>
+            </then>
+            <else>
+                <call>
+                    <endpoint>
+                        <http method="get"
+                              uri-template="{+uri.var.apiUrl}/{+uri.var.spreadsheetId}/values:batchGet{+uri.var.urlParamString}"/>
+                    </endpoint>
+                </call>
+            </else>
+        </filter>
+        <!-- Remove response custom header information -->
+        <header name="Cache-Control" scope="transport" action="remove"/>
+        <header name="Content-Encoding" scope="transport" action="remove"/>
+        <header name="Content-Length" scope="transport" action="remove"/>
+        <header name="Content-Type" scope="transport" action="remove"/>
+        <header name="Date" scope="transport" action="remove"/>
+        <header name="Server" scope="transport" action="remove"/>
+        <header name="Vary" scope="transport" action="remove"/>
+    </sequence>
+</template>

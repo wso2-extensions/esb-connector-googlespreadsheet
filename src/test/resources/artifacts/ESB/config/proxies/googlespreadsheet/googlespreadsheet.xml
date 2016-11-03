@@ -19,248 +19,251 @@
 
 <proxy xmlns="http://ws.apache.org/ns/synapse"
        name="googlespreadsheet"
-       transports="https,http"
+       startOnLoad="true"
        statistics="disable"
        trace="disable"
-       startOnLoad="true">
+       transports="http,https">
     <target>
-        <inSequence onError="faultHandlerSeq">
-            <property name="apiUrl" expression="json-eval($.apiUrl)"/>
-            <property name="apiVersion" expression="json-eval($.apiVersion)"/>
-            <property name="spreadsheetTitle" expression="json-eval($.spreadsheetTitle)"/>
-            <property name="title" expression="json-eval($.title)"/>
-            <property name="key" expression="json-eval($.key)"/>
-            <property name="exportFormat" expression="json-eval($.exportFormat)"/>
-            <property name="worksheetTitle" expression="json-eval($.worksheetTitle)"/>
-            <property name="rowCount" expression="json-eval($.rowCount)"/>
-            <property name="accessToken" expression="json-eval($.accessToken)"/>
-            <property name="colCount" expression="json-eval($.colCount)"/>
-            <property name="worksheetId" expression="json-eval($.worksheetId)"/>
-            <property name="cellId" expression="json-eval($.cellId)"/>
-            <property name="minRow" expression="json-eval($.minRow)"/>
-            <property name="minCol" expression="json-eval($.minCol)"/>
-            <property name="maxRow" expression="json-eval($.maxRow)"/>
-            <property name="maxCol" expression="json-eval($.maxCol)"/>
-            <property name="row" expression="json-eval($.row)"/>
-            <property name="col" expression="json-eval($.col)"/>
-            <property name="inputValue" expression="json-eval($.inputValue)"/>
-            <property name="cellVersion" expression="json-eval($.cellVersion)"/>
-            <property name="refreshToken" expression="json-eval($.refreshToken)"/>
-            <property name="clientId" expression="json-eval($.clientId)"/>
-            <property name="clientSecret" expression="json-eval($.clientSecret)"/>
-            <property name="deleteWorksheetId" expression="json-eval($.deleteWorksheetId)"/>
-            <property name="deleteWorksheetKey" expression="json-eval($.deleteWorksheetKey)"/>
-            <property name="deleteRowId" expression="json-eval($.deleteRowId)"/>
-            <property name="rowId" expression="json-eval($.rowId)"/>
-            <property name="fieldValues" expression="json-eval($.fieldValues)"/>
-            <property name="rowVersion" expression="json-eval($.rowVersion)"/>
-            <property name="worksheetVersion" expression="json-eval($.worksheetVersion)"/>
-            <property name="queryParam" expression="json-eval($.queryParam)"/>
-            <property name="orderby" expression="json-eval($.orderby)"/>
-            <property name="reverse" expression="json-eval($.reverse)"/>
-            <property name="batchIds" expression="json-eval($.batchIds)"/>
-            <property name="cellIds" expression="json-eval($.cellIds)"/>
-            <property name="cellVersions" expression="json-eval($.cellVersions)"/>
-            <property name="rowArray" expression="json-eval($.rowArray)"/>
-            <property name="colArray" expression="json-eval($.colArray)"/>
-            <property name="inputValues" expression="json-eval($.inputValues)"/>
-            <property name="inputURL" expression="json-eval($.inputURL)"/>
-            <property name="imporDatatWorksheetId" expression="json-eval($.imporDatatWorksheetId)"/>
-            <property name="importDataCellVersion" expression="json-eval($.importDataCellVersion)"/>
-            <property name="importTableworksheetId"
-                      expression="json-eval($.importTableworksheetId)"/>
-            <property name="importTableCellVersion"
-                      expression="json-eval($.importTableCellVersion)"/>
-            <property name="inputTableURL" expression="json-eval($.inputTableURL)"/>
-            <property name="inputFormat" expression="json-eval($.inputFormat)"/>
-            <property name="position" expression="json-eval($.position)"/>
-            <property name="accessTokenRegistryPath"
-                      expression="json-eval($.accessTokenRegistryPath)"/>
+        <inSequence>
+            <property expression="json-eval($.accessToken)" name="accessToken"/>
+            <property expression="json-eval($.apiUrl)" name="apiUrl"/>
+            <property expression="json-eval($.spreadsheetId)" name="spreadsheetId"/>
+            <property expression="json-eval($.properties)" name="properties"/>
+            <property expression="json-eval($.sheets)" name="sheets"/>
+            <property expression="json-eval($.namedRanges)" name="namedRanges"/>
+            <property expression="json-eval($.includeGridData)" name="includeGridData"/>
+            <property expression="json-eval($.ranges)" name="ranges"/>
+            <property expression="json-eval($.range)" name="range"/>
+            <property expression="json-eval($.fields)" name="fields"/>
+            <property expression="json-eval($.requests)" name="requests"/>
+            <property expression="json-eval($.insertDataOption)" name="insertDataOption"/>
+            <property expression="json-eval($.valueInputOption)" name="valueInputOption"/>
+            <property expression="json-eval($.values)" name="values"/>
+            <property expression="json-eval($.data)" name="data"/>
+            <property expression="json-eval($.dateTimeRenderOption)"
+                      name="dateTimeRenderOption"/>
+            <property expression="json-eval($.majorDimension)" name="majorDimension"/>
+            <property expression="json-eval($.valueRenderOption)" name="valueRenderOption"/>
+            <property expression="json-eval($.destinationSpreadsheetId)" name="destinationSpreadsheetId"/>
+            <property expression="json-eval($.sheetId)" name="sheetId"/>
             <googlespreadsheet.init>
-                <apiUrl>{$ctx:apiUrl}</apiUrl>
                 <accessToken>{$ctx:accessToken}</accessToken>
+                <apiUrl>{$ctx:apiUrl}</apiUrl>
             </googlespreadsheet.init>
             <switch source="get-property('transport', 'Action')">
-                <case regex="urn:getAllSpreadsheets">
-                    <googlespreadsheet.getAllSpreadsheets>
-                    </googlespreadsheet.getAllSpreadsheets>
+                <case regex="urn:getSheetMetaData">
+                    <googlespreadsheet.getSheetMetaData>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <includeGridData>{$ctx:includeGridData}</includeGridData>
+                        <ranges>{$ctx:ranges}</ranges>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.getSheetMetaData>
                 </case>
-                <case regex="urn:getSpreadsheetByTitle">
-                    <googlespreadsheet.getSpreadsheetByTitle>
-                        <spreadsheetTitle>{$ctx:spreadsheetTitle}</spreadsheetTitle>
-                    </googlespreadsheet.getSpreadsheetByTitle>
+                <case regex="urn:createSpreadsheet">
+                    <googlespreadsheet.createSpreadsheet>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <properties>{$ctx:properties}</properties>
+                        <sheets>{$ctx:sheets}</sheets>
+                        <namedRanges>{$ctx:namedRanges}</namedRanges>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.createSpreadsheet>
                 </case>
-                <case regex="urn:exportCSVFile">
-                    <googlespreadsheet.exportCSVFile>
-                        <key>{$ctx:key}</key>
-                        <exportFormat>{$ctx:exportFormat}</exportFormat>
-                    </googlespreadsheet.exportCSVFile>
+                <case regex="urn:addSheetBatchRequest">
+                    <googlespreadsheet.addSheetBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.addSheetBatchRequest>
                 </case>
-                <case regex="urn:listWorksheets">
-                    <googlespreadsheet.listWorksheets>
-                        <key>{$ctx:key}</key>
-                    </googlespreadsheet.listWorksheets>
+                <case regex="urn:copyTo">
+                    <googlespreadsheet.copyTo>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <sheetId>{$ctx:sheetId}</sheetId>
+                        <destinationSpreadsheetId>{$ctx:destinationSpreadsheetId}</destinationSpreadsheetId>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.copyTo>
                 </case>
-                <case regex="urn:getWorksheetByTitle">
-                    <googlespreadsheet.getWorksheetByTitle>
-                        <key>{$ctx:key}</key>
-                        <worksheetTitle>{$ctx:worksheetTitle}</worksheetTitle>
-                    </googlespreadsheet.getWorksheetByTitle>
+                <case regex="urn:deleteSheetBatchRequest">
+                    <googlespreadsheet.deleteSheetBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.deleteSheetBatchRequest>
                 </case>
-                <case regex="urn:addWorksheet">
-                    <googlespreadsheet.addWorksheet>
-                        <key>{$ctx:key}</key>
-                        <title>{$ctx:title}</title>
-                        <rowCount>{$ctx:rowCount}</rowCount>
-                        <colCount>{$ctx:colCount}</colCount>
-                    </googlespreadsheet.addWorksheet>
+                <case regex="urn:updateSheetPropertiesBatchRequest">
+                    <googlespreadsheet.updateSheetPropertiesBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.updateSheetPropertiesBatchRequest>
                 </case>
-                <case regex="urn:deleteWorksheet">
-                    <googlespreadsheet.deleteWorksheet>
-                        <deleteWorksheetKey>{$ctx:deleteWorksheetKey}</deleteWorksheetKey>
-                        <deleteWorksheetId>{$ctx:deleteWorksheetId}</deleteWorksheetId>
-                    </googlespreadsheet.deleteWorksheet>
+                <case regex="urn:addConditionalFormatRuleBatchRequest">
+                    <googlespreadsheet.addConditionalFormatRuleBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.addConditionalFormatRuleBatchRequest>
                 </case>
-                <case regex="urn:modifyWorksheetTitleAndSize">
-                    <googlespreadsheet.modifyWorksheetTitleAndSize>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <worksheetVersion>{$ctx:worksheetVersion}</worksheetVersion>
-                        <title>{$ctx:title}</title>
-                        <rowCount>{$ctx:rowCount}</rowCount>
-                        <colCount>{$ctx:colCount}</colCount>
-                    </googlespreadsheet.modifyWorksheetTitleAndSize>
+                <case regex="urn:addRowsColumnsData">
+                    <googlespreadsheet.addRowsColumnsData>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <range>{$ctx:range}</range>
+                        <insertDataOption>{$ctx:insertDataOption}</insertDataOption>
+                        <valueInputOption>{$ctx:valueInputOption}</valueInputOption>
+                        <fields>{$ctx:fields}</fields>
+                        <majorDimension>{$ctx:majorDimension}</majorDimension>
+                        <values>{$ctx:values}</values>
+                    </googlespreadsheet.addRowsColumnsData>
                 </case>
-                <case regex="urn:listRows">
-                    <googlespreadsheet.listRows>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                    </googlespreadsheet.listRows>
+                <case regex="urn:appendDimensionBatchRequest">
+                    <googlespreadsheet.appendDimensionBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.appendDimensionBatchRequest>
                 </case>
-                <case regex="urn:listCells">
-                    <googlespreadsheet.listCells>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                    </googlespreadsheet.listCells>
+                <case regex="urn:autoResizeDimensionsBatchRequest">
+                    <googlespreadsheet.autoResizeDimensionsBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.autoResizeDimensionsBatchRequest>
                 </case>
-                <case regex="urn:getRow">
-                    <googlespreadsheet.getRow>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <rowId>{$ctx:rowId}</rowId>
-                    </googlespreadsheet.getRow>
+                <case regex="urn:copyPasteBatchRequest">
+                    <googlespreadsheet.copyPasteBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.copyPasteBatchRequest>
                 </case>
-                <case regex="urn:getCell">
-                    <googlespreadsheet.getCell>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <cellId>{$ctx:cellId}</cellId>
-                    </googlespreadsheet.getCell>
+                <case regex="urn:cutPasteBatchRequest">
+                    <googlespreadsheet.cutPasteBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.cutPasteBatchRequest>
                 </case>
-                <case regex="urn:fetchSpecificRowsOrColumns">
-                    <googlespreadsheet.fetchSpecificRowsOrColumns>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <minRow>{$ctx:minRow}</minRow>
-                        <maxRow>{$ctx:maxRow}</maxRow>
-                        <minCol>{$ctx:minCol}</minCol>
-                        <maxCol>{$ctx:maxCol}</maxCol>
-                    </googlespreadsheet.fetchSpecificRowsOrColumns>
+                <case regex="urn:deleteConditionalFormatRuleBatchRequest">
+                    <googlespreadsheet.deleteConditionalFormatRuleBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.deleteConditionalFormatRuleBatchRequest>
                 </case>
-                <case regex="urn:queryForRows">
-                    <googlespreadsheet.queryForRows>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <queryParam>{$ctx:queryParam}</queryParam>
-                    </googlespreadsheet.queryForRows>
+                <case regex="urn:deleteDimensionBatchRequest">
+                    <googlespreadsheet.deleteDimensionBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.deleteDimensionBatchRequest>
                 </case>
-                <case regex="urn:sortRows">
-                    <googlespreadsheet.sortRows>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <orderby>{$ctx:orderby}</orderby>
-                        <reverse>{$ctx:reverse}</reverse>
-                    </googlespreadsheet.sortRows>
+                <case regex="urn:editCell">
+                    <googlespreadsheet.editCell>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <range>{$ctx:range}</range>
+                        <valueInputOption>{$ctx:valueInputOption}</valueInputOption>
+                        <fields>{$ctx:fields}</fields>
+                        <majorDimension>{$ctx:majorDimension}</majorDimension>
+                        <values>{$ctx:values}</values>
+                    </googlespreadsheet.editCell>
                 </case>
-                <case regex="urn:modifyWorksheetTitleAndSize">
-                    <googlespreadsheet.modifyWorksheetTitleAndSize>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <worksheetVersion>{$ctx:worksheetVersion}</worksheetVersion>
-                        <title>{$ctx:title}</title>
-                        <rowCount>{$ctx:rowCount}</rowCount>
-                        <colCount>{$ctx:colCount}</colCount>
-                    </googlespreadsheet.modifyWorksheetTitleAndSize>
+                <case regex="urn:editMultipleCell">
+                    <googlespreadsheet.editMultipleCell>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <data>{$ctx:data}</data>
+                        <valueInputOption>{$ctx:valueInputOption}</valueInputOption>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.editMultipleCell>
                 </case>
-                <case regex="urn:deleteRows">
-                    <googlespreadsheet.deleteRows>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <deleteRowId>{$ctx:deleteRowId}</deleteRowId>
-                    </googlespreadsheet.deleteRows>
+                <case regex="urn:getCellData">
+                    <googlespreadsheet.getCellData>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <range>{$ctx:range}</range>
+                        <dateTimeRenderOption>{$ctx:dateTimeRenderOption}</dateTimeRenderOption>
+                        <majorDimension>{$ctx:majorDimension}</majorDimension>
+                        <valueRenderOption>{$ctx:valueRenderOption}</valueRenderOption>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.getCellData>
                 </case>
-                <case regex="urn:updateCells">
-                    <googlespreadsheet.updateCells>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <cellId>{$ctx:cellId}</cellId>
-                        <inputValue>{$ctx:inputValue}</inputValue>
-                        <row>{$ctx:row}</row>
-                        <col>{$ctx:col}</col>
-                        <cellVersion>{$ctx:cellVersion}</cellVersion>
-                    </googlespreadsheet.updateCells>
+                <case regex="urn:getMultipleCellData">
+                    <googlespreadsheet.getMultipleCellData>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <ranges>{$ctx:ranges}</ranges>
+                        <dateTimeRenderOption>{$ctx:dateTimeRenderOption}</dateTimeRenderOption>
+                        <majorDimension>{$ctx:majorDimension}</majorDimension>
+                        <valueRenderOption>{$ctx:valueRenderOption}</valueRenderOption>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.getMultipleCellData>
                 </case>
-                <case regex="urn:importData">
-                    <googlespreadsheet.importData>
-                        <key>{$ctx:key}</key>
-                        <imporDatatWorksheetId>{$ctx:imporDatatWorksheetId}</imporDatatWorksheetId>
-                        <cellId>{$ctx:cellId}</cellId>
-                        <inputURL>{$ctx:inputURL}</inputURL>
-                        <row>{$ctx:row}</row>
-                        <col>{$ctx:col}</col>
-                        <importDataCellVersion>{$ctx:importDataCellVersion}</importDataCellVersion>
-                    </googlespreadsheet.importData>
+                <case regex="urn:insertDimensionBatchRequest">
+                    <googlespreadsheet.insertDimensionBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.insertDimensionBatchRequest>
                 </case>
-                <case regex="urn:importTableAndList">
-                    <googlespreadsheet.importTableAndList>
-                        <key>{$ctx:key}</key>
-                        <importTableworksheetId>{$ctx:importTableworksheetId}</importTableworksheetId>
-                        <cellId>{$ctx:cellId}</cellId>
-                        <inputTableURL>{$ctx:inputTableURL}</inputTableURL>
-                        <row>{$ctx:row}</row>
-                        <col>{$ctx:col}</col>
-                        <inputFormat>{$ctx:inputFormat}</inputFormat>
-                        <position>{$ctx:position}</position>
-                        <importTableCellVersion>{$ctx:importTableCellVersion}</importTableCellVersion>
-                    </googlespreadsheet.importTableAndList>
+                <case regex="urn:mergeCellsBatchRequest">
+                    <googlespreadsheet.mergeCellsBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.mergeCellsBatchRequest>
                 </case>
-                <case regex="urn:insertRows">
-                    <googlespreadsheet.insertRows>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <fieldValues>{$ctx:fieldValues}</fieldValues>
-                    </googlespreadsheet.insertRows>
+                <case regex="urn:moveDimensionBatchRequest">
+                    <googlespreadsheet.moveDimensionBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.moveDimensionBatchRequest>
                 </case>
-                <case regex="urn:updateMultipleCells">
-                    <googlespreadsheet.updateMultipleCells>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <batchIds>{$ctx:batchIds}</batchIds>
-                        <cellIds>{$ctx:cellIds}</cellIds>
-                        <rowArray>{$ctx:rowArray}</rowArray>
-                        <colArray>{$ctx:colArray}</colArray>
-                        <cellVersions>{$ctx:cellVersions}</cellVersions>
-                        <inputValues>{$ctx:inputValues}</inputValues>
-                    </googlespreadsheet.updateMultipleCells>
+                <case regex="urn:repeatCellsBatchRequest">
+                    <googlespreadsheet.repeatCellsBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.repeatCellsBatchRequest>
                 </case>
-                <case regex="urn:updateRow">
-                    <googlespreadsheet.updateRow>
-                        <key>{$ctx:key}</key>
-                        <worksheetId>{$ctx:worksheetId}</worksheetId>
-                        <rowId>{$ctx:rowId}</rowId>
-                        <rowVersion>{$ctx:rowVersion}</rowVersion>
-                        <fieldValues>{$ctx:fieldValues}</fieldValues>
-                    </googlespreadsheet.updateRow>
+                <case regex="urn:setDataValidationBatchRequest">
+                    <googlespreadsheet.setDataValidationBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.setDataValidationBatchRequest>
+                </case>
+                <case regex="urn:sortRangeBatchRequest">
+                    <googlespreadsheet.sortRangeBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.sortRangeBatchRequest>
+                </case>
+                <case regex="urn:updateBordersBatchRequest">
+                    <googlespreadsheet.updateBordersBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.updateBordersBatchRequest>
+                </case>
+                <case regex="urn:updateCellsBatchRequest">
+                    <googlespreadsheet.updateCellsBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.updateCellsBatchRequest>
+                </case>
+                <case regex="urn:updateConditionalFormatRuleBatchRequest">
+                    <googlespreadsheet.updateConditionalFormatRuleBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.updateConditionalFormatRuleBatchRequest>
+                </case>
+                <case regex="urn:updateDimensionPropertiesBatchRequest">
+                    <googlespreadsheet.updateDimensionPropertiesBatchRequest>
+                        <spreadsheetId>{$ctx:spreadsheetId}</spreadsheetId>
+                        <requests>{$ctx:requests}</requests>
+                        <fields>{$ctx:fields}</fields>
+                    </googlespreadsheet.updateDimensionPropertiesBatchRequest>
                 </case>
             </switch>
             <respond/>

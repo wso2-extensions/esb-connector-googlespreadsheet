@@ -1,0 +1,8 @@
+{
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId)",
+  "data": %s(data),
+  "valueInputOption": "%s(valueInputOptionEditCell)",
+  "fields": "%s(fieldSpreadsheetId)"
+}

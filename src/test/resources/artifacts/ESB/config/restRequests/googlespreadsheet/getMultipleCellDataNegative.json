@@ -1,0 +1,5 @@
+{
+  "accessToken": "",
+  "apiUrl": "%s(apiUrl)",
+  "spreadsheetId": "%s(spreadsheetId)"
+}
