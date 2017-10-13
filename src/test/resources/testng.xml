@@ -26,9 +26,6 @@
         <listener class-name="org.wso2.carbon.automation.engine.testlisteners.TestReportListener"/>
     </listeners>
     <test name="googlespreadsheet-Connector-Test" preserve-order="true" verbose="2">
-        <packages>
-            <package name="org.wso2.carbon.connector.integration.test.googlespreadsheet"/>
-        </packages>
         <classes>
             <class name="org.wso2.carbon.connector.integration.test.googlespreadsheet.GooglespreadsheetConnectorIntegrationTest"/>
         </classes>
