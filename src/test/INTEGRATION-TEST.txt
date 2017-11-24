@@ -10,15 +10,15 @@ Product: WSO2 ESB googlespreadsheet Connector for Google Sheets API Version v4 +
     Tested Platforms:
 
     - Ubuntu 16.04
-    - WSO2 ESB 5.0.0
-    - java 1.7
+    - WSO2 EI 6.1.1
+    - java 1.8
 
 
 
 Steps to follow in setting integration test.
 
 
- 1. Download ESB 5.0.0  by navigating to the following URL: http://wso2.com/products/enterprise-service-bus/#
+ 1. Download EI 6.1.1  by navigating to the following URL: http://wso2.com/products/enterprise-service-bus/#
  2. Add the following property in the wso2server.sh file.
     -XX:-UseSplitVerifier \
 
