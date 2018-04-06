@@ -10,7 +10,7 @@ Product: WSO2 ESB googlespreadsheet Connector for Google Sheets API Version v4 +
     Tested Platforms:
 
     - Ubuntu 16.04
-    - WSO2 EI 6.1.1
+    - WSO2 EI 6.2.0
     - java 1.8
 
 
@@ -18,18 +18,30 @@ Product: WSO2 ESB googlespreadsheet Connector for Google Sheets API Version v4 +
 Steps to follow in setting integration test.
 
 
- 1. Download EI 6.1.1  by navigating to the following URL: http://wso2.com/products/enterprise-service-bus/#
- 2. Add the following property in the wso2server.sh file.
-    -XX:-UseSplitVerifier \
+ 1. Download EI 6.2.0  by navigating to the following URL: http://wso2.com/products/enterprise-service-bus/#
 
- 3. Get a access token from OAuth 2.0 Playground.
+ 2. Extract the certificate from browser(Mozilla Firefox) by navigating to url(Eg:- https://mail.google.com/)
+            Add the certificate obtained to "<EI_HOME>/repository/resources/security" folder and "{Connector_Home}/src/test/resources/keystores/products".
+
+                   "<Connector_Home>/src/test/resources/keystores/products"
+
+               		Navigate to the above location from command prompt and execute 'keytool -importcert -file CERT_FILE_NAME -keystore wso2carbon.jks -alias "spreadsheet"' in command line to import spreadsheet certificate in to keystore. Give "wso2carbon" as password.
+                        NOTE : CERT_FILE_NAME is the file name which was extracted from spreadsheet with  the extension, change it accordingly. Remove the copied certificate.
+
+               	   "WSO2-EI-6.2.0/repository/resources/security"
+
+               		Navigate to the above location from command prompt and execute 'keytool -importcert -file CERT_FILE_NAME -keystore client-truststore.jks -alias "spreadsheet"' in command line to import spreadsheet certificate in to keystore. Give "wso2carbon" as password.
+                        NOTE : CERT_FILE_NAME is the file name which was extracted from spreadsheet with the extension, change it accordingly. Remove the copied certificate.
+                               CERT_NAME is arbitrary name for the certificate.
+ 3. Copy the EI 6.2.0 zip to the location "Connector_Home/repository/"
+ 4. Get a access token from OAuth 2.0 Playground.
        i)  Using the URL "https://developers.google.com/oauthplayground/" create a access token and refresh token.
 
       Note: Application needs access to user data, it asks Google for a particular scope of access.
             Here's the OAuth 2.0 scope information for the Google Sheets API version 4 :"https://www.googleapis.com/auth/drive",
             "https://www.googleapis.com/auth/drive.readonly", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/spreadsheets.readonly"
 
- 4. Update the googlespreadsheet properties file at location "<GOOGLESPREADSHEET_CONNECTOR_HOME>/src/test/resources/artifacts/ESB/connector/config" as below.
+ 5. Update the googlespreadsheet properties file at location "<GOOGLESPREADSHEET_CONNECTOR_HOME>/src/test/resources/artifacts/ESB/connector/config" as below.
 
         		refreshToken 					                    - Use the Refresh token.
     	     	clientId						                    - Use the Client ID.
@@ -65,8 +77,8 @@ Steps to follow in setting integration test.
                 data                                                - To edit multiple cell data and Update with your Sheet name.
                 rangeEditCell                                       - Range to edit cell data and Update with your Sheet name.
                 rangeGetCellData                                    - Range to get cell data and Update with your Sheet name.
- 5.  Navigate to "{ESB_Connector_Home}/" and run the following command.
-             $ mvn clean install
+ 6.  Navigate to "{ESB_Connector_Home}/" and run the following command.
+             $ mvn clean install -Dskip-tests=false
 
 Note: In Integration test Thread.sleep() method has been used because of the API allows limited no of API calls. If you want
 to change the sleeping time, you can change (sleepingTime) constant value in Integration Test.
