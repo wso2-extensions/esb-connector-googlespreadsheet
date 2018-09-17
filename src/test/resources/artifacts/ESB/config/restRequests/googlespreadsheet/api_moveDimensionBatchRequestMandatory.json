@@ -1,18 +1,3 @@
 {
-  "requests":
-  [
-    {
-      "moveDimension":
-      {
-        "source":
-        {
-          "sheetId": 1295648145,
-          "dimension": "COLUMNS",
-          "startIndex": 0,
-          "endIndex": 1
-        },
-        "destinationIndex": 3
-      }
-    }
-  ]
+  "requests": %s(requestsMoveDimensionBatchRequest)
 }

@@ -1,14 +1,3 @@
 {
-  "requests": [
-    {
-      "autoResizeDimensions": {
-        "dimensions": {
-          "sheetId": 1425234694,
-          "dimension": "COLUMNS",
-          "startIndex": 0,
-          "endIndex": 5
-        }
-      }
-    }
-  ]
+  "requests": %s(requestsAutoResizeDimensionsBatchRequest)
 }

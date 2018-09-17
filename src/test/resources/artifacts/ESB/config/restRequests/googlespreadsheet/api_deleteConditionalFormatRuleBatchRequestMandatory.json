@@ -1,11 +1,4 @@
 {
-  "requests": [
-    {
-      "deleteConditionalFormatRule": {
-        "sheetId": 1295648145,
-        "index": 0
-      }
-    }
-  ]
+  "requests": %s(requestsDeleteConditionalFormatRuleBatchRequest)
 }
 

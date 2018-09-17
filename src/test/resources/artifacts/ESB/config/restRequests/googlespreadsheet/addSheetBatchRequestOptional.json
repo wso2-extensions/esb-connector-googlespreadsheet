@@ -3,5 +3,5 @@
   "apiUrl": "%s(apiUrl)",
   "spreadsheetId": "%s(spreadsheetId)",
   "requests": %s(requestsaddSheetBatchRequest1),
-  "fields": "%s(fieldSpreadsheetId)"
+  "fields": "%s(fields)"
 }

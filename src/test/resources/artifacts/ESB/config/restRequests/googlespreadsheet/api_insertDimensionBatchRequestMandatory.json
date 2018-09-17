@@ -1,18 +1,3 @@
 {
-  "requests":
-  [
-    {
-      "insertDimension":
-      {
-        "range":
-        {
-          "sheetId": 1295648145,
-          "dimension": "COLUMNS",
-          "startIndex": 2,
-          "endIndex": 4
-        },
-        "inheritFromBefore": true
-      }
-    }
-  ]
+  "requests": %s(requestsInsertDimensionBatchRequest)
 }
