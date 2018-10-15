@@ -1,5 +1,5 @@
 {
-  "range":"Expenses!A1:E3",
+  "range":"%s(rangeEditCell)",
   "majorDimension":"ROWS",
   "values":[
     [

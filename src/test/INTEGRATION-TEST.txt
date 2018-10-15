@@ -10,7 +10,7 @@ Product: WSO2 ESB googlespreadsheet Connector for Google Sheets API Version v4 +
     Tested Platforms:
 
     - Ubuntu 16.04
-    - WSO2 EI 6.2.0
+    - WSO2 EI 6.4.0
     - java 1.8
 
 
@@ -18,65 +18,51 @@ Product: WSO2 ESB googlespreadsheet Connector for Google Sheets API Version v4 +
 Steps to follow in setting integration test.
 
 
- 1. Download EI 6.2.0  by navigating to the following URL: http://wso2.com/products/enterprise-service-bus/#
-
- 2. Extract the certificate from browser(Mozilla Firefox) by navigating to url(Eg:- https://mail.google.com/)
-            Add the certificate obtained to "<EI_HOME>/repository/resources/security" folder and "{Connector_Home}/src/test/resources/keystores/products".
-
-                   "<Connector_Home>/src/test/resources/keystores/products"
-
-               		Navigate to the above location from command prompt and execute 'keytool -importcert -file CERT_FILE_NAME -keystore wso2carbon.jks -alias "spreadsheet"' in command line to import spreadsheet certificate in to keystore. Give "wso2carbon" as password.
-                        NOTE : CERT_FILE_NAME is the file name which was extracted from spreadsheet with  the extension, change it accordingly. Remove the copied certificate.
-
-               	   "WSO2-EI-6.2.0/repository/resources/security"
-
-               		Navigate to the above location from command prompt and execute 'keytool -importcert -file CERT_FILE_NAME -keystore client-truststore.jks -alias "spreadsheet"' in command line to import spreadsheet certificate in to keystore. Give "wso2carbon" as password.
-                        NOTE : CERT_FILE_NAME is the file name which was extracted from spreadsheet with the extension, change it accordingly. Remove the copied certificate.
-                               CERT_NAME is arbitrary name for the certificate.
- 3. Copy the EI 6.2.0 zip to the location "Connector_Home/repository/"
- 4. Get a access token from OAuth 2.0 Playground.
+ 1. Download EI 6.4.0  by navigating to the following URL: http://wso2.com/products/enterprise-service-bus/#
+ 2. Copy the EI 6.4.0 zip to the location "Connector_Home/repository/"
+ 3. Get a access token from OAuth 2.0 Playground.
        i)  Using the URL "https://developers.google.com/oauthplayground/" create a access token and refresh token.
 
       Note: Application needs access to user data, it asks Google for a particular scope of access.
             Here's the OAuth 2.0 scope information for the Google Sheets API version 4 :"https://www.googleapis.com/auth/drive",
             "https://www.googleapis.com/auth/drive.readonly", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/spreadsheets.readonly"
-
+ 4. Update the following properties in esb-connector-googlespreadsheet.properties file at "Connector_Home/repository/"
+        refreshToken, clientId, clientSecret, accessToken, apiUrl
  5. Update the googlespreadsheet properties file at location "<GOOGLESPREADSHEET_CONNECTOR_HOME>/src/test/resources/artifacts/ESB/connector/config" as below.
 
-        		refreshToken 					                    - Use the Refresh token.
-    	     	clientId						                    - Use the Client ID.
-    	    	clientSecret					                    - Use the Client Secret.
-    	        accessToken				                            - Use the accessToken.
-    			apiUrl						                        - Use the API URL of the google spreadsheet.
-    		    sheetId					                            - Update with your Sheet Id from where data should be copied.
-    	        destinationSpreadsheetId		                    - Update with your destination Sheet Id to copy the sheet to.
-    		    ranges, ranges1, ranges2                            - Update with your Sheet name.
-    	 	    requestsaddSheetBatchRequest                        - Update with your Sheet title to add sheet.
-    		    requestsaddSheetBatchRequest1                       - Update with your Sheet title to add sheet.
-    		    requestsdeleteSheetBatchRequest                     - Update with your Sheet sheetId to delete sheet.
-    		    requestsdeleteSheetBatchRequest1                    - Update with your Sheet sheetId to delete sheet.
-    	 	    requestsupdateSheetPropertiesBatchRequest           - Update with your Sheet title, sheetId to update sheet properties.
-    		    requestsaddConditionalFormatRuleBatchRequest        - Update with your Sheet sheetId to add contitional format rule.
-    		    requestsAppendDimension                             - Update with your Sheet sheetId to append dimension.
-    		    requestsAutoResizeDimensionsBatchRequest            - Update with your Sheet sheetId to auto resize dimention.
-    		    requestsCopyPasteBatchRequest                       - Update with your Sheet sheetId to copy and paste.
-    			requestsCutPasteBatchRequest				        - Update with your Sheet sheetId to cut paste.
-    		    requestsDeleteConditionalFormatRuleBatchRequest		- Update with your Sheet sheetId to delete conditional format rule.
-    		    requestDeleteDimensionBatchRequest				    - Update with your Sheet sheetId to delete dimension.
-    	        requestsInsertDimensionBatchRequest					- Update with your Sheet sheetId to insert dimension.
-    	 	    requestsMergeCellsBatchRequest				        - Update with your Sheet sheetId to merge cells.
-    	        requestsMoveDimensionBatchRequest                   - Update with your Sheet sheetId to move dimension.
-                requestsRepeatCellsBatchRequest                     - Update with your Sheet sheetId to repeat cells.
-                requestsSetDataValidationBatchRequest               - Update with your Sheet sheetId to set data validation.
-                requestsSortRangeBatchRequest                       - Update with your Sheet sheetId to sort range.
-                requestsUpdateBordersBatchRequestMandatory          - Update with your Sheet sheetId to update borders.
-                requestsUpdateCellsBatchRequest                     - Update with your Sheet sheetId to update cells.
-                requestsUpdateConditionalFormatRuleBatchRequest     - Update with your Sheet sheetId to update conditional format rule.
-                requestsUpdateDimensionPropertiesBatchRequest       - Update with your Sheet sheetId to update dimension properties.
-                rangeaddRows                                        - Range to add rows and Update with your Sheet name.
-                data                                                - To edit multiple cell data and Update with your Sheet name.
-                rangeEditCell                                       - Range to edit cell data and Update with your Sheet name.
-                rangeGetCellData                                    - Range to get cell data and Update with your Sheet name.
+        refreshToken 					                    - Use the Refresh token.
+        clientId						                    - Use the Client ID.
+        clientSecret					                    - Use the Client Secret.
+        accessToken				                            - Use the accessToken.
+        apiUrl						                        - Use the API URL of the google spreadsheet.
+        ranges, ranges1, ranges2                            - Sheet cell range.
+        requestsaddSheetBatchRequest                        - Payload to add sheet.
+        requestsaddSheetBatchRequest1                       - Payload to add sheet.
+        requestsdeleteSheetBatchRequest                     - Payload to delete sheet.
+        requestsdeleteSheetBatchRequest1                    - Payload to delete sheet.
+        requestsupdateSheetPropertiesBatchRequest           - Payload to update sheet properties.
+        requestsaddConditionalFormatRuleBatchRequest        - Payload to add contitional format rule.
+        requestsAppendDimension                             - Payload to append dimension.
+        requestsAutoResizeDimensionsBatchRequest            - Payload to auto resize dimention.
+        requestsCopyPasteBatchRequest                       - Payload to copy and paste.
+        requestsCutPasteBatchRequest				        - Payload to cut paste.
+        requestsDeleteConditionalFormatRuleBatchRequest		- Payload to delete conditional format rule.
+        requestDeleteDimensionBatchRequest				    - Payload to delete dimension.
+        requestsInsertDimensionBatchRequest					- Payload to insert dimension.
+        requestsMergeCellsBatchRequest				        - Payload to merge cells.
+        requestsMoveDimensionBatchRequest                   - Payload to move dimension.
+        requestsRepeatCellsBatchRequest                     - Payload to repeat cells.
+        requestsSetDataValidationBatchRequest               - Payload to set data validation.
+        requestsSortRangeBatchRequest                       - Payload to sort range.
+        requestsUpdateBordersBatchRequestMandatory          - Payload to update borders.
+        requestsUpdateCellsBatchRequest                     - Payload to update cells.
+        requestsUpdateConditionalFormatRuleBatchRequest     - Payload to update conditional format rule.
+        requestsUpdateDimensionPropertiesBatchRequest       - Payload to update dimension properties.
+        rangeaddRows                                        - Range to add rows.
+        data                                                - To edit multiple cell data.
+        rangeEditCell                                       - Range to edit cell data.
+        rangeGetCellData                                    - Range to get cell data.
+        sheetName,sheetNameOptional,sheetNameOptional2      - Sheet name to create the sheet.
  6.  Navigate to "{ESB_Connector_Home}/" and run the following command.
              $ mvn clean install -Dskip-tests=false
 

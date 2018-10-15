@@ -2,6 +2,6 @@
   "accessToken": "%s(accessToken)",
   "apiUrl": "%s(apiUrl)",
   "spreadsheetId": "%s(spreadsheetId)",
-  "requests": %s(requestsDeleteConditionalFormatRuleBatchRequest),
+  "requests": %s(requestsDeleteConditionalFormatRuleOptional),
   "fields": "%s(fieldSpreadsheetId)"
 }

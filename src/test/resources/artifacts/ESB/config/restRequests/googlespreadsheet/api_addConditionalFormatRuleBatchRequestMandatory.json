@@ -1,33 +1,3 @@
 {
-  "requests": [
-    {
-      "addConditionalFormatRule": {
-        "rule": {
-          "ranges": [
-            {
-              "sheetId": 1425234694,
-              "startRowIndex": 9,
-              "endRowIndex": 10
-            }
-          ],
-          "gradientRule": {
-            "minpoint": {
-              "color": {
-                "green": 0.2,
-                "red": 0.8
-              },
-              "type": "MIN"
-            },
-            "maxpoint": {
-              "color": {
-                "green": 0.9
-              },
-              "type": "MAX"
-            }
-          }
-        },
-        "index": 0
-      }
-    }
-  ]
+  "requests": %s(requestsaddConditionalFormatRuleBatchRequest)
 }

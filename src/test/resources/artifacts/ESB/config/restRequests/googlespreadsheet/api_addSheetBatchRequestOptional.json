@@ -1,11 +1,3 @@
 {
-  "requests": [
-    {
-      "addSheet": {
-        "properties": {
-          "title": "from postman1223"
-        }
-      }
-    }
-  ]
+  "requests": %s(apiAddSheetOptional)
 }

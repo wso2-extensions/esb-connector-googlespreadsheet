@@ -1,14 +1,3 @@
 {
-  "requests": [
-    {
-      "deleteDimension": {
-        "range": {
-          "sheetId": 1295648145,
-          "dimension": "ROWS",
-          "startIndex": 1,
-          "endIndex": 2
-        }
-      }
-    }
-  ]
+  "requests": %s(requestDeleteDimensionBatchRequest)
 }
