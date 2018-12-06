@@ -23,6 +23,6 @@
         <dependency component="worksheet"/>
         <dependency component="spreadsheet"/>
         <dependency component="worksheetData"/>
-        <description>wso2 connector library for Google Spreadsheet Version 4</description>
+        <description>WSO2 Connector library for Google Spreadsheet API Version v4</description>
     </component>
 </connector>
