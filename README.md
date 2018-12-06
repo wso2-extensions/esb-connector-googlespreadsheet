@@ -2,7 +2,7 @@
 
 The Google Spreadsheet [connector](https://docs.wso2.com/display/EI640/Working+with+Connectors) allows you to work with spreadsheets on Google Drive, a free, web-based service that
 allows users to create and edit spreadsheet documents online while collaborating in real-time with other users.
-It allows you to access the [Google Spreadsheet API Version v4](https://developers.google.com/sheets/guides/concepts) through WSO2 EI.
+It allows you to access the [Google Spreadsheet API Version v4](https://developers.google.com/sheets/guides/concepts) through WSO2 Enterprise Integrator (WSO2 EI).
 
 
 ## Compatibility
@@ -33,7 +33,7 @@ If you want to build Google Spreadsheet connector from the source code:
 
 1. Get a clone or download the source from [github](https://github.com/wso2-extensions/esb-connector-googlespreadsheet).
 2. Run the following Maven command from the `esb-connector-googlespreadsheet` directory: `mvn clean install`.
-3. Google Spreadsheet connector zip will be created under `esb-connector-googlespreadsheet/target` directory.
+3. The Google Spreadsheet connector zip file is created in the `esb-connector-googlespreadsheet/target` directory.
 
 ## How You Can Contribute
 

@@ -1,8 +1,7 @@
 ## Configuring Google Spreadsheet Operations
 
-To use the Google Spreadsheet connector, add the `<googlespreadsheet.init>` element in your proxy configuration before use any other
-Google Spreadsheet connector operations. This `<googlespreadsheet.init>` element used to authenticates  the user using OAuth2 authentication
-to access the Google account which contains the spreadsheets. For more information on authorizing requests in Google Spreadsheets, see [API Doc](https://developers.google.com/sheets/api/guides/authorizing).
+To use the Google Spreadsheet connector, add the `<googlespreadsheet.init>` element to your proxy configuration before using any other Google Spreadsheet connector
+operations. The `<googlespreadsheet.init>` element authenticates the user using OAuth2 authentication and it allows users to access the Google account which contains the spreadsheets. For more information on authorizing requests in Google Spreadsheets, see [API Doc](https://developers.google.com/sheets/api/guides/authorizing).
 
 <br/>
 
@@ -23,7 +22,7 @@ to access the Google account which contains the spreadsheets. For more informati
 
 <br/>
 
-To get the OAuth access token directly call **init** (this method call getAccessTokenFromRefreshToken method itself )  method or add  `<googlespreadsheet.getAccessTokenFromRefreshToken>` element before `<googlespreadsheet.init>` element in your configuration.
+To directly get the OAuth access token, call the **init** method (this method call getAccessTokenFromRefreshToken method itself ) or add  `<googlespreadsheet.getAccessTokenFromRefreshToken>` element before `<googlespreadsheet.init>` element in your configuration.
 
 <br/>
 
@@ -38,7 +37,7 @@ To get the OAuth access token directly call **init** (this method call getAccess
 
 <br/>
 
->> **Note:** For the very first time we need to use valid accessToken to use the connector operations. If the provided accessToken is expired then the token refreshing flow will be handled inside the connector.
+>> **Note:** When trying it out for the first time, you need to use a valid accessToken to use the connector operations. If the accessToken has expired then the token refreshing flow will be handled inside the connector.
 
 <br/>
 

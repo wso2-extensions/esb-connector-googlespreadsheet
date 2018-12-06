@@ -17,7 +17,7 @@ This section provides details on each of the operations.
 
 #### Create Spreadsheet
 
-This method allows you to creates a new spreadsheet by optionally add sheets to spreadsheet, set the spreadsheet id and sheet properties, and add named ranges.
+This method allows you to create a new spreadsheet by setting the spreadsheet ID, sheet properties, and add named ranges.
 
 
 ###### createSpreadsheet

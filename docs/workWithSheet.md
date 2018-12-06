@@ -44,15 +44,15 @@ This method allow you to add new sheets to an existing spreadsheet. You can spec
 
 ###### Properties
 
-* spreadsheetId :- Unique value of the spreadsheet
-* requests :- It contains data that is a kind of update to apply to a spreadsheet. To add multiple sheets within the spread sheet, need to repeat `addSheetBatchRequest` property within the `requests` attribute as below in the sample request.
-* fields [Optional] :- Specifying which fields to include in a partial response. For the following request only the `spreadsheetId` will be included in the response.
+* spreadsheetId :- Unique value of the spreadsheet.
+* requests :- The spreadsheet is updated with the data that is sent in the request. To add multiple sheets within the spread sheet, need to repeat `addSheetBatchRequest` property within the `requests` attribute as below in the sample request.
+* fields [Optional] :- Specify the fields that need to be included in a partial response. In the sample request given below, only the `spreadsheetId` will be included in the response.
 
 
 
 ###### Sample request
 
-Following is a sample request that can be used for addSheetBatchRequest operation. With the following request we can specify multiple sheet properties such as sheet name("Expenses1", "Expenses2"), sheet type("GRID") and dimension ((50,10), (70,10)) of the sheet as an array. Here we specify fields property to get partial response. Here, `spreadsheetId`, `replies` will be included in the response. `replies` contains properties such as sheet name, type, row, column count, sheetId.
+The sample request given below calls the `addSheetBatchRequest` operation. The request specifies the multiple sheet properties, such as the sheet name ("Expenses1", "Expenses2"), sheet type ("GRID"), and the dimension ((50,10), (70,10)) of the sheet as an array. The fields property is specified to get a partial response. The `spreadsheetId` and `replies` values will be included in the response. `replies` contains properties such as sheet name, type, row, column count, and sheetId.
 
 ```json
 {
@@ -168,7 +168,7 @@ This method allows you to remove sheets from a given spreadsheet using `sheetId`
 
 ###### Sample request
 
-Following is a sample request that can be used for deleteSheetBatchRequest operation. With the following request we can specify Id of the sheet need to be deleted.
+The following sample request calls the deleteSheetBatchRequest operation. Specify the Id of the sheet that needs to be deleted.
 
 ```json
 {
@@ -238,7 +238,7 @@ This method can be used to acquire sheet properties and other metadata. If you o
 
 ###### Sample request
 
-Following is a sample request that can be used for getSheetMetaData operation. With the following request we can specify spreadsheet Id, sheet details and the ranges to retrieve from the spreadsheet. Here the `Employees` is the sheet name and A1:B2 is the cell range.
+The following sample request calls the getSheetMetaData operation. Specify the spreadsheet Id, sheet details, and the ranges to retrieve from the spreadsheet. Here the Employees is the sheet name and A1:B2 is the cell range.
 
 ```json
 {
@@ -346,7 +346,7 @@ This method allows you to update the size, title, and other sheet properties.
 
 ###### Sample request
 
-Here the requests body should contain what are the properties to be changed, and the fields parameter within the requests property should explicitly list those properties (if you want to update all properties, use fields:"*" as a shorthand for listing them all). Here we specify that title,gridProperties(rowCount,columnCount) parametes need to be updated. For example, the following request specifies that the rowCount and columnCount should be updated for the sheet with the given row, column count with the sheet name `Sheet1`.
+You need to specify the properties that need to change in the body of the request. The fields parameter within the requests property should explicitly list those properties (if you want to update all properties, use fields:"*" as a shorthand for listing them all). Here we specify that the title, and gridProperties (rowCount,columnCount) parameters need to be updated. For example, the following request specifies that the rowCount and columnCount of the given row and column of sheet `Sheet1` need to be updated.
 
 ```json
 {
