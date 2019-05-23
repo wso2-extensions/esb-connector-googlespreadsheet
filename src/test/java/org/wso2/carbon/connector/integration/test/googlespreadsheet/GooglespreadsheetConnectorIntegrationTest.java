@@ -93,8 +93,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -132,8 +132,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -155,8 +155,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_editMultipleCellMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -199,8 +199,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_editMultipleCellMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -215,7 +215,7 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap,
                         "createSpreadsheetMandatory.json");
-        String spreadsheetId = esbRestResponse.getBody().get("spreadsheetId").toString();
+        String spreadsheetId = esbRestResponse.getBody().getString("spreadsheetId");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + spreadsheetId;
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         connectorProperties.put("spreadsheetId", spreadsheetId);
@@ -235,7 +235,7 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap,
                         "esb_createSpreadsheetOptional.json");
-        String spreadsheetIdOptional = esbRestResponse.getBody().get("spreadsheetId").toString();
+        String spreadsheetIdOptional = esbRestResponse.getBody().getString("spreadsheetId");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + spreadsheetIdOptional;
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         connectorProperties.put("destinationSpreadsheetId", spreadsheetIdOptional);
@@ -276,8 +276,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -318,8 +318,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -333,8 +333,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         esbRequestHeadersMap.put("Action", "urn:addSheetBatchRequest");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_addSheetBatchRequestMandatory.json");
-        String sheetId = esbRestResponse.getBody().getJSONArray("replies").getJSONObject(0).getJSONObject("addSheet")
-                .getJSONObject("properties").getString("sheetId");
+        String sheetId = String.valueOf(esbRestResponse.getBody().getJSONArray("replies").getJSONObject(0).getJSONObject("addSheet")
+                .getJSONObject("properties").getLong("sheetId"));
         connectorProperties.put("sheetId", sheetId);
         connectorProperties.setProperty("requestsUpdateConditionalFormatRuleBatchRequest",
                 connectorProperties.getProperty("requestsUpdateConditionalFormatRuleBatchRequest")
@@ -399,8 +399,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 + connectorProperties.getProperty("fields");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "POST",
                 apiRequestHeadersMap, "api_addSheetBatchRequestOptional.json");
-        String sheetId = esbRestResponse.getBody().getJSONArray("replies").getJSONObject(0).getJSONObject("addSheet")
-                .getJSONObject("properties").getString("sheetId");
+        String sheetId = String.valueOf(esbRestResponse.getBody().getJSONArray("replies").getJSONObject(0).getJSONObject("addSheet")
+                .getJSONObject("properties").getLong("sheetId"));
         connectorProperties.put("sheetIdOptional", sheetId);
         connectorProperties.setProperty("requestsMoveDimensionBatchRequest", connectorProperties.getProperty(
                 "requestsMoveDimensionBatchRequest").replace("<sheetIdOptional>",
@@ -464,8 +464,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateSheetPropertiesBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"), apiRestResponse.getBody()
-                .get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"), apiRestResponse.getBody()
+                .getString("spreadsheetId"));
     }
 
     /**
@@ -507,8 +507,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateSheetPropertiesBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -533,8 +533,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_addConditionalFormatRuleBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -575,8 +575,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_addConditionalFormatRuleBatchRequestOptional.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -598,8 +598,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_appendDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -640,8 +640,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 apiRequestHeadersMap, "api_appendDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -663,8 +663,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_autoResizeDimensionsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -707,8 +707,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_autoResizeDimensionsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -733,8 +733,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_copyPasteBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -776,8 +776,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_copyPasteBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -802,8 +802,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_cutPasteBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -844,8 +844,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_cutPasteBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -867,8 +867,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_deleteDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -909,8 +909,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_deleteDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -998,8 +998,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_insertDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1040,8 +1040,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_insertDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1063,8 +1063,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_mergeCellsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1105,8 +1105,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_mergeCellsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1128,8 +1128,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_moveDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1170,8 +1170,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_moveDimensionBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1194,8 +1194,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_repeatCellsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1236,8 +1236,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_repeatCellsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1259,8 +1259,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_setDataValidationBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1301,8 +1301,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_setDataValidationBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1324,8 +1324,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_sortRangeBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1366,8 +1366,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_sortRangeBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1389,8 +1389,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateBordersBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1431,8 +1431,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateBordersBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1454,8 +1454,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateCellsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1496,8 +1496,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateCellsBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1520,8 +1520,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateConditionalFormatRuleBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1563,8 +1563,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateConditionalFormatRuleBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1586,8 +1586,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateDimensionPropertiesBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1628,8 +1628,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_updateDimensionPropertiesBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1659,7 +1659,9 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
     /**
      * Negative test case for copyTo method.
      */
-    @Test(groups = {"wso2.esb"}, description = "googlespreadsheet {copyTo} integration test with negative cases.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateSpreadsheetWithMandatoryParameters",
+            "testAddSheetBatchRequestWithMandatoryParameters", "testCreateSpreadsheetWithOptionalParameters"},
+            description = "googlespreadsheet {copyTo} integration test with negative cases.")
     public void testCopyToWithNegativeCase() throws Exception {
 
         Thread.sleep(sleepingTime);
@@ -1720,8 +1722,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_deleteConditionalFormatRuleBatchRequestMandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1763,8 +1765,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_deleteConditionalFormatRuleBatchRequestOptional.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1846,8 +1848,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "PUT", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1889,8 +1891,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_editCellOptional.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1913,8 +1915,8 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "POST", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 
     /**
@@ -1959,7 +1961,7 @@ public class GooglespreadsheetConnectorIntegrationTest extends ConnectorIntegrat
                 "api_addRowsColumnsDataOptional.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-        Assert.assertEquals(esbRestResponse.getBody().get("spreadsheetId"),
-                apiRestResponse.getBody().get("spreadsheetId"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("spreadsheetId"),
+                apiRestResponse.getBody().getString("spreadsheetId"));
     }
 }

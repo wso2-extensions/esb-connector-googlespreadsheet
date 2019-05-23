@@ -20,7 +20,7 @@
 <template name="deleteSheetBatchRequest" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
     <parameter name="requests"
-               description="It contains data that is a kind of update to apply to a spreadshee"/>
+               description="It contains data that is a kind of update to apply to a spreadsheet"/>
     <parameter name="fields"
                description="Specifying which fields to include in a partial response"/>
     <sequence>

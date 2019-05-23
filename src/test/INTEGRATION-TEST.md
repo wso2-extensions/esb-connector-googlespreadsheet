@@ -10,15 +10,15 @@
 ### Tested Platforms:
 
     - Ubuntu 16.04
-    - WSO2 EI 6.4.0
+    - WSO2 EI 6.5.0
     - java 1.8
 
 
 ### Steps to follow in setting integration test.
 
 
- 1. Download EI 6.4.0  by navigating to the following [URL](http://wso2.com/products/enterprise-service-bus/#).
- 2. Copy the EI 6.4.0 zip to the location `Connector_Home/repository/`
+ 1. Download EI 6.5.0 from the official website.
+ 2. Copy the EI 6.5.0 zip to the location `Connector_Home/repository/`
  3. Follow this [Doc](https://docs.wso2.com/display/IntegrationCloud/Get+Credentials+for+Google+Spreadsheet) to get a client id, client secret, access token, refresh token from OAuth 2.0 Playground.
 
  4. Update the following properties in `esb-connector-googlespreadsheet.properties` file at `Connector_Home/repository/`
