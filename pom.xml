@@ -23,12 +23,12 @@
     <groupId>org.wso2.carbon.connector</groupId>
     <artifactId>org.wso2.carbon.connector.googlespreadsheet</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.1</version>
+    <version>3.0.2-SNAPSHOT</version>
     <name>WSO2 Carbon - Mediation Library Connector For Googlespreadsheet</name>
     <url>http://wso2.org</url>
     <properties>
         <connector.name>googlespreadsheet</connector.name>
-        <product.ei.version>6.5.0</product.ei.version>
+        <product.ei.version>6.5.0-m5</product.ei.version>
         <carbon.kernel.version>4.4.38</carbon.kernel.version>
         <automation.framework.utils.version>4.4.2</automation.framework.utils.version>
         <automation.framework.version>4.4.3</automation.framework.version>
