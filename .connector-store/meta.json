@@ -1,0 +1,14 @@
+{
+    "name": "Google Spreadsheet",
+    "owner": "WSO2",
+    "category": "Productivity Tools",
+    "documentationUrl": "https://ei.docs.wso2.com/en/latest/micro-integrator/references/connectors/google-spreadsheet-connector/google-spreadsheet-overview/",
+    "description": "The Google Spreadsheet connector allows you to work with spreadsheets on Google Drive, a free, web-based service that allows users to create and edit spreadsheet documents online while collaborating in real-time with other users. The connector uses the Google Spreadsheet API version v4 to connect to Google Drive and read, create, and update spreadsheets.",
+    "status": "Active",
+    "labels": [
+        "Productivity-Tools",
+        "Application",
+        "Google"
+    ],
+    "releases": []
+}
