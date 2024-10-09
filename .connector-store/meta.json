@@ -6,14 +6,16 @@
     "description": "The Google Spreadsheet connector allows you to work with spreadsheets on Google Drive, a free, web-based service that allows users to create and edit spreadsheet documents online while collaborating in real-time with other users. The connector uses the Google Spreadsheet API version v4 to connect to Google Drive and read, create, and update spreadsheets.",
     "status": "Active",
     "labels": [
-        "google",
-        "spreadsheet"
+        "google"
     ],
     "releases": [
         {
             "tagName": "org.wso2.carbon.connector.googlespreadsheet-3.0.1",
             "products": [
-                "MI 4.x.x"
+                "MI 4.3.0",
+                "MI 4.2.0",
+                "MI 4.1.0",
+                "MI 4.0.0"
             ],
             "isHidden": false
         }
