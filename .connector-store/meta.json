@@ -8,7 +8,7 @@
     "mavenArtifactId": "org.wso2.carbon.connector.googlespreadsheet",
     "description": "The Google Spreadsheet connector allows you to work with spreadsheets on Google Drive, a free, web-based service that allows users to create and edit spreadsheet documents online while collaborating in real-time with other users. The connector uses the Google Spreadsheet API version v4 to connect to Google Drive and read, create, and update spreadsheets.",
     "status": "Active",
-    "connectorRank": 102,
+    "rank": 102,
     "type": "Connector",
     "labels": [
         "google"
@@ -174,7 +174,12 @@
                     "isHidden":false
                 }
             ],
-            "connections": [],
+            "connections": [
+                {
+                    "name": "googlespreadsheet",
+                    "description": "Connection for reading and writing Google Spreadsheets."
+                }
+            ],
             "isHidden": false
         }
     ]
