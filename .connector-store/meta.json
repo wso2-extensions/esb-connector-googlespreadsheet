@@ -1,10 +1,15 @@
 {
     "name": "Google Spreadsheet",
     "owner": "WSO2",
+    "product": "MI",
     "category": "Productivity Tools",
     "documentationUrl": "https://mi.docs.wso2.com/en/latest/reference/connectors/google-spreadsheet-connector/google-spreadsheet-overview/",
+    "mavenGroupId": "org.wso2.integration.connector",
+    "mavenArtifactId": "mi-connector-googlespreadsheet",
     "description": "The Google Spreadsheet connector allows you to work with spreadsheets on Google Drive, a free, web-based service that allows users to create and edit spreadsheet documents online while collaborating in real-time with other users. The connector uses the Google Spreadsheet API version v4 to connect to Google Drive and read, create, and update spreadsheets.",
     "status": "Active",
+    "rank": 102,
+    "type": "Connector",
     "labels": [
         "google"
     ],
@@ -16,6 +21,164 @@
                 "MI 4.2.0",
                 "MI 4.1.0",
                 "MI 4.0.0"
+            ],
+            "operations": [
+                {
+                    "name":"init",
+                    "description":"Get the basic details of API",
+                    "isHidden":false
+                },
+                {
+                    "name":"getAccessTokenFromRefreshToken",
+                    "description":"Get the access token from refresh token",
+                    "isHidden":false
+                },
+                {
+                    "name":"getSheetMetaData",
+                    "description":"provides a feed to access the sheet metadata contained within a given spreadsheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"addSheetBatchRequest",
+                    "description":"Add a sheet or multiple sheets to a spreadsheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"updateSheetPropertiesBatchRequest",
+                    "description":"Update all sheet properties.",
+                    "isHidden":false
+                },
+                {
+                    "name":"deleteSheetBatchRequest",
+                    "description":"Remove a sheet or multiple sheets from a given spreadsheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"copyTo",
+                    "description":"Copies a single sheet from a spreadsheet to another spreadsheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"createSpreadsheet",
+                    "description":"creates a new spreadsheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"addRowsColumnsData",
+                    "description":"Append row/rows/column/columns of data.",
+                    "isHidden":false
+                },
+                {
+                    "name":"deleteDimensionBatchRequest",
+                    "description":"removing rows, columns and remove part of a row or column.",
+                    "isHidden":false
+                },
+                {
+                    "name":"getCellData",
+                    "description":"Retrieve any set of cell data from a sheet and cell contents as input values (as would be entered by a user at a keyboard) and/or the outputs of formula (if numeric)",
+                    "isHidden":false
+                },
+                {
+                    "name":"getMultipleCellData",
+                    "description":"Retrieve any set of cell data including multiple ranges from a sheet and cell contents as input values (as would be entered by a user at a keyboard) and/or the outputs of formula (if numeric)",
+                    "isHidden":false
+                },
+                {
+                    "name":"editCell",
+                    "description":"Edit the content of the cell with new values.",
+                    "isHidden":false
+                },
+                {
+                    "name":"editMultipleCell",
+                    "description":"Edit the content of multiple cell with new values.",
+                    "isHidden":false
+                },
+                {
+                    "name":"updateCellsBatchRequest",
+                    "description":"Updates all cells in a range with new data that can be cell value, formatting.",
+                    "isHidden":false
+                },
+                {
+                    "name":"appendDimensionBatchRequest",
+                    "description":"Append empty rows or columns at the end of the sheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"updateBordersBatchRequest",
+                    "description":"Edit cell borders",
+                    "isHidden":false
+                },
+                {
+                    "name":"repeatCellsBatchRequest",
+                    "description":"Repeat formatting of the cell into over a range of cells.",
+                    "isHidden":false
+                },
+                {
+                    "name":"mergeCellsBatchRequest",
+                    "description":"Merge range of cells into a one cell.",
+                    "isHidden":false
+                },
+                {
+                    "name":"setDataValidationBatchRequest",
+                    "description":"Apply data validation rule to a range.",
+                    "isHidden":false
+                },
+                {
+                    "name":"copyPasteBatchRequest",
+                    "description":"Copy cell formatting in one range and paste it into another range on the same sheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"cutPasteBatchRequest",
+                    "description":"cuts the one range and pastes its data, formats, formulas, and merges to the another range on the same sheet.",
+                    "isHidden":false
+                },
+                {
+                    "name":"updateConditionalFormatRuleBatchRequest",
+                    "description":"Update a conditional formatting rule or its priority.",
+                    "isHidden":false
+                },
+                {
+                    "name":"addConditionalFormatRuleBatchRequest",
+                    "description":"Establishes a new conditional formatting rule.",
+                    "isHidden":false
+                },
+                {
+                    "name":"deleteConditionalFormatRuleBatchRequest",
+                    "description":"Delete a conditional formatting rule.",
+                    "isHidden":false
+                },
+                {
+                    "name":"updateDimensionPropertiesBatchRequest",
+                    "description":"Adjust column width or row height.",
+                    "isHidden":false
+                },
+                {
+                    "name":"autoResizeDimensionsBatchRequest",
+                    "description":"Automatically resize a column.",
+                    "isHidden":false
+                },
+                {
+                    "name":"insertDimensionBatchRequest",
+                    "description":"Insert an empty row or column at the end or in the middle.",
+                    "isHidden":false
+                },
+                {
+                    "name":"moveDimensionBatchRequest",
+                    "description":"Move a row or column / range of rows or columns.",
+                    "isHidden":false
+                },
+                {
+                    "name":"sortRangeBatchRequest",
+                    "description":"Sort a range with multiple sorting specifications.",
+                    "isHidden":false
+                }
+            ],
+            "connections": [
+                {
+                    "name": "googlespreadsheet",
+                    "description": "Connection for reading and writing Google Spreadsheets."
+                }
             ],
             "isHidden": false
         }
