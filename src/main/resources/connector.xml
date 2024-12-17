@@ -25,4 +25,5 @@
         <dependency component="worksheetData"/>
         <description>WSO2 Connector library for Google Spreadsheet API Version v4</description>
     </component>
+    <displayName>Google Spreadsheet</displayName>
 </connector>
