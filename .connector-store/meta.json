@@ -174,12 +174,7 @@
                     "isHidden":false
                 }
             ],
-            "connections": [
-                {
-                    "name": "googlespreadsheet",
-                    "description": "Connection for reading and writing Google Spreadsheets."
-                }
-            ],
+            "connections": [],
             "isHidden": false
         },
         {
@@ -342,12 +337,7 @@
                     "isHidden":false
                 }
             ],
-            "connections": [
-                {
-                    "name": "googlespreadsheet",
-                    "description": "Connection for reading and writing Google Spreadsheets."
-                }
-            ],
+            "connections": [],
             "isHidden": false
         }
     ]
