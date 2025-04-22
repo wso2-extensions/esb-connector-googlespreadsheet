@@ -17,14 +17,11 @@
   ~ under the License.
 -->
 
-<template name="createSpreadsheet" xmlns="http://ws.apache.org/ns/synapse">
-    <header name="Accept" scope="transport" value="application/json"/>
+<template name="copyTo" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
-    <parameter name="properties" description="Properties of the spreadsheet"/>
-    <parameter name="sheets" description="List of sheets and their properties that you want
-                                                                    to add into the spread sheet"/>
-    <parameter name="namedRanges" description="Create names that refer to a single cell,
-                                                                    a group of cells on the sheet"/>
+    <parameter name="sheetId" description="The ID of the sheet to copy"/>
+    <parameter name="destinationSpreadsheetId"
+               description="The ID of the spreadsheet to copy the sheet to"/>
     <parameter name="fields"
                description="Specifying which fields to include in a partial response"/>
     <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
@@ -32,68 +29,43 @@
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
     <sequence>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:_ACTIVE_ACCESS_TOKEN_)" scope="transport"/>
-        <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
-        <property name="spreadsheetId" expression="$func:spreadsheetId"/>
-        <property name="properties" expression="$func:properties"/>
-        <property name="sheets" expression="$func:sheets"/>
-        <property name="namedRanges" expression="$func:namedRanges"/>
+        <property name="uri.var.spreadsheetId" expression="$func:spreadsheetId"/>
+        <property name="uri.var.sheetId" expression="$func:sheetId"/>
+        <property name="uri.var.destinationSpreadsheetId"
+                  expression="$func:destinationSpreadsheetId"/>
         <property name="fields" expression="$func:fields"/>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                "destinationSpreadsheetId": "$1"
+                }
+            </format>
+            <args>
+                <arg expression="$ctx:uri.var.destinationSpreadsheetId"/>
+            </args>
+        </payloadFactory>
         <script language="js">
             <![CDATA[
-                var spreadsheetId = mc.getProperty("spreadsheetId");
-                var properties = mc.getProperty("properties");
-                var sheets = mc.getProperty("sheets");
+                //url param variables
                 var fields = mc.getProperty("fields");
-                var namedRanges = mc.getProperty("namedRanges");
-
+                //url param processing start
                 var urlParamString = '';
                 if (fields != "" && fields != null) {
-                    urlParamString += '&fields=' + fields;
+                    urlParamString += 'fields=' + fields;
                 }
-                if (urlParamString != '') {
-                    urlParamString = '?' + urlParamString.substring(1);
+                if(urlParamString != '') {
+                    urlParamString = '?' + urlParamString;
                 }
                 mc.setProperty('uri.var.urlParamString', urlParamString);
-
-                payload = {};
-                if (spreadsheetId != null && spreadsheetId !== "") {
-                    payload.spreadsheetId = spreadsheetId;
-                }
-
-                try {
-                    if (properties != null && properties !== "") {
-                        payload.properties = JSON.parse(properties);
-                    }
-                } catch (e) {
-                    mc.setProperty("scriptError", "Invalid properties JSON: " + e.message);
-                }
-
-                try {
-                    if (sheets != null && sheets !== "") {
-                        payload.sheets = JSON.parse(sheets);
-                    }
-                } catch (e) {
-                    mc.setProperty("scriptError", "Invalid sheets JSON: " + e.message);
-                }
-
-                try {
-                    if (namedRanges != null && namedRanges !== "") {
-                        payload.namedRanges = JSON.parse(namedRanges);
-                    }
-                } catch (e) {
-                    mc.setProperty("scriptError", "Invalid namedRanges JSON: " + e.message);
-                }
-
-                mc.setPayloadJSON(payload);
+                //url param processing end
             ]]>
         </script>
-
         <filter source="$ctx:spreadsheetBlocking" regex="true">
             <then>
                 <call blocking="true">
                     <endpoint>
                         <http method="post"
-                              uri-template="{uri.var.apiUrl}{+uri.var.urlParamString}"/>
+                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/sheets/{+uri.var.sheetId}:copyTo{+uri.var.urlParamString}"/>
                     </endpoint>
                 </call>
             </then>
@@ -101,16 +73,11 @@
                 <call>
                     <endpoint>
                         <http method="post"
-                              uri-template="{uri.var.apiUrl}{+uri.var.urlParamString}"/>
+                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/sheets/{+uri.var.sheetId}:copyTo{+uri.var.urlParamString}"/>
                     </endpoint>
                 </call>
             </else>
         </filter>
-
-        <log level="full" category="custom">
-            <property name="Response" expression="get-property('response')"/>
-        </log>
-
         <!-- Remove response custom header information -->
         <header name="Cache-Control" scope="transport" action="remove"/>
         <header name="Content-Encoding" scope="transport" action="remove"/>

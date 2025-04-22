@@ -17,83 +17,63 @@
   ~ under the License.
 -->
 
-<template name="createSpreadsheet" xmlns="http://ws.apache.org/ns/synapse">
-    <header name="Accept" scope="transport" value="application/json"/>
+<template name="addRowsColumnsData" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
-    <parameter name="properties" description="Properties of the spreadsheet"/>
-    <parameter name="sheets" description="List of sheets and their properties that you want
-                                                                    to add into the spread sheet"/>
-    <parameter name="namedRanges" description="Create names that refer to a single cell,
-                                                                    a group of cells on the sheet"/>
+    <parameter name="range" description="The A1 notation of the values to retrieve"/>
+    <parameter name="insertDataOption" description="How the input data should be inserted"/>
+    <parameter name="valueInputOption" description="How the input data should be interpreted"/>
     <parameter name="fields"
                description="Specifying which fields to include in a partial response"/>
+    <parameter name="majorDimension" description="The major dimension that results should use"/>
+    <parameter name="values" description="The data that was to be written"/>
     <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
     <parameter name="overwriteBody"
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
     <sequence>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:_ACTIVE_ACCESS_TOKEN_)" scope="transport"/>
-        <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
-        <property name="spreadsheetId" expression="$func:spreadsheetId"/>
-        <property name="properties" expression="$func:properties"/>
-        <property name="sheets" expression="$func:sheets"/>
-        <property name="namedRanges" expression="$func:namedRanges"/>
+        <property name="uri.var.spreadsheetId" expression="$func:spreadsheetId"/>
+        <property name="uri.var.range" expression="$func:range"/>
+        <property name="insertDataOption" expression="$func:insertDataOption"/>
+        <property name="uri.var.valueInputOption" expression="$func:valueInputOption"/>
         <property name="fields" expression="$func:fields"/>
+        <property name="majorDimension" expression="$func:majorDimension"/>
+        <property name="values" expression="$func:values"/>
         <script language="js">
             <![CDATA[
-                var spreadsheetId = mc.getProperty("spreadsheetId");
-                var properties = mc.getProperty("properties");
-                var sheets = mc.getProperty("sheets");
+                //url param variables
+                var insertDataOption = mc.getProperty("insertDataOption");
                 var fields = mc.getProperty("fields");
-                var namedRanges = mc.getProperty("namedRanges");
-
+                //url param processing start
                 var urlParamString = '';
+                if (insertDataOption != "" && insertDataOption != null) {
+                    urlParamString += '&insertDataOption=' + insertDataOption;
+                }
                 if (fields != "" && fields != null) {
                     urlParamString += '&fields=' + fields;
                 }
-                if (urlParamString != '') {
-                    urlParamString = '?' + urlParamString.substring(1);
-                }
                 mc.setProperty('uri.var.urlParamString', urlParamString);
-
+                //url param processing end
+                //request body param variables
+                var majorDimension = mc.getProperty("majorDimension");
+                var values = mc.getProperty("values");
+                //request body param processing start
                 payload = {};
-                if (spreadsheetId != null && spreadsheetId !== "") {
-                    payload.spreadsheetId = spreadsheetId;
+                if (majorDimension != null && majorDimension != "") {
+                        payload.majorDimension = majorDimension;
                 }
-
-                try {
-                    if (properties != null && properties !== "") {
-                        payload.properties = JSON.parse(properties);
-                    }
-                } catch (e) {
-                    mc.setProperty("scriptError", "Invalid properties JSON: " + e.message);
+                if (values != null && values != "" && values!= []) {
+                        payload.values = eval("("+values+")");
                 }
-
-                try {
-                    if (sheets != null && sheets !== "") {
-                        payload.sheets = JSON.parse(sheets);
-                    }
-                } catch (e) {
-                    mc.setProperty("scriptError", "Invalid sheets JSON: " + e.message);
-                }
-
-                try {
-                    if (namedRanges != null && namedRanges !== "") {
-                        payload.namedRanges = JSON.parse(namedRanges);
-                    }
-                } catch (e) {
-                    mc.setProperty("scriptError", "Invalid namedRanges JSON: " + e.message);
-                }
-
                 mc.setPayloadJSON(payload);
+                //request body param processing end
             ]]>
         </script>
-
         <filter source="$ctx:spreadsheetBlocking" regex="true">
             <then>
                 <call blocking="true">
                     <endpoint>
                         <http method="post"
-                              uri-template="{uri.var.apiUrl}{+uri.var.urlParamString}"/>
+                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/values/{+uri.var.range}:append?valueInputOption={+uri.var.valueInputOption}{+uri.var.urlParamString}"/>
                     </endpoint>
                 </call>
             </then>
@@ -101,16 +81,11 @@
                 <call>
                     <endpoint>
                         <http method="post"
-                              uri-template="{uri.var.apiUrl}{+uri.var.urlParamString}"/>
+                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/values/{+uri.var.range}:append?valueInputOption={+uri.var.valueInputOption}{+uri.var.urlParamString}"/>
                     </endpoint>
                 </call>
             </else>
         </filter>
-
-        <log level="full" category="custom">
-            <property name="Response" expression="get-property('response')"/>
-        </log>
-
         <!-- Remove response custom header information -->
         <header name="Cache-Control" scope="transport" action="remove"/>
         <header name="Content-Encoding" scope="transport" action="remove"/>

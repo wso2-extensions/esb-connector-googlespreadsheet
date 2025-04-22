@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "responses": {
+          "description": "The reply of the updates. This maps 1:1 with the requests",
+          "properties": {
+            "addConditionalFormatRule": {
+              "description": "The result of adding a conditional format rule",
+              "properties": {
+                "newIndex": {
+                  "description": "The index of the new conditional format rule"
+                },
+                "rule": {
+                  "description": "The added conditional format rule",
+                  "properties": {
+                    "ranges": {
+                      "description": "The ranges that will be formatted if the condition is true"
+                    },
+                    "booleanRule": {
+                      "description": "The boolean rule with format to apply",
+                      "properties": {
+                        "condition": {
+                          "description": "The condition of the rule"
+                        },
+                        "format": {
+                          "description": "The format to apply if the condition is true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

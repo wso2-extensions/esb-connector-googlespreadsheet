@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="data" type="synapse/template" displayName="Data Manipulation Operations">
+    <subComponents>
+        <component name="addRowsAndColumns">
+            <file>addRowsAndColumns.xml</file>
+            <description>Append row/rows/column/columns of data.</description>
+        </component>
+        <component name="copyRange">
+            <file>copyRange.xml</file>
+            <description>Copy cell data and formatting between ranges.</description>
+        </component>
+        <component name="cutRange">
+            <file>cutRange.xml</file>
+            <description>Move data between ranges including formatting and formulas.</description>
+        </component>
+        <component name="sortRange">
+            <file>sortRange.xml</file>
+            <description>Sort data in ranges with multiple sort specifications.</description>
+        </component>
+    </subComponents>
+</component>

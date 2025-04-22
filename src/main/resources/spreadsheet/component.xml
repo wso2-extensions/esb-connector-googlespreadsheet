@@ -17,11 +17,11 @@
   ~ under the License.
 -->
 
-<component name="spreadsheet" type="synapse/template">
+<component name="spreadsheet" type="synapse/template" displayName="High-level Spreadsheet Operations">
     <subComponents>
         <component name="createSpreadsheet">
             <file>createSpreadsheet.xml</file>
-            <description>creates a new spreadsheet.</description>
+            <description>Creates a new spreadsheet.</description>
         </component>
     </subComponents>
 </component>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="formatting" type="synapse/template" displayName="Cell Formatting Operations">
+    <subComponents>
+        <component name="addConditionalFormatRule">
+            <file>addConditionalFormatRule.xml</file>
+            <description>Establishes a new conditional formatting rule.</description>
+        </component>
+        <component name="deleteConditionalFormatRule">
+            <file>deleteConditionalFormatRule.xml</file>
+            <description>Delete a conditional formatting rule.</description>
+        </component>
+        <component name="updateConditionalFormatRule">
+            <file>updateConditionalFormatRule.xml</file>
+            <description>Update a conditional formatting rule or its priority.</description>
+        </component>
+        <component name="setDataValidation">
+            <file>setDataValidation.xml</file>
+            <description>Apply data validation rule to a range.</description>
+        </component>
+        <component name="repeatCellStyle">
+            <file>repeatCellStyle.xml</file>
+            <description>Repeat formatting of cells over a range.</description>
+        </component>
+        <component name="mergeCells">
+            <file>mergeCells.xml</file>
+            <description>Merge a range of cells into one cell.</description>
+        </component>
+        <component name="updateCellBorders">
+            <file>updateCellBorders.xml</file>
+            <description>Edit cell borders.</description>
+        </component>
+    </subComponents>
+</component>

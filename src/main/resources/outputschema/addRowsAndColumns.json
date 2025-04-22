@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from appending values to a spreadsheet",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "tableRange": {
+          "description": "The range that was searched for a table. Only present if the data was appended in a table."
+        },
+        "updates": {
+          "description": "Information about the updates that were applied",
+          "properties": {
+            "spreadsheetId": {
+              "description": "The spreadsheet the updates were applied to"
+            },
+            "updatedRange": {
+              "description": "The range (in A1 notation) that updates were applied to"
+            },
+            "updatedRows": {
+              "description": "The number of rows where at least one cell in the row was updated"
+            },
+            "updatedColumns": {
+              "description": "The number of columns where at least one cell in the column was updated"
+            },
+            "updatedCells": {
+              "description": "The number of cells updated"
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

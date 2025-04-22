@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Google Sheets API Merge Cells Operation Response Schema", 
+  "description": "Schema representing the output of the Merge Cells operation in Google Sheets API",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "type": "string",
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "responses": {
+          "type": "array",
+          "description": "The reply of the updates. This maps 1:1 with the requests",
+          "items": {
+            "type": "object",
+            "properties": {
+              "mergeCells": {
+                "type": "object",
+                "description": "The result of the merging operation",
+                "properties": {
+                  "mergedRange": {
+                    "type": "object",
+                    "description": "The range that was merged",
+                    "properties": {
+                      "sheetId": {
+                        "type": "integer",
+                        "description": "The sheet ID"
+                      },
+                      "startRowIndex": {
+                        "type": "integer",
+                        "description": "The start row (inclusive) of the range"
+                      },
+                      "endRowIndex": {
+                        "type": "integer",
+                        "description": "The end row (exclusive) of the range" 
+                      },
+                      "startColumnIndex": {
+                        "type": "integer",
+                        "description": "The start column (inclusive) of the range"
+                      },
+                      "endColumnIndex": {
+                        "type": "integer",
+                        "description": "The end column (exclusive) of the range"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="sheet" type="synapse/template" displayName="Worksheet(Tab level) Operations">
+    <subComponents>
+        <component name="addSheet">
+            <file>addSheet.xml</file>
+            <description>Add a sheet or multiple sheets to a spreadsheet.</description>
+        </component>
+        <component name="deleteSheet">
+            <file>deleteSheet.xml</file>
+            <description>Remove a sheet or multiple sheets from a given spreadsheet.</description>
+        </component>
+        <component name="copySheet">
+            <file>copySheet.xml</file>
+            <description>Copies a single sheet from a spreadsheet to another spreadsheet.</description>
+        </component>
+        <component name="getSheetMetadata">
+            <file>getSheetMetadata.xml</file>
+            <description>Provides a feed to access the sheet metadata contained within a given spreadsheet.</description>
+        </component>
+        <component name="updateSheetProperties">
+            <file>updateSheetProperties.xml</file>
+            <description>Update all sheet properties.</description>
+        </component>
+    </subComponents>
+</component>

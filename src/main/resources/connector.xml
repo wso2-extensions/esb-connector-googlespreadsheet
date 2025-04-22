@@ -20,9 +20,12 @@
 <connector>
     <component name="googlespreadsheet" package="org.wso2.carbon.connector">
         <dependency component="config"/>
-        <dependency component="worksheet"/>
         <dependency component="spreadsheet"/>
-        <dependency component="worksheetData"/>
+        <dependency component="sheet"/>
+        <dependency component="cell"/>
+        <dependency component="dimension"/>
+        <dependency component="formatting"/>
+        <dependency component="data"/>
         <description>WSO2 Connector library for Google Spreadsheet API Version v4</description>
     </component>
     <displayName>Google Spreadsheet</displayName>

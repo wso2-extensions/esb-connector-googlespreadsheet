@@ -1,0 +1,144 @@
+{
+  "connectorName": "googlespreadsheet",
+  "operationName": "addRowsAndColumns",
+  "title": "Add Rows and Columns",
+  "help": "<h1>Add Rows and Columns</h1><b>Append row/rows/column/columns of data.</b><br><br>",
+  "elements": [
+    {
+      "type": "attributeGroup", 
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "GOOGLESPREADSHEET"
+              ],
+              "defaultType": "connection.GOOGLESPREADSHEET",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "spreadsheetId",
+              "displayName": "Spreadsheet ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "Unique identifier of the spreadsheet"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "range",
+              "displayName": "Range",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "The A1 notation of where to append the data (e.g. 'Sheet1!A:B' for columns A-B)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Data Options",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "values",
+              "displayName": "Values",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "The data to append. Should be an array of arrays. Each inner array represents a row."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "insertDataOption",
+              "displayName": "Insert Data Option",
+              "inputType": "combo",
+              "comboValues": ["OVERWRITE", "INSERT_ROWS"],
+              "defaultValue": "INSERT_ROWS",
+              "required": "false",
+              "helpTip": "How the input data should be inserted. OVERWRITE: Overwrites data. INSERT_ROWS: Inserts new rows for the data."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "valueInputOption",
+              "displayName": "Value Input Option",
+              "inputType": "combo",
+              "comboValues": ["RAW", "USER_ENTERED"],
+              "defaultValue": "RAW",
+              "required": "true", 
+              "helpTip": "How the input data should be interpreted"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "majorDimension",
+              "displayName": "Major Dimension",
+              "inputType": "combo",
+              "comboValues": ["ROWS", "COLUMNS"],
+              "defaultValue": "ROWS",
+              "required": "false",
+              "helpTip": "The major dimension that results should use"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "fields",
+              "displayName": "Fields",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "Specifying which fields to include in a partial response"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

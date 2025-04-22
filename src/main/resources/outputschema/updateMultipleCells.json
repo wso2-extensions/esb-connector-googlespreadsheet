@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Google Sheets API Batch Update Operation Response Schema",
+  "description": "Schema representing the output of the Batch Update operation in Google Sheets API",
+  "properties": {
+    "payload": {
+      "description": "The response when updating a range of values in a spreadsheet.",
+      "properties": {
+        "responses": {
+          "description": "One UpdateValuesResponse per requested range, in the same order as the requests appeared."
+        },
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to."
+        },
+        "totalUpdatedCells": {
+          "description": "The total number of cells updated."
+        },
+        "totalUpdatedColumns": {
+          "description": "The total number of columns where at least one cell in the column was updated."
+        },
+        "totalUpdatedRows": {
+          "description": "The total number of rows where at least one cell in the row was updated."
+        },
+        "totalUpdatedSheets": {
+          "description": "The total number of sheets where at least one cell in the sheet was updated."
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation.",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response."
+        }
+      }
+    },
+    "headers": {
+      "description": "HTTP headers of the API response.",
+      "properties": {}
+    }
+  }
+}
