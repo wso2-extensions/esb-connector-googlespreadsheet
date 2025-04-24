@@ -20,7 +20,6 @@
 <connector>
     <component name="googlespreadsheet" package="org.wso2.carbon.connector">
         <dependency component="config"/>
-        <dependency component="spreadsheet"/>
         <dependency component="sheet"/>
         <dependency component="cell"/>
         <dependency component="dimension"/>

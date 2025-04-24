@@ -9,6 +9,7 @@ It allows you to access the [Google Spreadsheet API Version v4](https://develope
 
 | Connector version | Google spreadsheet API version | Supported WSO2 EI version |
 | ------------- | ------------- | ------------- |
+| [4.0.0](https://github.com/wso2-extensions/esb-connector-googlespreadsheet/releases/tag/org.wso2.carbon.connector.googlespreadsheet-4.0.0) | v4 | MI 4.4.0 |
 | [3.0.1](https://github.com/wso2-extensions/esb-connector-googlespreadsheet/releases/tag/org.wso2.carbon.connector.googlespreadsheet-3.0.1) | v4 | EI 6.5.0 |
 | [3.0.0](https://github.com/wso2-extensions/esb-connector-googlespreadsheet/releases/tag/org.wso2.carbon.connector.googlespreadsheet-3.0.0) | v4 | ESB 4.9.0, ESB 5.0.0, EI 6.1.1, EI 6.2.0, EI 6.3.0, EI 6.4.0 |
 | [2.0.1](https://github.com/wso2-extensions/esb-connector-googlespreadsheet/releases/tag/org.wso2.carbon.connector.googlespreadsheet-2.0.1) (Deprecated since google spreadsheet API v3 is deprecated) | v3 | ESB 5.0.0 ESB 4.9.0 |

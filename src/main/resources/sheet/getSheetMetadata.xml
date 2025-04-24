@@ -27,13 +27,15 @@
     <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
     <parameter name="overwriteBody"
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
+    <parameter name="responseVariable" description="Name of the variable to store operation output"/>
+    <parameter name="overwriteBody" description="Replace Message Body with operation output"/>
     <sequence>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:_ACTIVE_ACCESS_TOKEN_)" scope="transport"/>
         <property name="uri.var.spreadsheetId" expression="$func:spreadsheetId"/>
         <property name="includeGridData" expression="$func:includeGridData"/>
         <property name="ranges" expression="$func:ranges"/>
         <property name="fields" expression="$func:fields"/>
-        <script language="js">
+        <script language="rhinoJs">
             <![CDATA[
                 //url param variables
                 var includeGridData = mc.getProperty("includeGridData");
@@ -62,6 +64,7 @@
                 //url param processing end
             ]]>
         </script>
+        <property name="messageType" value="application/json" scope="axis2"/>
         <filter source="$ctx:spreadsheetBlocking" regex="true">
             <then>
                 <call blocking="true">
@@ -80,16 +83,5 @@
                 </call>
             </else>
         </filter>
-        <log level="full">
-            <property name="Response" expression="get-property('response')"/>
-        </log>
-        <!-- Remove response custom header information -->
-        <header name="Cache-Control" scope="transport" action="remove"/>
-        <header name="Content-Encoding" scope="transport" action="remove"/>
-        <header name="Content-Length" scope="transport" action="remove"/>
-        <header name="Content-Type" scope="transport" action="remove"/>
-        <header name="Date" scope="transport" action="remove"/>
-        <header name="Server" scope="transport" action="remove"/>
-        <header name="Vary" scope="transport" action="remove"/>
     </sequence>
 </template>

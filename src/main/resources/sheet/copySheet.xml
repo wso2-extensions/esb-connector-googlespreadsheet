@@ -17,7 +17,7 @@
   ~ under the License.
 -->
 
-<template name="copyTo" xmlns="http://ws.apache.org/ns/synapse">
+<template name="copySheet" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
     <parameter name="sheetId" description="The ID of the sheet to copy"/>
     <parameter name="destinationSpreadsheetId"
@@ -27,6 +27,8 @@
     <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
     <parameter name="overwriteBody"
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
+    <parameter name="responseVariable" description="Name of the variable to store operation output"/>
+    <parameter name="overwriteBody" description="Replace Message Body with operation output"/>
     <sequence>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:_ACTIVE_ACCESS_TOKEN_)" scope="transport"/>
         <property name="uri.var.spreadsheetId" expression="$func:spreadsheetId"/>
@@ -44,7 +46,7 @@
                 <arg expression="$ctx:uri.var.destinationSpreadsheetId"/>
             </args>
         </payloadFactory>
-        <script language="js">
+        <script language="rhinoJs">
             <![CDATA[
                 //url param variables
                 var fields = mc.getProperty("fields");
@@ -60,6 +62,7 @@
                 //url param processing end
             ]]>
         </script>
+        <property name="messageType" value="application/json" scope="axis2"/>
         <filter source="$ctx:spreadsheetBlocking" regex="true">
             <then>
                 <call blocking="true">
@@ -78,13 +81,5 @@
                 </call>
             </else>
         </filter>
-        <!-- Remove response custom header information -->
-        <header name="Cache-Control" scope="transport" action="remove"/>
-        <header name="Content-Encoding" scope="transport" action="remove"/>
-        <header name="Content-Length" scope="transport" action="remove"/>
-        <header name="Content-Type" scope="transport" action="remove"/>
-        <header name="Date" scope="transport" action="remove"/>
-        <header name="Server" scope="transport" action="remove"/>
-        <header name="Vary" scope="transport" action="remove"/>
     </sequence>
 </template>

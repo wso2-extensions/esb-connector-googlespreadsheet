@@ -1,7 +1,7 @@
 {
   "connectorName": "googlespreadsheet",
-  "operationName": "createSpreadsheet",
-  "title": "Create Spreadsheet",
+  "operationName": "createNewSheet",
+  "title": "Create a new spreadsheet",
   "help": "<h1>Create Spreadsheet</h1><b>Creates a new spreadsheet with customizable properties and sheets.</b><br><br>",
   "elements": [
     {
@@ -34,10 +34,61 @@
           {
             "type": "attribute",
             "value": {
+              "name": "configLevel",
+              "displayName": "Configuration Level",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "BASIC",
+                "ADVANCED"
+              ],
+              "defaultValue": "BASIC",
+              "required": "false",
+              "helpTip": "Select the configuration level for the operation. BASIC will show only the basic attributes, while ADVANCED will show all attributes."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "title",
+              "displayName": "Spreadsheet Title",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configLevel": "BASIC"
+                }
+              ],
+              "helpTip": "Title of the spreadsheet to be created."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "initialSheetName",
+              "displayName": "Initial Sheet Name (Tab Level)",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "defaultValue": "Sheet1",
+              "enableCondition": [
+                {
+                  "configLevel": "BASIC"
+                }
+              ],
+              "helpTip": "Name of the initial sheet to be created in the spreadsheet."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
               "name": "properties",
               "displayName": "Spreadsheet Properties",
               "inputType": "stringOrExpression",
               "required": "false",
+              "enableCondition": [
+                {
+                  "configLevel": "ADVANCED"
+                }
+              ],
               "helpTip": "Properties of the spreadsheet like title. Format: {\"title\": \"My Spreadsheet\"}"
             }
           },
@@ -47,6 +98,11 @@
               "name": "sheets",
               "displayName": "Sheets",
               "inputType": "stringOrExpression",
+              "enableCondition": [
+                {
+                  "configLevel": "ADVANCED"
+                }
+              ],
               "required": "false",
               "helpTip": "List of sheets to create in the spreadsheet. Format: [{\"properties\": {\"title\": \"Sheet1\"}}]"
             }
@@ -58,6 +114,11 @@
               "displayName": "Named Ranges",
               "inputType": "stringOrExpression",
               "required": "false",
+              "enableCondition": [
+                {
+                  "configLevel": "ADVANCED"
+                }
+              ],
               "helpTip": "Named ranges to create in the spreadsheet"
             }
           },
@@ -68,6 +129,11 @@
               "displayName": "Fields",
               "inputType": "stringOrExpression",
               "required": "false",
+              "enableCondition": [
+                {
+                  "configLevel": "ADVANCED"
+                }
+              ],
               "helpTip": "Specifying which fields to include in a partial response"
             }
           },
@@ -78,6 +144,11 @@
               "displayName": "Spreadsheet ID",
               "inputType": "stringOrExpression",
               "required": "false",
+              "enableCondition": [
+                {
+                  "configLevel": "ADVANCED"
+                }
+              ],
               "helpTip": "ID of the spreadsheet to be created. If not provided, a new spreadsheet will be created."
             }
           }

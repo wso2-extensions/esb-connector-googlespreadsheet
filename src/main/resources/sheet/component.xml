@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="sheet" type="synapse/template" displayName="Worksheet(Tab level) Operations">
+<component name="sheet" type="synapse/template" displayName="Sheet-level Operations">
     <subComponents>
+        <component name="createNewSheet">
+            <displayName>Create New Sheet</displayName>
+            <file>createNewSheet.xml</file>
+            <description>Creates a new spreadsheet.</description>
+        </component>
         <component name="addSheet">
+            <displayName>Add Sheet</displayName>
             <file>addSheet.xml</file>
             <description>Add a sheet or multiple sheets to a spreadsheet.</description>
         </component>
         <component name="deleteSheet">
+            <displayName>Delete Sheet</displayName>
             <file>deleteSheet.xml</file>
             <description>Remove a sheet or multiple sheets from a given spreadsheet.</description>
         </component>
         <component name="copySheet">
+            <displayName>Copy Sheet</displayName>
             <file>copySheet.xml</file>
             <description>Copies a single sheet from a spreadsheet to another spreadsheet.</description>
         </component>
         <component name="getSheetMetadata">
+            <displayName>Get Sheet Metadata</displayName>
             <file>getSheetMetadata.xml</file>
             <description>Provides a feed to access the sheet metadata contained within a given spreadsheet.</description>
         </component>
         <component name="updateSheetProperties">
+            <displayName>Update Sheet Properties</displayName>
             <file>updateSheetProperties.xml</file>
             <description>Update all sheet properties.</description>
         </component>

@@ -17,16 +17,17 @@
   ~ under the License.
 -->
 
-<template name="getCellData" xmlns="http://ws.apache.org/ns/synapse">
+<template name="editCellData" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="configLevel" description="Mode of operation - BASIC or ADVANCED"/>
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
     <parameter name="sheetName" description="Name of the sheet (Tab Level) in BASIC mode"/>
     <parameter name="cellId" description="Cell ID (e.g. A1) in BASIC mode"/>
     <parameter name="range" description="The A1 notation range in ADVANCED mode"/>
-    <parameter name="valueRenderOption" description="How values should be rendered in the output"/>
-    <parameter name="dateTimeRenderOption" description="How dates, times, and durations should be represented in the output"/>
-    <parameter name="fields" description="Specifying which fields to include in a partial response"/>
-    <parameter name="majorDimension" description="The major dimension that results should use"/>
+    <parameter name="value" description="The new value to set in the cell (For BASIC mode)"/>
+    <parameter name="valueInputOption" description="How the input data should be interpreted (For ADVANCED mode)"/>
+    <parameter name="majorDimension" description="The major dimension of the values (For ADVANCED mode)"/>
+    <parameter name="values" description="Array of arrays of values to update cells with (For ADVANCED mode)"/>
+    <parameter name="fields" description="Fields to include in partial response"/>
     <parameter name="responseVariable" description="Name of the variable to store operation output"/>
     <parameter name="overwriteBody" description="Replace Message Body with operation output"/>
     <sequence>
@@ -36,9 +37,10 @@
         <property name="sheetName" expression="$func:sheetName"/>
         <property name="cellId" expression="$func:cellId"/>
         <property name="range" expression="$func:range"/>
-        <property name="dateTimeRenderOption" expression="$func:dateTimeRenderOption"/>
+        <property name="value" expression="$func:value"/>
+        <property name="valueInputOption" expression="$func:valueInputOption"/>
         <property name="majorDimension" expression="$func:majorDimension"/>
-        <property name="valueRenderOption" expression="$func:valueRenderOption"/>
+        <property name="values" expression="$func:values"/>
         <property name="fields" expression="$func:fields"/>
         <script language="rhinoJs">
             <![CDATA[
@@ -46,16 +48,17 @@
                 var sheetName = mc.getProperty("sheetName");
                 var cellId = mc.getProperty("cellId");
                 var range = mc.getProperty("range");
-                var dateTimeRenderOption = mc.getProperty("dateTimeRenderOption");
-                var majorDimension = mc.getProperty("majorDimension");
-                var valueRenderOption = mc.getProperty("valueRenderOption");
+                var value = mc.getProperty("value");
+                var valueInputOption = mc.getProperty("valueInputOption") || "USER_ENTERED";
+                var majorDimension = mc.getProperty("majorDimension") || "ROWS";
+                var values = mc.getProperty("values");
                 var fields = mc.getProperty("fields");
 
                 // Handle BASIC vs ADVANCED mode for range construction
                 var finalRange;
                 if (configLevel == "BASIC") {
-                    if (!sheetName || !cellId) {
-                        throw new Error("sheetName and cellId are required in BASIC mode");
+                    if (!sheetName || !cellId || !value) {
+                        throw new Error("sheetName, cellId, and value are required in BASIC mode");
                     }
                     finalRange = sheetName + "!" + cellId;
                 } else {
@@ -64,27 +67,37 @@
                     }
                     finalRange = range;
                 }
-                mc.setProperty('uri.var.range', finalRange);
-
-                //url param processing start
+                
                 var urlParamString = '';
-                if (dateTimeRenderOption != "" && dateTimeRenderOption != null) {
-                    urlParamString += '&dateTimeRenderOption=' + dateTimeRenderOption;
-                }
-                if (majorDimension != "" && majorDimension != null) {
-                    urlParamString += '&majorDimension=' + majorDimension;
-                }
-                if (valueRenderOption != "" && valueRenderOption != null) {
-                    urlParamString += '&valueRenderOption=' + valueRenderOption;
-                }
-                if (fields != "" && fields != null) {
+                if (fields != null && fields != "") {
                     urlParamString += '&fields=' + fields;
                 }
+                urlParamString += '&valueInputOption=' + valueInputOption;
+                
                 if(urlParamString != '') {
                     urlParamString = '?' + urlParamString.toString().substring(1);
                 }
                 mc.setProperty('uri.var.urlParamString', urlParamString);
-                //url param processing end
+                mc.setProperty('uri.var.range', finalRange);
+                
+                payload = {};
+                
+                if (configLevel == "BASIC") {
+                    payload.values = [[value]];
+                    payload.majorDimension = "ROWS";
+                } else {
+                    // Advanced mode
+                    if (values != null && values != "" && values != []) {
+                        payload.values = eval("("+values+")");
+                    } else {
+                        throw new Error("values parameter is required in ADVANCED mode");
+                    }
+                    if (majorDimension != null && majorDimension != "") {
+                        payload.majorDimension = majorDimension;
+                    }
+                }
+                
+                mc.setPayloadJSON(payload);
             ]]>
         </script>
         <property name="messageType" value="application/json" scope="axis2"/>
@@ -92,16 +105,16 @@
             <then>
                 <call blocking="true">
                     <endpoint>
-                        <http method="get"
-                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/values/{+uri.var.range}{+uri.var.urlParamString}"/>
+                        <http method="put"
+                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/values/{uri.var.range}{+uri.var.urlParamString}"/>
                     </endpoint>
                 </call>
             </then>
             <else>
                 <call>
                     <endpoint>
-                        <http method="get"
-                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/values/{+uri.var.range}{+uri.var.urlParamString}"/>
+                        <http method="put"
+                              uri-template="{uri.var.apiUrl}/{+uri.var.spreadsheetId}/values/{uri.var.range}{+uri.var.urlParamString}"/>
                     </endpoint>
                 </call>
             </else>

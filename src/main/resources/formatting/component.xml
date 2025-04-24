@@ -2,30 +2,37 @@
 <component name="formatting" type="synapse/template" displayName="Cell Formatting Operations">
     <subComponents>
         <component name="addConditionalFormatRule">
+            <displayName>Add Conditional Format Rule</displayName>
             <file>addConditionalFormatRule.xml</file>
             <description>Establishes a new conditional formatting rule.</description>
         </component>
         <component name="deleteConditionalFormatRule">
+            <displayName>Delete Conditional Format Rule</displayName>
             <file>deleteConditionalFormatRule.xml</file>
             <description>Delete a conditional formatting rule.</description>
         </component>
         <component name="updateConditionalFormatRule">
+            <displayName>Update Conditional Format Rule</displayName>
             <file>updateConditionalFormatRule.xml</file>
             <description>Update a conditional formatting rule or its priority.</description>
         </component>
         <component name="setDataValidation">
+            <displayName>Set Data Validation</displayName>
             <file>setDataValidation.xml</file>
             <description>Apply data validation rule to a range.</description>
         </component>
         <component name="repeatCellStyle">
+            <displayName>Repeat Cell Style</displayName>
             <file>repeatCellStyle.xml</file>
             <description>Repeat formatting of cells over a range.</description>
         </component>
         <component name="mergeCells">
+            <displayName>Merge Cells</displayName>
             <file>mergeCells.xml</file>
             <description>Merge a range of cells into one cell.</description>
         </component>
         <component name="updateCellBorders">
+            <displayName>Update Cell Borders</displayName>
             <file>updateCellBorders.xml</file>
             <description>Edit cell borders.</description>
         </component>

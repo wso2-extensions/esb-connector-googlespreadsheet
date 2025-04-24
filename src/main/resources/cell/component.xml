@@ -2,18 +2,22 @@
 <component name="cell" type="synapse/template" displayName="Cell-level Operations">
     <subComponents>
         <component name="getCellData">
+            <displayName>Get Cell Data</displayName>
             <file>getCellData.xml</file>
             <description>Retrieve cell data and contents as input values.</description>
         </component>
         <component name="getMultipleCellData">
+            <displayName>Get Multiple Cell Data</displayName>
             <file>getMultipleCellData.xml</file>
             <description>Retrieve data from multiple cell ranges.</description>
         </component>
-        <component name="updateCell">
-            <file>updateCell.xml</file>
+        <component name="editCellData">
+            <displayName>Edit Cell Data</displayName>
+            <file>editCellData.xml</file>
             <description>Edit the content of a single cell.</description>
         </component>
         <component name="updateMultipleCells">
+            <displayName>Update Multiple Cells</displayName>
             <file>updateMultipleCells.xml</file>
             <description>Edit the content of multiple cells.</description>
         </component>
