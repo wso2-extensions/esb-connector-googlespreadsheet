@@ -26,7 +26,8 @@
                description="Specifying which fields to include in a partial response"/>
     <parameter name="majorDimension" description="The major dimension that results should use"/>
     <parameter name="values" description="The data that was to be written"/>
-    <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
+    <parameter name="responseVariable"
+               description="Name of the variable to which the output of the operation should be assigned."/>
     <parameter name="overwriteBody"
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
     <parameter name="responseVariable" description="Name of the variable to store operation output"/>

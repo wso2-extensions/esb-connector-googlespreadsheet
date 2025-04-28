@@ -27,7 +27,7 @@
                     "description": "The number of cells updated"
                   },
                   "updatedDimensions": {
-                    "type": "integer", 
+                    "type": "integer",
                     "description": "The number of dimensions updated"
                   }
                 }

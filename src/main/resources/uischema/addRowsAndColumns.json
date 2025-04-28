@@ -5,7 +5,7 @@
   "help": "<h1>Add Rows and Columns</h1><b>Append row/rows/column/columns of data.</b><br><br>",
   "elements": [
     {
-      "type": "attributeGroup", 
+      "type": "attributeGroup",
       "value": {
         "groupName": "General",
         "elements": [
@@ -67,7 +67,10 @@
               "name": "insertDataOption",
               "displayName": "Insert Data Option",
               "inputType": "combo",
-              "comboValues": ["OVERWRITE", "INSERT_ROWS"],
+              "comboValues": [
+                "OVERWRITE",
+                "INSERT_ROWS"
+              ],
               "defaultValue": "INSERT_ROWS",
               "required": "false",
               "helpTip": "How the input data should be inserted. OVERWRITE: Overwrites data. INSERT_ROWS: Inserts new rows for the data."
@@ -79,9 +82,12 @@
               "name": "valueInputOption",
               "displayName": "Value Input Option",
               "inputType": "combo",
-              "comboValues": ["RAW", "USER_ENTERED"],
+              "comboValues": [
+                "RAW",
+                "USER_ENTERED"
+              ],
               "defaultValue": "RAW",
-              "required": "true", 
+              "required": "true",
               "helpTip": "How the input data should be interpreted"
             }
           },
@@ -91,7 +97,10 @@
               "name": "majorDimension",
               "displayName": "Major Dimension",
               "inputType": "combo",
-              "comboValues": ["ROWS", "COLUMNS"],
+              "comboValues": [
+                "ROWS",
+                "COLUMNS"
+              ],
               "defaultValue": "ROWS",
               "required": "false",
               "helpTip": "The major dimension that results should use"

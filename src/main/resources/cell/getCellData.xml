@@ -24,7 +24,8 @@
     <parameter name="cellId" description="Cell ID (e.g. A1) in BASIC mode"/>
     <parameter name="range" description="The A1 notation range in ADVANCED mode"/>
     <parameter name="valueRenderOption" description="How values should be rendered in the output"/>
-    <parameter name="dateTimeRenderOption" description="How dates, times, and durations should be represented in the output"/>
+    <parameter name="dateTimeRenderOption"
+               description="How dates, times, and durations should be represented in the output"/>
     <parameter name="fields" description="Specifying which fields to include in a partial response"/>
     <parameter name="majorDimension" description="The major dimension that results should use"/>
     <parameter name="responseVariable" description="Name of the variable to store operation output"/>

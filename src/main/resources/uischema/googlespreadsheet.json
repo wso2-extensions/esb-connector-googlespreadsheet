@@ -1,100 +1,100 @@
 {
-    "connectorName": "googlespreadsheet",
-    "connectionName": "GOOGLESPREADSHEET",
-    "title": "Google Sheets Connection",
-    "help": "<h1>Google Sheets Connector</h1> <b>The Google Sheets connector allows you to connect to Google Sheets and perform various operations.",
-    "testConnectionEnabled": false,
-    "elements": [
-      {
-        "type": "attribute",
-        "value": {
-          "name": "connectionName",
-          "displayName": "Connection Name",
-          "inputType": "string",
-          "defaultValue": "GOOGLESPREADSHEET_CONNECTION_1",
-          "required": "true",
-          "helpTip": "The name for the Google Sheets connection",
-          "validation": "nameWithoutSpecialCharactors"
-        }
-      },
-      {
-        "type": "attributeGroup",
-        "value": {
-          "groupName": "General",
-          "elements": [
-            {
-              "type": "attributeGroup",
-              "value": {
-                "groupName": "Basic",
-                "elements": [
-                  {
-                    "type": "attribute",
-                    "value": {
-                      "name": "clientId",
-                      "displayName": "Client ID",
-                      "inputType": "stringOrExpression",
-                      "defaultValue": "",
-                      "required": "true",
-                      "helpTip": "Client ID used to connect with Google Sheets"
-                    }
-                  },
-                  {
-                    "type": "attribute",
-                    "value": {
-                      "name": "clientSecret",
-                      "displayName": "Client Secret",
-                      "inputType": "stringOrExpression",
-                      "defaultValue": "",
-                      "required": "true",
-                      "helpTip": "Client Secret to connect with Google Sheets"
-                    }
-                  },
-                  {
-                    "type": "attribute",
-                    "value": {
-                      "name": "refreshToken",
-                      "displayName": "Refresh Token",
-                      "inputType": "stringOrExpression",
-                      "defaultValue": "",
-                      "required": "true",
-                      "helpTip": "Refresh Token used to connect with Google Sheets"
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "type": "attributeGroup",
-              "value": {
-                "groupName": "API Details",
-                "elements": [
-                  {
-                    "type": "attribute",
-                    "value": {
-                      "name": "apiUrl",
-                      "displayName": "API URL",
-                      "inputType": "stringOrExpression",
-                      "defaultValue": "https://sheets.googleapis.com/v4/spreadsheets",
-                      "required": "false",
-                      "helpTip": "API URL used to connect with Google Sheets"
-                    }
-                  },
-                  {
-                    "type": "attribute",
-                    "value": {
-                      "name": "tokenEndpoint",
-                      "displayName": "Token URL",
-                      "inputType": "stringOrExpression",
-                      "defaultValue": "https://oauth2.googleapis.com/token",
-                      "required": "false",
-                      "helpTip": "Token URL used to connect with Google Sheets"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
+  "connectorName": "googlespreadsheet",
+  "connectionName": "GOOGLESPREADSHEET",
+  "title": "Google Sheets Connection",
+  "help": "<h1>Google Sheets Connector</h1> <b>The Google Sheets connector allows you to connect to Google Sheets and perform various operations.",
+  "testConnectionEnabled": false,
+  "elements": [
+    {
+      "type": "attribute",
+      "value": {
+        "name": "connectionName",
+        "displayName": "Connection Name",
+        "inputType": "string",
+        "defaultValue": "GOOGLESPREADSHEET_CONNECTION_1",
+        "required": "true",
+        "helpTip": "The name for the Google Sheets connection",
+        "validation": "nameWithoutSpecialCharactors"
       }
-    ]
-  }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "clientId",
+                    "displayName": "Client ID",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Client ID used to connect with Google Sheets"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "clientSecret",
+                    "displayName": "Client Secret",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Client Secret to connect with Google Sheets"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "refreshToken",
+                    "displayName": "Refresh Token",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Refresh Token used to connect with Google Sheets"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "API Details",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "apiUrl",
+                    "displayName": "API URL",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "https://sheets.googleapis.com/v4/spreadsheets",
+                    "required": "false",
+                    "helpTip": "API URL used to connect with Google Sheets"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "tokenEndpoint",
+                    "displayName": "Token URL",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "https://oauth2.googleapis.com/token",
+                    "required": "false",
+                    "helpTip": "Token URL used to connect with Google Sheets"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

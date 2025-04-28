@@ -21,7 +21,8 @@
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
     <parameter name="requests" description="The request body to move dimension."/>
     <parameter name="fields" description="Specifying which fields to include in a partial response"/>
-    <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
+    <parameter name="responseVariable"
+               description="Name of the variable to which the output of the operation should be assigned."/>
     <parameter name="overwriteBody"
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
     <parameter name="responseVariable" description="Name of the variable to store operation output"/>

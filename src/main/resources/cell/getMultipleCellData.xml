@@ -21,10 +21,12 @@
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
     <parameter name="ranges" description="The A1 notation of multiple ranges to retrieve"/>
     <parameter name="valueRenderOption" description="How values should be rendered in the output"/>
-    <parameter name="dateTimeRenderOption" description="How dates, times, and durations should be represented in the output"/>
+    <parameter name="dateTimeRenderOption"
+               description="How dates, times, and durations should be represented in the output"/>
     <parameter name="fields" description="Specifying which fields to include in a partial response"/>
     <parameter name="majorDimension" description="The major dimension that results should use"/>
-    <parameter name="responseVariable" description="Name of the variable to which the output of the operation should be assigned."/>
+    <parameter name="responseVariable"
+               description="Name of the variable to which the output of the operation should be assigned."/>
     <parameter name="overwriteBody"
                description="Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."/>
     <parameter name="responseVariable" description="Name of the variable to store operation output"/>

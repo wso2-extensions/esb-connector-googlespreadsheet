@@ -57,7 +57,11 @@
               "name": "valueRenderOption",
               "displayName": "Value Render Option",
               "inputType": "combo",
-              "comboValues": ["FORMATTED_VALUE", "UNFORMATTED_VALUE", "FORMULA"],
+              "comboValues": [
+                "FORMATTED_VALUE",
+                "UNFORMATTED_VALUE",
+                "FORMULA"
+              ],
               "required": "false",
               "helpTip": "How values should be rendered in the output"
             }
@@ -68,7 +72,10 @@
               "name": "dateTimeRenderOption",
               "displayName": "Date Time Render Option",
               "inputType": "combo",
-              "comboValues": ["SERIAL_NUMBER", "FORMATTED_STRING"],
+              "comboValues": [
+                "SERIAL_NUMBER",
+                "FORMATTED_STRING"
+              ],
               "required": "false",
               "helpTip": "How dates, times, and durations should be rendered in the output"
             }
@@ -79,7 +86,10 @@
               "name": "majorDimension",
               "displayName": "Major Dimension",
               "inputType": "combo",
-              "comboValues": ["ROWS", "COLUMNS"],
+              "comboValues": [
+                "ROWS",
+                "COLUMNS"
+              ],
               "defaultValue": "ROWS",
               "required": "false",
               "helpTip": "The major dimension that results should use"

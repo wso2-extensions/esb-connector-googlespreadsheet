@@ -138,7 +138,7 @@
             }
           },
           {
-            "type": "attribute", 
+            "type": "attribute",
             "value": {
               "name": "majorDimension",
               "displayName": "Major Dimension",

@@ -37,7 +37,7 @@
       }
     },
     "attributes": {
-      "description": "Metadata about the operation", 
+      "description": "Metadata about the operation",
       "properties": {
         "statusCode": {
           "description": "HTTP status code of the API response"

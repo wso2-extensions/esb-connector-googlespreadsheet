@@ -47,7 +47,10 @@
               "name": "valueInputOption",
               "displayName": "Value Input Option",
               "inputType": "combo",
-              "comboValues": ["RAW", "USER_ENTERED"],
+              "comboValues": [
+                "RAW",
+                "USER_ENTERED"
+              ],
               "defaultValue": "RAW",
               "required": "true",
               "helpTip": "How the input data should be interpreted"
