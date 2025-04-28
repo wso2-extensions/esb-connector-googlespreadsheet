@@ -15,162 +15,143 @@
     ],
     "releases": [
         {
-            "tagName": "v3.0.2",
+            "tagName": "v4.0.0",
             "products": [
-                "MI 4.4.0",
-                "MI 4.3.0",
-                "MI 4.2.0",
-                "MI 4.1.0",
-                "MI 4.0.0"
+                "MI 4.4.0"
             ],
             "operations": [
                 {
-                    "name": "init",
-                    "description": "Get the basic details of API",
-                    "isHidden": false
-                },
-                {
-                    "name": "getAccessTokenFromRefreshToken",
-                    "description": "Get the access token from refresh token",
-                    "isHidden": false
-                },
-                {
-                    "name": "getSheetMetaData",
+                    "name": "Get Sheet Metadata",
                     "description": "provides a feed to access the sheet metadata contained within a given spreadsheet.",
                     "isHidden": false
                 },
                 {
-                    "name": "addSheetBatchRequest",
-                    "description": "Add a sheet or multiple sheets to a spreadsheet.",
-                    "isHidden": false
-                },
-                {
-                    "name": "updateSheetPropertiesBatchRequest",
-                    "description": "Update all sheet properties.",
-                    "isHidden": false
-                },
-                {
-                    "name": "deleteSheetBatchRequest",
-                    "description": "Remove a sheet or multiple sheets from a given spreadsheet.",
-                    "isHidden": false
-                },
-                {
-                    "name": "copyTo",
-                    "description": "Copies a single sheet from a spreadsheet to another spreadsheet.",
-                    "isHidden": false
-                },
-                {
-                    "name": "createSpreadsheet",
+                    "name": "Create New Sheet",
                     "description": "creates a new spreadsheet.",
                     "isHidden": false
                 },
                 {
-                    "name": "addRowsColumnsData",
+                    "name": "Add Sheet",
+                    "description": "Add a sheet or multiple sheets to a spreadsheet.",
+                    "isHidden": false
+                },
+                {
+                    "name": "Delete Sheet",
+                    "description": "Remove a sheet or multiple sheets from a given spreadsheet.",
+                    "isHidden": false
+                },
+                {
+                    "name": "Copy Sheet",
+                    "description": "Copies a single sheet from a spreadsheet to another spreadsheet.",
+                    "isHidden": false
+                },
+                {
+                    "name": "Update Sheet Properties",
+                    "description": "Update all sheet properties.",
+                    "isHidden": false
+                },
+                {
+                    "name": "Add Rows And Columns",
                     "description": "Append row/rows/column/columns of data.",
                     "isHidden": false
                 },
                 {
-                    "name": "deleteDimensionBatchRequest",
+                    "name": "Delete Dimension",
                     "description": "removing rows, columns and remove part of a row or column.",
                     "isHidden": false
                 },
                 {
-                    "name": "getCellData",
+                    "name": "Get Cell Data",
                     "description": "Retrieve any set of cell data from a sheet and cell contents as input values (as would be entered by a user at a keyboard) and/or the outputs of formula (if numeric)",
                     "isHidden": false
                 },
                 {
-                    "name": "getMultipleCellData",
+                    "name": "Get Multiple Cell Data",
                     "description": "Retrieve any set of cell data including multiple ranges from a sheet and cell contents as input values (as would be entered by a user at a keyboard) and/or the outputs of formula (if numeric)",
                     "isHidden": false
                 },
                 {
-                    "name": "editCell",
+                    "name": "Edit Cell Data",
                     "description": "Edit the content of the cell with new values.",
                     "isHidden": false
                 },
                 {
-                    "name": "editMultipleCell",
+                    "name": "Update Multiple Cells",
                     "description": "Edit the content of multiple cell with new values.",
                     "isHidden": false
                 },
                 {
-                    "name": "updateCellsBatchRequest",
-                    "description": "Updates all cells in a range with new data that can be cell value, formatting.",
-                    "isHidden": false
-                },
-                {
-                    "name": "appendDimensionBatchRequest",
+                    "name": "Append Dimension",
                     "description": "Append empty rows or columns at the end of the sheet.",
                     "isHidden": false
                 },
                 {
-                    "name": "updateBordersBatchRequest",
+                    "name": "Update Cell Borders",
                     "description": "Edit cell borders",
                     "isHidden": false
                 },
                 {
-                    "name": "repeatCellsBatchRequest",
+                    "name": "Repeat Cell Style",
                     "description": "Repeat formatting of the cell into over a range of cells.",
                     "isHidden": false
                 },
                 {
-                    "name": "mergeCellsBatchRequest",
+                    "name": "Merge Cells",
                     "description": "Merge range of cells into a one cell.",
                     "isHidden": false
                 },
                 {
-                    "name": "setDataValidationBatchRequest",
+                    "name": "Set Data Validation",
                     "description": "Apply data validation rule to a range.",
                     "isHidden": false
                 },
                 {
-                    "name": "copyPasteBatchRequest",
+                    "name": "Copy Range",
                     "description": "Copy cell formatting in one range and paste it into another range on the same sheet.",
                     "isHidden": false
                 },
                 {
-                    "name": "cutPasteBatchRequest",
+                    "name": "Cut Range",
                     "description": "cuts the one range and pastes its data, formats, formulas, and merges to the another range on the same sheet.",
                     "isHidden": false
                 },
                 {
-                    "name": "updateConditionalFormatRuleBatchRequest",
+                    "name": "Update Conditional Format Rule",
                     "description": "Update a conditional formatting rule or its priority.",
                     "isHidden": false
                 },
                 {
-                    "name": "addConditionalFormatRuleBatchRequest",
+                    "name": "Add Conditional Format Rule",
                     "description": "Establishes a new conditional formatting rule.",
                     "isHidden": false
                 },
                 {
-                    "name": "deleteConditionalFormatRuleBatchRequest",
+                    "name": "Delete Conditional Format Rule",
                     "description": "Delete a conditional formatting rule.",
                     "isHidden": false
                 },
                 {
-                    "name": "updateDimensionPropertiesBatchRequest",
+                    "name": "Update Dimension Properties",
                     "description": "Adjust column width or row height.",
                     "isHidden": false
                 },
                 {
-                    "name": "autoResizeDimensionsBatchRequest",
+                    "name": "Resize Dimension",
                     "description": "Automatically resize a column.",
                     "isHidden": false
                 },
                 {
-                    "name": "insertDimensionBatchRequest",
+                    "name": "Insert Dimension",
                     "description": "Insert an empty row or column at the end or in the middle.",
                     "isHidden": false
                 },
                 {
-                    "name": "moveDimensionBatchRequest",
+                    "name": "Move Dimension",
                     "description": "Move a row or column / range of rows or columns.",
                     "isHidden": false
                 },
                 {
-                    "name": "sortRangeBatchRequest",
+                    "name": "Sort Range",
                     "description": "Sort a range with multiple sorting specifications.",
                     "isHidden": false
                 }
@@ -179,8 +160,9 @@
             "isHidden": false
         },
         {
-            "tagName": "org.wso2.carbon.connector.googlespreadsheet-3.0.1",
+            "tagName": "v3.0.2",
             "products": [
+                "MI 4.4.0",
                 "MI 4.3.0",
                 "MI 4.2.0",
                 "MI 4.1.0",
