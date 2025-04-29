@@ -1,0 +1,101 @@
+{
+  "connectorName": "googlespreadsheet",
+  "operationName": "getSheetMetadata",
+  "title": "Get Sheet Metadata",
+  "help": "<h1>Get Sheet Metadata</h1><b>Retrieve metadata about a sheet.</b><br><br>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "GOOGLESPREADSHEET"
+              ],
+              "defaultType": "connection.GOOGLESPREADSHEET",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "spreadsheetId",
+              "displayName": "Spreadsheet ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "Unique identifier of the spreadsheet"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ranges",
+              "displayName": "Ranges",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "The ranges to retrieve metadata for (optional)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "includeGridData",
+              "displayName": "Include Grid Data",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "required": "false",
+              "helpTip": "Whether to include grid data in the response"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "fields",
+              "displayName": "Fields",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "Specifying which fields to include in a partial response"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

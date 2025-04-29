@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "replies": {
+          "description": "The reply of the updates",
+          "properties": {
+            "repeatCell": {
+              "description": "The result of repeating cell formatting",
+              "properties": {
+                "range": {
+                  "description": "The range where cell formatting was repeated",
+                  "properties": {
+                    "sheetId": {
+                      "description": "The sheet ID containing the range"
+                    },
+                    "startRowIndex": {
+                      "description": "The start row (inclusive) of the range"
+                    },
+                    "endRowIndex": {
+                      "description": "The end row (exclusive) of the range"
+                    },
+                    "startColumnIndex": {
+                      "description": "The start column (inclusive) of the range"
+                    },
+                    "endColumnIndex": {
+                      "description": "The end column (exclusive) of the range"
+                    }
+                  }
+                },
+                "cell": {
+                  "description": "The cell format that was repeated",
+                  "properties": {
+                    "userEnteredFormat": {
+                      "description": "The format that was applied"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "connectorName": "googlespreadsheet",
+  "operationName": "editCellData",
+  "title": "Edit Cell Content",
+  "help": "<h1>Edit Cell</h1><b>Updates the content of a cell in a spreadsheet with new values.</b><br><br>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "GOOGLESPREADSHEET"
+              ],
+              "defaultType": "connection.GOOGLESPREADSHEET",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Cell Properties",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configMode",
+              "displayName": "Configuration Mode",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "BASIC",
+                "ADVANCED"
+              ],
+              "defaultValue": "BASIC",
+              "required": "false",
+              "helpTip": "Select the Configuration Mode. BASIC shows essential fields, ADVANCED shows all options."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "spreadsheetId",
+              "displayName": "Spreadsheet ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "Unique identifier of the spreadsheet"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sheetName",
+              "displayName": "Sheet Name (Tab Level)",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "defaultValue": "Sheet1",
+              "enableCondition": [
+                {
+                  "configMode": "BASIC"
+                }
+              ],
+              "helpTip": "Name of the sheet (tab) containing the cell (e.g. Sheet1)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "cellId",
+              "displayName": "Cell ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "enableCondition": [
+                {
+                  "configMode": "BASIC"
+                }
+              ],
+              "helpTip": "The cell ID in A1 notation (e.g. A1, B2, etc)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "value",
+              "displayName": "Cell Value",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "enableCondition": [
+                {
+                  "configMode": "BASIC"
+                }
+              ],
+              "helpTip": "The new value to set in the cell"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "range",
+              "displayName": "Cell Range",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "The A1 notation of the cell range to update (e.g. Sheet1!A1)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "valueInputOption",
+              "displayName": "Value Input Option",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "RAW",
+                "USER_ENTERED"
+              ],
+              "defaultValue": "USER_ENTERED",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "How the input data should be interpreted"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "majorDimension",
+              "displayName": "Major Dimension",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "ROWS",
+                "COLUMNS"
+              ],
+              "defaultValue": "ROWS",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "The major dimension of the values"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "values",
+              "displayName": "Values",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "Array of arrays of values to update cells with. Format: [[\"value1\", \"value2\"]]"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "fields",
+              "displayName": "Fields",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "Specifying which fields to include in partial response"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

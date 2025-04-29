@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "responses": {
+          "description": "The reply of the updates. This maps 1:1 with the requests",
+          "properties": {
+            "cutPaste": {
+              "description": "The result of cutting and pasting a range",
+              "properties": {
+                "cutRange": {
+                  "description": "The range that was cut",
+                  "properties": {
+                    "sheetId": {
+                      "description": "The sheet ID containing the range"
+                    },
+                    "startRowIndex": {
+                      "description": "The start row (inclusive) of the cut range"
+                    },
+                    "endRowIndex": {
+                      "description": "The end row (exclusive) of the cut range"
+                    },
+                    "startColumnIndex": {
+                      "description": "The start column (inclusive) of the cut range"
+                    },
+                    "endColumnIndex": {
+                      "description": "The end column (exclusive) of the cut range"
+                    }
+                  }
+                },
+                "pastedRange": {
+                  "description": "The range where the data was pasted",
+                  "properties": {
+                    "sheetId": {
+                      "description": "The sheet ID containing the range"
+                    },
+                    "startRowIndex": {
+                      "description": "The start row (inclusive) of the pasted range"
+                    },
+                    "endRowIndex": {
+                      "description": "The end row (exclusive) of the pasted range"
+                    },
+                    "startColumnIndex": {
+                      "description": "The start column (inclusive) of the pasted range"
+                    },
+                    "endColumnIndex": {
+                      "description": "The end column (exclusive) of the pasted range"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

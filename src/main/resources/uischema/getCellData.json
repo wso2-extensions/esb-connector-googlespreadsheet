@@ -1,0 +1,215 @@
+{
+  "connectorName": "googlespreadsheet",
+  "operationName": "getCellData",
+  "title": "Get Cell Content",
+  "help": "<h1>Get Cell Data</h1><b>Retrieves the contents of cells from a spreadsheet.</b><br><br>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "GOOGLESPREADSHEET"
+              ],
+              "defaultType": "connection.GOOGLESPREADSHEET",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Cell Properties",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configMode",
+              "displayName": "Configuration Mode",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "BASIC",
+                "ADVANCED"
+              ],
+              "defaultValue": "BASIC",
+              "required": "false",
+              "helpTip": "Select the Configuration Mode. BASIC shows essential fields, ADVANCED shows all options."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "spreadsheetId",
+              "displayName": "Spreadsheet ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "Unique identifier of the spreadsheet"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sheetName",
+              "displayName": "Sheet Name (Tab Level)",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "defaultValue": "Sheet1",
+              "enableCondition": [
+                {
+                  "configMode": "BASIC"
+                }
+              ],
+              "helpTip": "Name of the sheet (tab) containing the cell (e.g. Sheet1)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "cellId",
+              "displayName": "Cell ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "enableCondition": [
+                {
+                  "configMode": "BASIC"
+                }
+              ],
+              "helpTip": "The cell ID in A1 notation (e.g. A1, B2, etc)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "range",
+              "displayName": "Cell Range",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "The A1 notation of the cell range to retrieve (e.g. Sheet1!A1)"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "valueRenderOption",
+              "displayName": "Value Render Option",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "FORMATTED_VALUE",
+                "UNFORMATTED_VALUE",
+                "FORMULA"
+              ],
+              "defaultValue": "FORMATTED_VALUE",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "How values should be rendered in the output"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "dateTimeRenderOption",
+              "displayName": "DateTime Render Option",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "SERIAL_NUMBER",
+                "FORMATTED_STRING"
+              ],
+              "defaultValue": "FORMATTED_STRING",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "How dates, times, and durations should be represented"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "majorDimension",
+              "displayName": "Major Dimension",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "ROWS",
+                "COLUMNS"
+              ],
+              "defaultValue": "ROWS",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "The major dimension of the values"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "fields",
+              "displayName": "Fields",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "enableCondition": [
+                {
+                  "configMode": "ADVANCED"
+                }
+              ],
+              "helpTip": "Specifying which fields to include in partial response"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

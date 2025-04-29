@@ -22,10 +22,7 @@
         <component name="init">
             <file>init.xml</file>
             <description>Get the basic details of API</description>
-        </component>
-        <component name="getAccessTokenFromRefreshToken">
-            <file>getAccessTokenFromRefreshToken.xml</file>
-            <description>Get the access token from refresh token</description>
+            <hidden>true</hidden>
         </component>
     </subComponents>
 </component>

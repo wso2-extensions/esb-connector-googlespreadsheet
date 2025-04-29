@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Google Sheets API Update Dimension Properties Operation Response Schema",
+  "description": "Schema representing the output of the Update Dimension Properties operation in Google Sheets API",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "type": "string",
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "responses": {
+          "type": "array",
+          "description": "The reply of the updates. This maps 1:1 with the requests",
+          "items": {
+            "type": "object",
+            "properties": {
+              "updateDimensionProperties": {
+                "type": "object",
+                "description": "The result of updating dimension properties",
+                "properties": {
+                  "updatedCells": {
+                    "type": "integer",
+                    "description": "The number of cells updated"
+                  },
+                  "updatedDimensions": {
+                    "type": "integer",
+                    "description": "The number of dimensions updated"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

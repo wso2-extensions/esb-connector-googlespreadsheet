@@ -1,0 +1,98 @@
+{
+  "connectorName": "googlespreadsheet",
+  "operationName": "deleteConditionalFormatRule",
+  "title": "Delete Conditional Format Rule",
+  "help": "<h1>Delete Conditional Format Rule</h1><b>Delete an existing conditional formatting rule.</b><br><br>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "GOOGLESPREADSHEET"
+              ],
+              "defaultType": "connection.GOOGLESPREADSHEET",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "spreadsheetId",
+              "displayName": "Spreadsheet ID",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "Unique identifier of the spreadsheet"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Delete Configuration",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "requests",
+              "displayName": "Delete Requests",
+              "inputType": "stringOrExpression",
+              "required": "true",
+              "helpTip": "Array of delete conditional format rule requests"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "fields",
+              "displayName": "Fields",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "Specifying which fields to include in a partial response"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

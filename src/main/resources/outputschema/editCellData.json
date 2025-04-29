@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from updating cell data",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet that was updated"
+        },
+        "updatedRange": {
+          "description": "The range that was updated, in A1 notation"
+        },
+        "updatedRows": {
+          "description": "The number of rows that were updated"
+        },
+        "updatedColumns": {
+          "description": "The number of columns that were updated"
+        },
+        "updatedCells": {
+          "description": "The number of cells updated"
+        },
+        "updatedData": {
+          "description": "The values of the cells after updates"
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

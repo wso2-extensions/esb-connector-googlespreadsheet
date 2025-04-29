@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "replies": {
+          "description": "The reply of the updates",
+          "properties": {
+            "addSheet": {
+              "description": "The result of adding a sheet",
+              "properties": {
+                "properties": {
+                  "description": "The properties of the newly added sheet",
+                  "properties": {
+                    "sheetId": {
+                      "description": "The ID of the new sheet"
+                    },
+                    "title": {
+                      "description": "The name of the new sheet"
+                    },
+                    "index": {
+                      "description": "The index of the new sheet"
+                    },
+                    "sheetType": {
+                      "description": "The type of the new sheet"
+                    },
+                    "gridProperties": {
+                      "description": "Properties of the grid",
+                      "properties": {
+                        "rowCount": {
+                          "description": "The number of rows in the grid"
+                        },
+                        "columnCount": {
+                          "description": "The number of columns in the grid"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

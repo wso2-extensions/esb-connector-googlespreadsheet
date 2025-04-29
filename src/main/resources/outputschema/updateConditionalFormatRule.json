@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "replies": {
+          "description": "The reply of the updates",
+          "properties": {
+            "updateConditionalFormatRule": {
+              "description": "The result of updating a conditional format rule",
+              "properties": {
+                "oldRule": {
+                  "description": "The rule that was replaced",
+                  "properties": {
+                    "ranges": {
+                      "description": "The ranges this rule applied to"
+                    },
+                    "booleanRule": {
+                      "description": "The previous boolean rule",
+                      "properties": {
+                        "condition": {
+                          "description": "The condition of the rule"
+                        },
+                        "format": {
+                          "description": "The format that was applied if the condition evaluated to true"
+                        }
+                      }
+                    }
+                  }
+                },
+                "newRule": {
+                  "description": "The new updated rule",
+                  "properties": {
+                    "ranges": {
+                      "description": "The ranges this rule applies to"
+                    },
+                    "booleanRule": {
+                      "description": "The new boolean rule",
+                      "properties": {
+                        "condition": {
+                          "description": "The condition of the rule"
+                        },
+                        "format": {
+                          "description": "The format to apply if the condition evaluates to true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

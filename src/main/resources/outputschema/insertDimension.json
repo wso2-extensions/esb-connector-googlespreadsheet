@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "replies": {
+          "description": "The reply of the updates",
+          "properties": {
+            "insertDimension": {
+              "description": "The result of inserting dimensions",
+              "properties": {
+                "range": {
+                  "description": "The range where dimensions were inserted",
+                  "properties": {
+                    "sheetId": {
+                      "description": "The sheet ID containing the range"
+                    },
+                    "dimension": {
+                      "description": "The dimension being inserted (ROWS or COLUMNS)"
+                    },
+                    "startIndex": {
+                      "description": "The start (inclusive) of the range"
+                    },
+                    "endIndex": {
+                      "description": "The end (exclusive) of the range"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

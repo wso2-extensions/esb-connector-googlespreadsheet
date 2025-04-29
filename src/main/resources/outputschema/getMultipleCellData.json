@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from getting multiple ranges of values",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The ID of the spreadsheet the data was retrieved from"
+        },
+        "valueRanges": {
+          "description": "The requested ranges and their values",
+          "properties": {
+            "range": {
+              "description": "The range the values cover, in A1 notation"
+            },
+            "majorDimension": {
+              "description": "The major dimension of the values"
+            },
+            "values": {
+              "description": "The data that was retrieved"
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}

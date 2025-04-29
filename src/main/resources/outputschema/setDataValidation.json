@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "payload": {
+      "description": "The response from a batch update request",
+      "properties": {
+        "spreadsheetId": {
+          "description": "The spreadsheet the updates were applied to"
+        },
+        "replies": {
+          "description": "The reply of the updates",
+          "properties": {
+            "setDataValidation": {
+              "description": "The result of setting data validation",
+              "properties": {
+                "range": {
+                  "description": "The range where data validation was set",
+                  "properties": {
+                    "sheetId": {
+                      "description": "The sheet ID containing the range"
+                    },
+                    "startRowIndex": {
+                      "description": "The start row (inclusive) of the range"
+                    },
+                    "endRowIndex": {
+                      "description": "The end row (exclusive) of the range"
+                    },
+                    "startColumnIndex": {
+                      "description": "The start column (inclusive) of the range"
+                    },
+                    "endColumnIndex": {
+                      "description": "The end column (exclusive) of the range"
+                    }
+                  }
+                },
+                "rule": {
+                  "description": "The data validation rule that was set",
+                  "properties": {
+                    "condition": {
+                      "description": "The condition of the rule"
+                    },
+                    "inputMessage": {
+                      "description": "A message to show the user when adding data"
+                    },
+                    "strict": {
+                      "description": "Whether to enforce strict validation"
+                    },
+                    "showCustomUi": {
+                      "description": "Whether to show a custom UI for the validation"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "description": "Metadata about the operation",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code of the API response"
+        }
+      }
+    }
+  }
+}
