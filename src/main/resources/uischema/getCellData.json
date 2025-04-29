@@ -34,8 +34,8 @@
           {
             "type": "attribute",
             "value": {
-              "name": "configLevel",
-              "displayName": "Configuration Level",
+              "name": "configMode",
+              "displayName": "Configuration Mode",
               "inputType": "comboOrExpression",
               "comboValues": [
                 "BASIC",
@@ -43,7 +43,7 @@
               ],
               "defaultValue": "BASIC",
               "required": "false",
-              "helpTip": "Select the configuration level. BASIC shows essential fields, ADVANCED shows all options."
+              "helpTip": "Select the Configuration Mode. BASIC shows essential fields, ADVANCED shows all options."
             }
           },
           {
@@ -66,7 +66,7 @@
               "defaultValue": "Sheet1",
               "enableCondition": [
                 {
-                  "configLevel": "BASIC"
+                  "configMode": "BASIC"
                 }
               ],
               "helpTip": "Name of the sheet (tab) containing the cell (e.g. Sheet1)"
@@ -81,7 +81,7 @@
               "required": "true",
               "enableCondition": [
                 {
-                  "configLevel": "BASIC"
+                  "configMode": "BASIC"
                 }
               ],
               "helpTip": "The cell ID in A1 notation (e.g. A1, B2, etc)"
@@ -96,7 +96,7 @@
               "required": "true",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "The A1 notation of the cell range to retrieve (e.g. Sheet1!A1)"
@@ -117,7 +117,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "How values should be rendered in the output"
@@ -137,7 +137,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "How dates, times, and durations should be represented"
@@ -157,7 +157,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "The major dimension of the values"
@@ -172,7 +172,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "Specifying which fields to include in partial response"

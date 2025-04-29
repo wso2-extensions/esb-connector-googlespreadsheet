@@ -34,8 +34,8 @@
           {
             "type": "attribute",
             "value": {
-              "name": "configLevel",
-              "displayName": "Configuration Level",
+              "name": "configMode",
+              "displayName": "Configuration Mode",
               "inputType": "comboOrExpression",
               "comboValues": [
                 "BASIC",
@@ -43,7 +43,7 @@
               ],
               "defaultValue": "BASIC",
               "required": "false",
-              "helpTip": "Select the configuration level for the operation. BASIC will show only the basic attributes, while ADVANCED will show all attributes."
+              "helpTip": "Select the Configuration Mode for the operation. BASIC will show only the basic attributes, while ADVANCED will show all attributes."
             }
           },
           {
@@ -55,7 +55,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "BASIC"
+                  "configMode": "BASIC"
                 }
               ],
               "helpTip": "Title of the spreadsheet to be created."
@@ -71,7 +71,7 @@
               "defaultValue": "Sheet1",
               "enableCondition": [
                 {
-                  "configLevel": "BASIC"
+                  "configMode": "BASIC"
                 }
               ],
               "helpTip": "Name of the initial sheet to be created in the spreadsheet."
@@ -86,7 +86,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "Properties of the spreadsheet like title. Format: {\"title\": \"My Spreadsheet\"}"
@@ -100,7 +100,7 @@
               "inputType": "stringOrExpression",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "required": "false",
@@ -116,7 +116,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "Named ranges to create in the spreadsheet"
@@ -131,7 +131,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "Specifying which fields to include in a partial response"
@@ -146,7 +146,7 @@
               "required": "false",
               "enableCondition": [
                 {
-                  "configLevel": "ADVANCED"
+                  "configMode": "ADVANCED"
                 }
               ],
               "helpTip": "ID of the spreadsheet to be created. If not provided, a new spreadsheet will be created."

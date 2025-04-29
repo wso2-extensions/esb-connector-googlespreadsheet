@@ -18,7 +18,7 @@
 -->
 
 <template name="editCellData" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="configLevel" description="Mode of operation - BASIC or ADVANCED"/>
+    <parameter name="configMode" description="Mode of operation - BASIC or ADVANCED"/>
     <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet"/>
     <parameter name="sheetName" description="Name of the sheet (Tab Level) in BASIC mode"/>
     <parameter name="cellId" description="Cell ID (e.g. A1) in BASIC mode"/>
@@ -32,7 +32,7 @@
     <parameter name="overwriteBody" description="Replace Message Body with operation output"/>
     <sequence>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:_ACTIVE_ACCESS_TOKEN_)" scope="transport"/>
-        <property name="configLevel" expression="$func:configLevel"/>
+        <property name="configMode" expression="$func:configMode"/>
         <property name="uri.var.spreadsheetId" expression="$func:spreadsheetId"/>
         <property name="sheetName" expression="$func:sheetName"/>
         <property name="cellId" expression="$func:cellId"/>
@@ -44,7 +44,7 @@
         <property name="fields" expression="$func:fields"/>
         <script language="rhinoJs">
             <![CDATA[
-                var configLevel = mc.getProperty("configLevel") || "BASIC";
+                var configMode = mc.getProperty("configMode") || "BASIC";
                 var sheetName = mc.getProperty("sheetName");
                 var cellId = mc.getProperty("cellId");
                 var range = mc.getProperty("range");
@@ -56,7 +56,7 @@
 
                 // Handle BASIC vs ADVANCED mode for range construction
                 var finalRange;
-                if (configLevel == "BASIC") {
+                if (configMode == "BASIC") {
                     if (!sheetName || !cellId || !value) {
                         throw new Error("sheetName, cellId, and value are required in BASIC mode");
                     }
@@ -82,7 +82,7 @@
                 
                 payload = {};
                 
-                if (configLevel == "BASIC") {
+                if (configMode == "BASIC") {
                     payload.values = [[value]];
                     payload.majorDimension = "ROWS";
                 } else {

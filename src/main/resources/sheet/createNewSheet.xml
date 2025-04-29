@@ -18,20 +18,20 @@
 -->
 
 <template name="createNewSheet" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="configLevel" description="configLevel of operation - BASIC or ADVANCED"/>
-    <parameter name="title" description="Title of the spreadsheet (Required for BASIC configLevel)"/>
-    <parameter name="initialSheetName" description="Name of the first sheet (Optional for BASIC configLevel)"/>
-    <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet (For ADVANCED configLevel)"/>
-    <parameter name="properties" description="Properties of the spreadsheet (For ADVANCED configLevel)"/>
-    <parameter name="sheets" description="List of sheets and their properties (For ADVANCED configLevel)"/>
-    <parameter name="namedRanges" description="Create names that refer to cells (For ADVANCED configLevel)"/>
+    <parameter name="configMode" description="configMode of operation - BASIC or ADVANCED"/>
+    <parameter name="title" description="Title of the spreadsheet (Required for BASIC configMode)"/>
+    <parameter name="initialSheetName" description="Name of the first sheet (Optional for BASIC configMode)"/>
+    <parameter name="spreadsheetId" description="Unique identifier of the spreadsheet (For ADVANCED configMode)"/>
+    <parameter name="properties" description="Properties of the spreadsheet (For ADVANCED configMode)"/>
+    <parameter name="sheets" description="List of sheets and their properties (For ADVANCED configMode)"/>
+    <parameter name="namedRanges" description="Create names that refer to cells (For ADVANCED configMode)"/>
     <parameter name="fields" description="Fields to include in partial response"/>
     <parameter name="responseVariable" description="Name of the variable to store operation output"/>
     <parameter name="overwriteBody" description="Replace Message Body with operation output"/>
     <sequence>
         <header name="Authorization" expression="fn:concat('Bearer ', $ctx:_ACTIVE_ACCESS_TOKEN_)" scope="transport"/>
         <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
-        <property name="configLevel" expression="$func:configLevel"/>
+        <property name="configMode" expression="$func:configMode"/>
         <property name="title" expression="$func:title"/>
         <property name="initialSheetName" expression="$func:initialSheetName"/>
         <property name="spreadsheetId" expression="$func:spreadsheetId"/>
@@ -41,7 +41,7 @@
         <property name="fields" expression="$func:fields"/>
         <script language="rhinoJs">
             <![CDATA[
-                var configLevel = mc.getProperty("configLevel") || "BASIC";
+                var configMode = mc.getProperty("configMode") || "BASIC";
                 var title = mc.getProperty("title");
                 var initialSheetName = mc.getProperty("initialSheetName") || "Sheet1";
                 var spreadsheetId = mc.getProperty("spreadsheetId");
@@ -61,9 +61,9 @@
                 
                 payload = {};
                 
-                if (configLevel == "BASIC") {
+                if (configMode == "BASIC") {
                     if (!title) {
-                        throw new Error("Title is required in BASIC configLevel");
+                        throw new Error("Title is required in BASIC configMode");
                     }
                     payload.properties = { title: title };
                     payload.sheets = [{ 
@@ -72,7 +72,7 @@
                         }
                     }];
                 } else {
-                    // Advanced configLevel
+                    // Advanced configMode
                     if (spreadsheetId != null && spreadsheetId != "") {
                         payload.spreadsheetId = spreadsheetId;
                     }
