@@ -15,149 +15,1364 @@
     ],
     "releases": [
         {
-            "tagName": "v4.0.0",
+            "tagName": "v4.0.1",
             "products": [
                 "MI 4.4.0"
             ],
             "operations": [
                 {
-                    "name": "Get Sheet Metadata",
-                    "description": "provides a feed to access the sheet metadata contained within a given spreadsheet.",
+                    "name": "deleteSheet",
+                    "description": "Delete Sheet",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of delete sheet requests specifying the sheet IDs to delete"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Create New Sheet",
-                    "description": "creates a new spreadsheet.",
+                    "name": "copySheet",
+                    "description": "Copy Sheet",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of copy sheet requests specifying source sheet ID and destination properties"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Add Sheet",
-                    "description": "Add a sheet or multiple sheets to a spreadsheet.",
+                    "name": "updateCellBorders",
+                    "description": "Update Cell Borders",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of border update requests specifying the range and border styles"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Delete Sheet",
-                    "description": "Remove a sheet or multiple sheets from a given spreadsheet.",
+                    "name": "sortRange",
+                    "description": "Sort Range",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of sort requests. Each request should specify the range to sort and sort specifications. Format: [{range: {sheetId: 0, startRowIndex: 0, endRowIndex: 10, startColumnIndex: 0, endColumnIndex: 5}, sortSpecs: [{dimensionIndex: 0, sortOrder: 'ASCENDING'}]}]"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Copy Sheet",
-                    "description": "Copies a single sheet from a spreadsheet to another spreadsheet.",
+                    "name": "resizeDimension",
+                    "description": "Resize Dimension",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of resize dimension requests specifying the dimensions to resize"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Update Sheet Properties",
-                    "description": "Update all sheet properties.",
+                    "name": "updateSheetProperties",
+                    "description": "Update Sheet Properties",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of update sheet properties requests"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Add Rows And Columns",
-                    "description": "Append row/rows/column/columns of data.",
+                    "name": "editCellData",
+                    "description": "Edit Cell Content",
+                    "params": [
+                        {
+                            "name": "configMode",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "BASIC",
+                            "description": "Select the Configuration Mode. BASIC shows essential fields, ADVANCED shows all options."
+                        },
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "sheetName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "Sheet1",
+                            "description": "Name of the sheet (tab) containing the cell (e.g. Sheet1)"
+                        },
+                        {
+                            "name": "cellId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The cell ID in A1 notation (e.g. A1, B2, etc)"
+                        },
+                        {
+                            "name": "value",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The new value to set in the cell"
+                        },
+                        {
+                            "name": "range",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The A1 notation of the cell range to update (e.g. Sheet1!A1)"
+                        },
+                        {
+                            "name": "valueInputOption",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "USER_ENTERED",
+                            "description": "How the input data should be interpreted"
+                        },
+                        {
+                            "name": "majorDimension",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "ROWS",
+                            "description": "The major dimension of the values"
+                        },
+                        {
+                            "name": "values",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Array of arrays of values to update cells with. Format: [[\"value1\", \"value2\"]]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Delete Dimension",
-                    "description": "removing rows, columns and remove part of a row or column.",
+                    "name": "updateConditionalFormatRule",
+                    "description": "Update Conditional Format Rule",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of update conditional format rule requests"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Get Cell Data",
-                    "description": "Retrieve any set of cell data from a sheet and cell contents as input values (as would be entered by a user at a keyboard) and/or the outputs of formula (if numeric)",
+                    "name": "updateDimensionProperties",
+                    "description": "Update Dimension Properties",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of update dimension property requests. Format: [{range: {sheetId: 0, dimension: 'COLUMNS', startIndex: 0, endIndex: 1}, properties: {pixelSize: 100}, fields: 'pixelSize'}]"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Get Multiple Cell Data",
-                    "description": "Retrieve any set of cell data including multiple ranges from a sheet and cell contents as input values (as would be entered by a user at a keyboard) and/or the outputs of formula (if numeric)",
+                    "name": "cutRange",
+                    "description": "Cut Range",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of cut requests specifying source and destination ranges"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Edit Cell Data",
-                    "description": "Edit the content of the cell with new values.",
+                    "name": "mergeCells",
+                    "description": "Merge Cells",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of merge cells requests. Format: [{mergeCells: {range: {sheetId: 0, startRowIndex: 0, endRowIndex: 2, startColumnIndex: 0, endColumnIndex: 2}, mergeType: \"MERGE_ALL\"}}]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Update Multiple Cells",
-                    "description": "Edit the content of multiple cell with new values.",
+                    "name": "setDataValidation",
+                    "description": "Set Data Validation",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of data validation rule requests"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Append Dimension",
-                    "description": "Append empty rows or columns at the end of the sheet.",
+                    "name": "getCellData",
+                    "description": "Get Cell Content",
+                    "params": [
+                        {
+                            "name": "configMode",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "BASIC",
+                            "description": "Select the Configuration Mode. BASIC shows essential fields, ADVANCED shows all options."
+                        },
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "sheetName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "Sheet1",
+                            "description": "Name of the sheet (tab) containing the cell (e.g. Sheet1)"
+                        },
+                        {
+                            "name": "cellId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The cell ID in A1 notation (e.g. A1, B2, etc)"
+                        },
+                        {
+                            "name": "range",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The A1 notation of the cell range to retrieve (e.g. Sheet1!A1)"
+                        },
+                        {
+                            "name": "valueRenderOption",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "FORMATTED_VALUE",
+                            "description": "How values should be rendered in the output"
+                        },
+                        {
+                            "name": "dateTimeRenderOption",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "FORMATTED_STRING",
+                            "description": "How dates, times, and durations should be represented"
+                        },
+                        {
+                            "name": "majorDimension",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "ROWS",
+                            "description": "The major dimension of the values"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Update Cell Borders",
-                    "description": "Edit cell borders",
+                    "name": "getSheetMetadata",
+                    "description": "Get Sheet Metadata",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "ranges",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "The ranges to retrieve metadata for (optional)"
+                        },
+                        {
+                            "name": "includeGridData",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Whether to include grid data in the response"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Repeat Cell Style",
-                    "description": "Repeat formatting of the cell into over a range of cells.",
+                    "name": "repeatCellStyle",
+                    "description": "Repeat Cell Style",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of repeat cell requests specifying the range and cell style to repeat"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Merge Cells",
-                    "description": "Merge range of cells into a one cell.",
+                    "name": "insertDimension",
+                    "description": "Insert Dimension",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of insert dimension requests. Format: [{insertDimension: {range: {sheetId: 0, dimension: \"ROWS\", startIndex: 0, endIndex: 2}, inheritFromBefore: true}}]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Set Data Validation",
-                    "description": "Apply data validation rule to a range.",
+                    "name": "appendDimension",
+                    "description": "Append Dimension",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of append dimension requests. Format: [{appendDimension: {sheetId: 0, dimension: \"ROWS\", length: 2}}]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Copy Range",
-                    "description": "Copy cell formatting in one range and paste it into another range on the same sheet.",
+                    "name": "copyRange",
+                    "description": "Copy Range",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of copy requests specifying source and destination ranges. Format: [{source: {sheetId: 0, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 1}, destination: {sheetId: 0, startRowIndex: 1, endRowIndex: 2, startColumnIndex: 0, endColumnIndex: 1}}]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Cut Range",
-                    "description": "cuts the one range and pastes its data, formats, formulas, and merges to the another range on the same sheet.",
+                    "name": "deleteConditionalFormatRule",
+                    "description": "Delete Conditional Format Rule",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of delete conditional format rule requests"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Update Conditional Format Rule",
-                    "description": "Update a conditional formatting rule or its priority.",
+                    "name": "updateMultipleCells",
+                    "description": "Update Multiple Cells",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "valueInputOption",
+                            "type": "combo",
+                            "required": true,
+                            "defaultValue": "RAW",
+                            "description": "How the input data should be interpreted"
+                        },
+                        {
+                            "name": "data",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The data to write. Should be an array of update objects containing range and values. Format: [{range: 'Sheet1!A1:B2', values: [[1,2],[3,4]]}, ...]"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Add Conditional Format Rule",
-                    "description": "Establishes a new conditional formatting rule.",
+                    "name": "addSheet",
+                    "description": "Add Sheet",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "JSON array of requests to apply to the spreadsheet. Each request should contain an addSheet field with properties like title, gridProperties, etc."
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Delete Conditional Format Rule",
-                    "description": "Delete a conditional formatting rule.",
+                    "name": "addRowsAndColumns",
+                    "description": "Add Rows and Columns",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "range",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The A1 notation of where to append the data (e.g. 'Sheet1!A:B' for columns A-B)"
+                        },
+                        {
+                            "name": "values",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The data to append. Should be an array of arrays. Each inner array represents a row."
+                        },
+                        {
+                            "name": "insertDataOption",
+                            "type": "combo",
+                            "required": false,
+                            "defaultValue": "INSERT_ROWS",
+                            "description": "How the input data should be inserted. OVERWRITE: Overwrites data. INSERT_ROWS: Inserts new rows for the data."
+                        },
+                        {
+                            "name": "valueInputOption",
+                            "type": "combo",
+                            "required": true,
+                            "defaultValue": "RAW",
+                            "description": "How the input data should be interpreted"
+                        },
+                        {
+                            "name": "majorDimension",
+                            "type": "combo",
+                            "required": false,
+                            "defaultValue": "ROWS",
+                            "description": "The major dimension that results should use"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Update Dimension Properties",
-                    "description": "Adjust column width or row height.",
+                    "name": "deleteDimension",
+                    "description": "Delete Dimension",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of delete dimension requests. Format: [{deleteDimension: {range: {sheetId: 0, dimension: \"ROWS\", startIndex: 0, endIndex: 2}}}]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Resize Dimension",
-                    "description": "Automatically resize a column.",
+                    "name": "moveDimension",
+                    "description": "Move Dimension",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of move dimension requests. Format: [{moveDimension: {source: {sheetId: 0, dimension: \"ROWS\", startIndex: 0, endIndex: 2}, destinationIndex: 3}}]"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Insert Dimension",
-                    "description": "Insert an empty row or column at the end or in the middle.",
+                    "name": "addConditionalFormatRule",
+                    "description": "Add Conditional Format Rule",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "requests",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Array of conditional format rules to add"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Move Dimension",
-                    "description": "Move a row or column / range of rows or columns.",
+                    "name": "getMultipleCellData",
+                    "description": "Get Multiple Cell Data",
+                    "params": [
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the spreadsheet"
+                        },
+                        {
+                            "name": "ranges",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The A1 notations of the ranges to retrieve (comma-separated, e.g. 'Sheet1!A1:B2,Sheet1!D1:E2')"
+                        },
+                        {
+                            "name": "valueRenderOption",
+                            "type": "combo",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "How values should be rendered in the output"
+                        },
+                        {
+                            "name": "dateTimeRenderOption",
+                            "type": "combo",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "How dates, times, and durations should be rendered in the output"
+                        },
+                        {
+                            "name": "majorDimension",
+                            "type": "combo",
+                            "required": false,
+                            "defaultValue": "ROWS",
+                            "description": "The major dimension that results should use"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
-                    "name": "Sort Range",
-                    "description": "Sort a range with multiple sorting specifications.",
+                    "name": "createNewSheet",
+                    "description": "Create a new spreadsheet",
+                    "params": [
+                        {
+                            "name": "configMode",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "BASIC",
+                            "description": "Select the Configuration Mode for the operation. BASIC will show only the basic attributes, while ADVANCED will show all attributes."
+                        },
+                        {
+                            "name": "title",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Title of the spreadsheet to be created."
+                        },
+                        {
+                            "name": "initialSheetName",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "Sheet1",
+                            "description": "Name of the initial sheet to be created in the spreadsheet."
+                        },
+                        {
+                            "name": "properties",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Properties of the spreadsheet like title. Format: {\"title\": \"My Spreadsheet\"}"
+                        },
+                        {
+                            "name": "sheets",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "List of sheets to create in the spreadsheet. Format: [{\"properties\": {\"title\": \"Sheet1\"}}]"
+                        },
+                        {
+                            "name": "namedRanges",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Named ranges to create in the spreadsheet"
+                        },
+                        {
+                            "name": "fields",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Specifying which fields to include in a partial response"
+                        },
+                        {
+                            "name": "spreadsheetId",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "ID of the spreadsheet to be created. If not provided, a new spreadsheet will be created."
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
                     "isHidden": false
                 }
             ],
-            "connections": [],
-            "isHidden": false
+            "connections": [
+                {
+                    "name": "GOOGLESPREADSHEET",
+                    "description": "Google Sheets Connection",
+                    "params": [
+                        {
+                            "name": "connectionName",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "GOOGLESPREADSHEET_CONNECTION_1",
+                            "description": "The name for the Google Sheets connection"
+                        },
+                        {
+                            "name": "clientId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Client ID used to connect with Google Sheets"
+                        },
+                        {
+                            "name": "clientSecret",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Client Secret to connect with Google Sheets"
+                        },
+                        {
+                            "name": "refreshToken",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Refresh Token used to connect with Google Sheets"
+                        },
+                        {
+                            "name": "apiUrl",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "https://sheets.googleapis.com/v4/spreadsheets",
+                            "description": "API URL used to connect with Google Sheets"
+                        },
+                        {
+                            "name": "tokenEndpoint",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "https://oauth2.googleapis.com/token",
+                            "description": "Token URL used to connect with Google Sheets"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "tagName": "v3.0.2",
